@@ -1,0 +1,534 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Apprentissage d'Emeer</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+/* Layout: un cahier de famille. Colonne de lecture unique, piliers empilés, carnet de bord partagé en bas. */
+:root{
+  --bg:#F3EADB; --surface:#FBF6EC; --sunk:#EADDC8; --ink:#3A2C1F; --muted:#7B6650; --line:#DCCBB2;
+  --accent:#9C6B43; --accent-ink:#FFF8EE; --accent-soft:#E9D6BE;
+  --fr:#3F6283; --fr-bg:#E2E8EE; --ar:#5E6E3A; --ar-bg:#E5E8D6; --en:#9A4E34; --en-bg:#F1DFD5; --zh:#9A7A26; --zh-bg:#F2E8CC;
+  --ok:#4F7A45;
+  --display:"Fraunces", Georgia, "Times New Roman", serif;
+  --body:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#211A13; --surface:#2B2219; --sunk:#352A1F; --ink:#F1E6D4; --muted:#BDA88E; --line:#4A3B2C;
+  --accent:#D6A57A; --accent-ink:#2A1E14; --accent-soft:#4A3726;
+  --fr:#9DBBD8; --fr-bg:#2A3440; --ar:#B9C78F; --ar-bg:#30351F; --en:#E5A188; --en-bg:#45291F; --zh:#E2C670; --zh-bg:#3F3518;
+  --ok:#9CC48F; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#211A13; --surface:#2B2219; --sunk:#352A1F; --ink:#F1E6D4; --muted:#BDA88E; --line:#4A3B2C;
+  --accent:#D6A57A; --accent-ink:#2A1E14; --accent-soft:#4A3726;
+  --fr:#9DBBD8; --fr-bg:#2A3440; --ar:#B9C78F; --ar-bg:#30351F; --en:#E5A188; --en-bg:#45291F; --zh:#E2C670; --zh-bg:#3F3518;
+  --ok:#9CC48F; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+.wrap{max-width:880px;margin:0 auto;padding-block:40px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.2rem,6vw,3.4rem);font-weight:700}
+h2{font-size:1.75rem;font-weight:600}
+h3{font-size:1.15rem;font-weight:600}
+p{margin:0}
+.eyebrow{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.lead{font-size:1.1rem;color:var(--muted);max-width:62ch}
+section{display:flex;flex-direction:column;gap:20px}
+.sec-head{display:flex;flex-direction:column;gap:6px}
+.muted{color:var(--muted)}
+.small{font-size:.875rem}
+
+/* Hero */
+header{display:flex;flex-direction:column;gap:14px;border-bottom:1px solid var(--line);padding-bottom:32px}
+.age{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline}
+.age strong{font-family:var(--display);font-size:1.4rem;color:var(--accent)}
+
+/* Boussole */
+.compass{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.compass div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.compass b{font-family:var(--display);font-size:1.02rem;font-weight:600}
+
+/* Pilier */
+.pillar{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px max(16px,3vw);display:flex;flex-direction:column;gap:32px}
+.pillar-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:flex-start}
+.status{font-size:.8rem;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--accent);color:var(--accent-ink);white-space:nowrap}
+.status.next{background:var(--sunk);color:var(--muted)}
+.block{display:flex;flex-direction:column;gap:14px}
+
+.roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.role{border-radius:10px;padding:14px 16px;background:var(--bg);border:1px solid var(--line);display:flex;flex-direction:column;gap:6px;min-width:0}
+.role .who{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+
+.chip{display:inline-block;font-size:.8rem;font-weight:700;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.fr{background:var(--fr-bg);color:var(--fr)} .ar{background:var(--ar-bg);color:var(--ar)}
+.en{background:var(--en-bg);color:var(--en)} .zh{background:var(--zh-bg);color:var(--zh)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+
+.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.88rem}
+th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--sunk)}
+tr:last-child td{border-bottom:0}
+td.day{font-family:var(--display);font-weight:600;white-space:nowrap}
+td .chip{margin:0 4px 4px 0}
+
+/* Actions */
+.actions{display:flex;flex-direction:column;gap:8px;list-style:none;margin:0;padding:0}
+.actions li{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start;padding:12px 14px;background:var(--bg);border:1px solid var(--line);border-radius:10px}
+.actions input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--ok);cursor:pointer}
+.actions label{cursor:pointer;min-width:0}
+.actions li.done label span.t{text-decoration:line-through;color:var(--muted)}
+.when{font-size:.78rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.owner{font-size:.78rem;color:var(--accent);font-weight:700;display:block}
+
+/* Outils */
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.tool{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.ex{font-size:.88rem;border-left:2px solid var(--accent-soft);padding-left:10px;color:var(--muted)}
+.ex em{color:var(--ink);font-style:normal;font-weight:500}
+
+/* Jalons */
+.road{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0}
+.road li{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+.road li:first-child{border-top:0}
+.road .d{font-family:var(--display);font-weight:600;color:var(--accent);font-variant-numeric:tabular-nums}
+.road .sig{font-size:.88rem;color:var(--muted)}
+
+/* Piliers à venir */
+.next-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.next-card{border:1px dashed var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:8px;background:transparent}
+
+/* Carnet */
+.journal{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+form{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.field{display:flex;flex-direction:column;gap:4px;flex:1 1 150px;min-width:0}
+.field label{font-size:.78rem;font-weight:700;color:var(--muted);letter-spacing:.04em}
+input[type=date],select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 10px;width:100%}
+textarea{min-height:90px;resize:vertical}
+button{font:inherit;font-weight:700;border:0;border-radius:8px;padding:10px 18px;background:var(--accent);color:var(--accent-ink);cursor:pointer;align-self:flex-start}
+button.ghost{background:transparent;color:var(--muted);padding:4px 8px;font-weight:500;font-size:.8rem;border:1px solid var(--line)}
+button:disabled{opacity:.5;cursor:not-allowed}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.entries{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.entry{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.entry .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.8rem;color:var(--muted)}
+.entry .txt{white-space:pre-wrap;overflow-wrap:anywhere}
+.entry .del{margin-left:auto;display:flex;gap:6px}
+.note{font-size:.85rem;color:var(--muted);background:var(--sunk);border-radius:8px;padding:10px 12px}
+/* Jeux */
+.top5{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.top5 li{display:flex;gap:8px;align-items:baseline;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:.9rem}
+.top5 b{font-family:var(--display);color:var(--accent)}
+.games{display:flex;flex-direction:column;gap:10px;list-style:none;margin:0;padding:0}
+.game{display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:16px;background:var(--bg);border:1px solid var(--line);border-radius:10px}
+.rank{font-family:var(--display);font-size:1.6rem;font-weight:700;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums}
+.game-body{display:flex;flex-direction:column;gap:8px;min-width:0}
+.game-top{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;justify-content:space-between}
+.game-top h3{font-size:1.05rem}
+.price{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:.75rem;padding:2px 9px;border-radius:999px;background:var(--sunk);color:var(--muted);font-weight:700;white-space:nowrap}
+.tag.own{background:var(--ar-bg);color:var(--ar)}
+.tag.solo{background:var(--fr-bg);color:var(--fr)}
+.tag.duo{background:var(--en-bg);color:var(--en)}
+.tag.later{background:var(--zh-bg);color:var(--zh)}
+.skills{font-size:.85rem;color:var(--accent);font-weight:500}
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.split > div{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.money{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;max-width:520px}
+.money div{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line);font-size:.92rem}
+.money div:last-child{border-bottom:0;background:var(--sunk);font-weight:700}
+.money span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:20px}
+
+@media (max-width:520px){
+  .road li{grid-template-columns:1fr;gap:4px}
+  .actions li{grid-template-columns:auto 1fr}
+  .actions .when{grid-column:2}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header>
+  <span class="eyebrow">Notre fil directeur · Papa &amp; Maman</span>
+  <h1>Apprentissage d'Emeer</h1>
+  <p class="lead">Ce qu'on veut lui transmettre, comment on s'y prend, et ce qu'on observe en chemin. Un pilier à la fois, en ajoutant les suivants au fur et à mesure.</p>
+  <div class="age"><strong id="age">4 ans</strong><span class="muted small">né le 9 août 2022</span></div>
+</header>
+
+<section>
+  <div class="sec-head">
+    <span class="eyebrow">Notre boussole</span>
+    <h2>Ce qui guide tout le reste</h2>
+  </div>
+  <div class="compass">
+    <div><b>Il retiendra ce qu'il a ressenti</b><span class="muted small">Pas ce qu'on lui a appris. Le plaisir passe avant le résultat.</span></div>
+    <div><b>Le jeu d'abord</b><span class="muted small">À 4 ans, on apprend en jouant, en racontant, en faisant ensemble. Jamais en faisant des exercices.</span></div>
+    <div><b>Une personne, une langue</b><span class="muted small">Des repères stables lui permettent de savoir dans quelle langue chercher ses mots.</span></div>
+    <div><b>80 % suffit</b><span class="muted small">La régularité compte plus que la perfection. Un soir raté n'efface rien.</span></div>
+  </div>
+</section>
+
+<!-- ===================== PILIER 1 : LANGUES ===================== -->
+<section class="pillar" id="langues">
+  <div class="pillar-head">
+    <div class="sec-head">
+      <span class="eyebrow">Pilier 1</span>
+      <h2>Les langues</h2>
+    </div>
+    <span class="status">En cours · depuis nov. 2026</span>
+  </div>
+
+  <div class="block">
+    <h3>Où en est Emeer</h3>
+    <p>L'arabe est sa langue forte. Il comprend bien le français mais ne fait pas encore de phrases complètes, et il mélange français, anglais et arabe dans la même phrase. Ce mélange n'est pas un problème de langage : il prend le mot qui lui vient le plus vite. Notre objectif est de lui donner des repères et plus d'occasions de <em>parler</em> français, sans perdre son arabe.</p>
+  </div>
+
+  <div class="block">
+    <h3>Qui parle quoi à Emeer</h3>
+    <div class="roles">
+      <div class="role"><span class="who">Papa</span><div class="chips"><span class="chip fr">Français</span></div><span class="small muted">Toujours, quand il s'adresse à Emeer. Même s'il répond en arabe.</span></div>
+      <div class="role"><span class="who">Maman</span><div class="chips"><span class="chip ar">Arabe</span><span class="chip en">Moment anglais</span></div><span class="small muted">Arabe au quotidien, plus un moment anglais de 20 à 30 min chaque jour.</span></div>
+      <div class="role"><span class="who">Papa ↔ Maman</span><div class="chips"><span class="chip ar">Arabe</span></div><span class="small muted">Comme aujourd'hui. Emeer l'entend en fond.</span></div>
+      <div class="role"><span class="who">École &amp; amis</span><div class="chips"><span class="chip fr">Français</span></div><span class="small muted">La langue dont il a besoin tous les jours.</span></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Sa semaine des langues</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Jour</th><th>Journée</th><th>Dessins animés</th><th>Avec papa</th><th>Avec maman</th></tr></thead>
+        <tbody>
+          <tr><td class="day">Lundi</td><td><span class="chip fr">École</span></td><td><span class="chip fr">Français</span></td><td><span class="chip fr">15 min français</span></td><td><span class="chip en">Moment anglais</span></td></tr>
+          <tr><td class="day">Mardi</td><td><span class="chip fr">École</span></td><td><span class="chip fr">Français</span></td><td><span class="chip fr">15 min français</span></td><td><span class="chip en">Moment anglais</span></td></tr>
+          <tr><td class="day">Mercredi</td><td><span class="chip zh">Mandarin 1h30</span><span class="chip en">Théâtre EN</span><span class="chip fr">/ FR 1h30</span></td><td><span class="chip fr">Français</span></td><td><span class="chip fr">15 min français</span></td><td><span class="chip en">Moment anglais</span></td></tr>
+          <tr><td class="day">Jeudi</td><td><span class="chip fr">École</span></td><td><span class="chip fr">Français</span></td><td><span class="chip fr">15 min français</span></td><td><span class="chip en">Moment anglais</span></td></tr>
+          <tr><td class="day">Vendredi</td><td><span class="chip fr">École</span></td><td><span class="chip fr">Français</span></td><td><span class="chip fr">15 min français</span></td><td><span class="chip en">Moment anglais</span></td></tr>
+          <tr><td class="day">Samedi</td><td><span class="chip en">Atelier anglais 3h</span></td><td><span class="chip en">Anglais, avec maman</span></td><td><span class="chip fr">15 min français</span></td><td><span class="chip en">Moment anglais</span></td></tr>
+          <tr><td class="day">Dimanche</td><td class="muted">Famille</td><td><span class="chip en">Anglais, avec maman</span></td><td><span class="chip fr">15 min français</span></td><td><span class="chip en">Moment anglais</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted">En dehors de ces moments, l'arabe reste la langue de la maison avec maman et en famille.</p>
+  </div>
+
+  <div class="block">
+    <h3>Nos actions</h3>
+    <ul class="actions" id="actions"></ul>
+    <p class="note" id="actions-note" hidden></p>
+  </div>
+
+  <div class="block">
+    <h3>Notre boîte à outils</h3>
+    <div class="tools">
+      <div class="tool"><h3>La question à choix</h3><p class="small">Proposer deux options en français. Il a la phrase sous les yeux, il n'a plus qu'à la reprendre.</p><p class="ex">« Tu veux le pyjama bleu ou le vert ? » → <em>« Je veux le pyjama bleu. »</em></p></div>
+      <div class="tool"><h3>Reformuler sans corriger</h3><p class="small">Reprendre sa phrase en bon français et continuer la conversation. Jamais « on ne dit pas ça ».</p><p class="ex">« أنا لعبت avec Adam » → <em>« Ah, tu as joué avec Adam ! À quoi ? »</em></p></div>
+      <div class="tool"><h3>La phrase à rallonge</h3><p class="small">Chacun ajoute un mot à la phrase de l'autre, avec ses voitures ou ses animaux.</p><p class="ex">Le chien → le chien mange → <em>le chien mange une pomme rouge</em></p></div>
+      <div class="tool"><h3>L'histoire à trous</h3><p class="small">Relire le même livre plusieurs soirs, s'arrêter au milieu des phrases qu'il connaît.</p><p class="ex">« Et le loup a soufflé sur… » → <em>« …la maison ! »</em></p></div>
+      <div class="tool"><h3>Raconte-moi l'image</h3><p class="small">Demander « qu'est-ce qui se passe ? » plutôt que « qu'est-ce que c'est ? ».</p><p class="ex">« garçon يلعب ballon » → <em>« Le garçon joue au ballon. Et après ? »</em></p></div>
+      <div class="tool"><h3>Le petit traducteur</h3><p class="small">Partir d'une phrase qu'il dit déjà en tunisien, et la dire ensemble en français.</p><p class="ex">« نحب نشرب ماء » → <em>« Je veux boire de l'eau. »</em></p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Nos jalons</h3>
+    <ol class="road">
+      <li><span class="d">Nov.–déc. 2026</span><div><b>Installer la répartition des langues</b><p class="sig">Signe que ça marche : il répond plus souvent à papa en français.</p></div></li>
+      <li><span class="d">Début janv. 2027</span><div><b>Point de contrôle avec la maîtresse</b><p class="sig">On attend : des phrases de 3 à 4 mots en français. Si rien n'a bougé, on envisage un orthophoniste habitué aux enfants bilingues.</p></div></li>
+      <li><span class="d">Mai 2027</span><div><b>Phase 2 : plus de place à l'anglais</b><p class="sig">Quand il fait des phrases complètes en français et raconte sa journée, maman allonge son moment anglais.</p></div></li>
+      <li><span class="d">Toujours</span><div><b>L'arabe reste fort</b><p class="sig">C'est son lien avec la Tunisie, ses grands-parents et ses racines.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================== PILIER 2 : JEUX & RÉFLEXION ===================== -->
+<section class="pillar" id="jeux">
+  <div class="pillar-head">
+    <div class="sec-head">
+      <span class="eyebrow">Pilier 2</span>
+      <h2>Jeux &amp; réflexion</h2>
+    </div>
+    <span class="status">En cours · depuis nov. 2026</span>
+  </div>
+
+  <div class="block">
+    <h3>Pourquoi ce pilier</h3>
+    <p>Sa maîtresse a fait des remarques sur sa concentration. On veut l'aider à choisir une activité, à y rester, à chercher seul quand c'est difficile, et à être fier de ce qu'il a fait. Six dimensions : concentration, autonomie, logique, stratégie, mathématiques, langage. Et toujours le plaisir de jouer avant tout.</p>
+  </div>
+
+  <div class="block">
+    <h3>Nos 5 priorités pour les prochains mois</h3>
+    <ol class="top5">
+      <li><b>1</b>Constructions magnétiques</li>
+      <li><b>2</b>Puzzles adaptés à son niveau</li>
+      <li><b>3</b>Boulier</li>
+      <li><b>4</b>Puissance 4</li>
+      <li><b>5</b>Petits chevaux</li>
+    </ol>
+    <p class="small muted">Les échecs et le Go viennent en parallèle s'il montre de l'intérêt, sans chercher la performance.</p>
+  </div>
+
+  <div class="block">
+    <h3>Les 11 jeux, par priorité</h3>
+    <ol class="games">
+      <li class="game"><span class="rank">1</span><div class="game-body"><div class="game-top"><h3>Constructions magnétiques FNJO · 100 pièces</h3><span class="price">37,99 €</span></div><div class="tags"><span class="tag own">Déjà à la maison</span><span class="tag solo">Autonome</span><span class="tag">Dès maintenant</span></div><p class="skills">Créativité · raisonnement spatial · logique · concentration · autonomie · géométrie</p><p class="small">Constructions libres, puis des défis : maison, pont, château, tour stable. Lui demander d'expliquer sa construction en français. Ensuite, des contraintes : « Construis une maison avec 6 carrés et 4 triangles. »</p></div></li>
+      <li class="game"><span class="rank">2</span><div class="game-body"><div class="game-top"><h3>Constructions magnétiques KALOISYHE · 95 pièces</h3><span class="price">23,60 €</span></div><div class="tags"><span class="tag own">Déjà à la maison</span><span class="tag solo">Autonome</span><span class="tag">Dès maintenant</span></div><p class="skills">Logique · imagination · coordination · raisonnement spatial · planification</p><p class="small">Véhicules, maisons, grandes roues. Introduire l'équilibre : « Pourquoi cette tour tombe ? » Le laisser essayer plusieurs solutions avant de l'aider.</p></div></li>
+      <li class="game"><span class="rank">3</span><div class="game-body"><div class="game-top"><h3>SYNARRY · 6 puzzles en bois de 60 pièces</h3><span class="price">29,99 €</span></div><div class="tags"><span class="tag solo">Autonomie progressive</span><span class="tag">4–5 ans selon son niveau</span></div><p class="skills">Concentration · observation · mémoire visuelle · raisonnement spatial · persévérance</p><p class="small">Commencer ensemble par les bords et les coins, puis le laisser continuer. Si 60 pièces, c'est trop, passer à un puzzle plus simple. Puzzle terminé : il décrit l'image et invente une histoire.</p></div></li>
+      <li class="game"><span class="rank">4</span><div class="game-body"><div class="game-top"><h3>Boulier 100 perles + tableau noir/blanc</h3><span class="price">18,99 €</span></div><div class="tags"><span class="tag duo">Avec un parent · 5–10 min</span><span class="tag">Dès maintenant</span></div><p class="skills">Numération · calcul · quantités · logique · mémoire de travail</p><p class="small">Compter jusqu'à 5, puis 10, puis petites additions et soustractions. Ensuite les dizaines. Partir de situations réelles : « Tu as 3 voitures et je t'en donne 2. »</p></div></li>
+      <li class="game"><span class="rank">5</span><div class="game-body"><div class="game-top"><h3>Puissance 4 miniature</h3><span class="price">6,99 €</span></div><div class="tags"><span class="tag duo">Avec un parent</span><span class="tag">Dès maintenant, règles simplifiées</span></div><p class="skills">Observation · anticipation · stratégie · concentration · attendre son tour</p><p class="small">D'abord aligner 3 jetons, puis 4. Lui apprendre à regarder ce que l'autre peut faire : « Où tu peux jouer pour m'empêcher de gagner ? »</p></div></li>
+      <li class="game"><span class="rank">6</span><div class="game-body"><div class="game-top"><h3>Dujardin · 8 jeux classiques</h3><span class="price">14,90 €</span></div><div class="tags"><span class="tag duo">En famille</span><span class="tag">4–5 ans, jeux choisis</span></div><p class="skills">Calcul · patience · logique · règles · jouer avec les autres</p><p class="small">Commencer par le jeu de l'oie et les petits chevaux simplifiés, en comptant les cases avec le dé. Puis les dames avec peu de pions. Les jeux plus complexes attendront.</p></div></li>
+      <li class="game"><span class="rank">7</span><div class="game-body"><div class="game-top"><h3>Small Foot · 7 jeux classiques en bois</h3><span class="price">36,18 €</span></div><div class="tags"><span class="tag duo">En famille</span><span class="tag">4–6 ans selon le jeu</span></div><p class="skills">Stratégie · raisonnement · planification · calcul · règles</p><p class="small">Dominos et petits chevaux d'abord, puis dames, puis échecs simplifiés. Lui demander parfois d'expliquer son choix, sans le questionner à chaque tour.</p></div></li>
+      <li class="game"><span class="rank">8</span><div class="game-body"><div class="game-top"><h3>Peradix · échiquier magnétique 25 × 25 cm</h3><span class="price">15,99 €</span></div><div class="tags"><span class="tag duo">Avec un parent</span><span class="tag">4–5 ans, règles simplifiées</span></div><p class="skills">Stratégie · anticipation · logique · planification · résolution de problèmes</p><p class="small">Une pièce à la fois : tour, fou, dame, cavalier. D'abord des défis de déplacement, puis des mini-parties. Ensuite les prises, protéger ses pièces, prévoir le coup de l'autre.</p></div></li>
+      <li class="game"><span class="rank">9</span><div class="game-body"><div class="game-top"><h3>Go magnétique 19 × 19</h3><span class="price">26,98 €</span></div><div class="tags"><span class="tag duo">Avec un parent</span><span class="tag">4–5 ans, version simplifiée</span></div><p class="skills">Stratégie · raisonnement spatial · anticipation · reconnaître des formes</p><p class="small">Jouer sur une zone de 5 × 5. Apprendre à poser les pierres et les libertés, puis le Go de capture. Ensuite 9 × 9. Le grand plateau, plus tard.</p></div></li>
+      <li class="game"><span class="rank">10</span><div class="game-body"><div class="game-top"><h3>Monopoly classique</h3><span class="price">18,40 €</span></div><div class="tags"><span class="tag duo">En famille</span><span class="tag later">Règles complètes vers 7–8 ans</span></div><p class="skills">Argent · calcul · décisions · planification · négociation</p><p class="small">À 4 ans, seulement les billets pour jouer à acheter et vendre. Puis budget, dépenses, revenus. Les vraies parties viendront plus tard.</p></div></li>
+      <li class="game"><span class="rank">11</span><div class="game-body"><div class="game-top"><h3>Scrabble classique</h3><span class="price">13,99 €</span></div><div class="tags"><span class="tag duo">En famille</span><span class="tag later">Règles complètes vers 8–10 ans</span></div><p class="skills">Vocabulaire · orthographe · langage · mémoire des mots · calcul</p><p class="small">À 4 ans, quelques lettres pour écrire son prénom, reconnaître les sons, former des mots simples avec un modèle. Les vraies règles quand il saura lire.</p></div></li>
+    </ol>
+  </div>
+
+  <div class="block">
+    <h3>Quel jeu pour quelle compétence</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Compétence</th><th>Jeux</th><th>Comment l'encourager</th></tr></thead>
+        <tbody>
+          <tr><td class="day">Concentration</td><td>Puzzles, constructions, Puissance 4</td><td>Un objectif simple, puis le laisser chercher sans l'interrompre</td></tr>
+          <tr><td class="day">Autonomie</td><td>Constructions, puzzles</td><td>Commencer ensemble, puis le laisser continuer à côté</td></tr>
+          <tr><td class="day">Logique</td><td>Constructions, puzzles, Go, échecs</td><td>« Pourquoi ? », « Qu'est-ce qui se passerait si… ? »</td></tr>
+          <tr><td class="day">Stratégie</td><td>Puissance 4, Go, échecs, dames</td><td>Apprendre à prévoir le coup de l'autre</td></tr>
+          <tr><td class="day">Maths</td><td>Boulier, petits chevaux, Monopoly simplifié</td><td>Compter, comparer, ajouter et enlever avec des objets</td></tr>
+          <tr><td class="day">Langage</td><td>Puzzles, constructions, Scrabble simplifié</td><td>Décrire, expliquer, raconter</td></tr>
+          <tr><td class="day">Créativité</td><td>Constructions magnétiques</td><td>Inventer bâtiments, véhicules, histoires</td></tr>
+          <tr><td class="day">Persévérance</td><td>Puzzles, échecs, Go</td><td>Accepter l'erreur, essayer autrement</td></tr>
+          <tr><td class="day">Vivre ensemble</td><td>Petits chevaux, Puissance 4, jeux en famille</td><td>Attendre son tour, respecter les règles, accepter de perdre</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Après l'école</h3>
+    <div class="split">
+      <div><span class="tag solo" style="align-self:flex-start">Seul, pendant qu'on est occupés</span><p class="small">Constructions magnétiques et puzzles, dans un espace sûr, à côté de nous. Par exemple de 17h30 à 18h, il construit librement.</p><p class="ex">Un défi pour démarrer : <em>« Construis un garage à deux étages pour tes voitures. »</em> À la fin, 2 minutes pour regarder sa construction et qu'il nous l'explique.</p></div>
+      <div><span class="tag duo" style="align-self:flex-start">Avec papa ou maman</span><p class="small">Les jeux de stratégie et les maths, en séances courtes. C'est un programme indicatif : Emeer garde le droit de choisir son jeu et de se reposer après l'école.</p></div>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Jour</th><th>Jeu partagé</th><th>Durée</th></tr></thead>
+        <tbody>
+          <tr><td class="day">Lundi</td><td>Boulier</td><td>5–10 min</td></tr>
+          <tr><td class="day">Mardi</td><td>Puissance 4</td><td>10 min</td></tr>
+          <tr><td class="day">Mercredi</td><td>Échecs simplifiés</td><td>10 min</td></tr>
+          <tr><td class="day">Jeudi</td><td>Boulier ou dominos</td><td>5–10 min</td></tr>
+          <tr><td class="day">Vendredi</td><td>Go simplifié</td><td>10 min</td></tr>
+          <tr><td class="day">Samedi</td><td>Petits chevaux ou dames</td><td>15–20 min</td></tr>
+          <tr><td class="day">Dimanche</td><td>Jeux libres en famille</td><td>Selon son envie</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Jouer en français</h3>
+    <p>Chaque jeu est une occasion de le faire parler. On pose une question, on reformule sa réponse en phrase complète, et on continue de jouer. Jamais d'interrogation.</p>
+    <div class="tools">
+      <div class="tool"><h3>Constructions</h3><p class="ex">« Qu'est-ce que tu construis ? » · « Maison grande » → <em>« Oui, tu construis une grande maison avec un toit rouge ! »</em></p></div>
+      <div class="tool"><h3>Puzzles</h3><p class="ex"><em>« Qu'est-ce que fait le dinosaure ? »</em> · <em>« Pourquoi il court, à ton avis ? »</em></p></div>
+      <div class="tool"><h3>Puissance 4</h3><p class="ex"><em>« Pourquoi tu as choisi cette colonne ? »</em> · <em>« Qu'est-ce que tu peux faire au prochain tour ? »</em></p></div>
+      <div class="tool"><h3>Boulier</h3><p class="ex"><em>« Combien de perles tu as poussées ? »</em></p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Budget</h3>
+    <div class="money">
+      <div><span>2 coffrets magnétiques, déjà achetés</span><span>61,59 €</span></div>
+      <div><span>9 autres jeux à acheter</span><span>182,41 €</span></div>
+      <div><span>Valeur totale de la collection</span><span>244,00 €</span></div>
+    </div>
+    <p class="note">Sécurité : les pièces magnétiques et les petites pièces restent hors de portée d'Eline. Vérifier régulièrement que les plaques et les pierres magnétiques ne sont pas abîmées.</p>
+  </div>
+</section>
+
+<!-- ===================== PILIERS À VENIR ===================== -->
+<section>
+  <div class="sec-head">
+    <span class="eyebrow">Prochains piliers</span>
+    <h2>Ce qu'on ouvrira ensuite</h2>
+    <p class="muted">Des pistes, pas encore un plan. On ouvre un pilier quand le précédent tourne tout seul.</p>
+  </div>
+  <div class="next-grid">
+    <div class="next-card"><span class="status next">À ouvrir</span><h3>Émotions &amp; confiance</h3><p class="small muted">Mettre des mots sur ce qu'il ressent, gérer la colère et la frustration, oser essayer.</p></div>
+    <div class="next-card"><span class="status next">À ouvrir</span><h3>Corps &amp; mouvement</h3><p class="small muted">Vélo, nage, grimpe, et un jour la pêche avec papa, au fil de l'eau.</p></div>
+    <div class="next-card"><span class="status next">À ouvrir</span><h3>Curiosité &amp; nature</h3><p class="small muted">Poser des questions, observer, construire, expérimenter dehors.</p></div>
+    <div class="next-card"><span class="status next">À ouvrir</span><h3>Grand frère d'Eline</h3><p class="small muted">Trouver sa place, avoir des moments rien qu'à lui, être fier de son rôle.</p></div>
+    <div class="next-card"><span class="status next">À ouvrir</span><h3>Racines &amp; famille</h3><p class="small muted">La Tunisie, les grands-parents, les fêtes, les histoires de famille.</p></div>
+    <div class="next-card"><span class="status next">À ouvrir</span><h3>Autonomie au quotidien</h3><p class="small muted">S'habiller, ranger, aider à table, faire des petits choix seul.</p></div>
+  </div>
+</section>
+
+<!-- ===================== CARNET DE BORD ===================== -->
+<section id="carnet">
+  <div class="sec-head">
+    <span class="eyebrow">Carnet de bord partagé</span>
+    <h2>Ce qu'on observe</h2>
+    <p class="muted">Une première phrase complète, un mot nouveau, une soirée difficile. On note ici, papa comme maman, pour voir le chemin parcouru.</p>
+  </div>
+  <div class="journal">
+    <form id="entry-form" autocomplete="off">
+      <div class="row">
+        <div class="field"><label for="f-date">Date</label><input type="date" id="f-date" required></div>
+        <div class="field"><label for="f-who">Qui note</label><select id="f-who"><option>Papa</option><option>Maman</option></select></div>
+        <div class="field"><label for="f-pillar">Pilier</label><select id="f-pillar"><option>Langues</option><option>Jeux &amp; réflexion</option><option>Émotions &amp; confiance</option><option>Corps &amp; mouvement</option><option>Curiosité &amp; nature</option><option>Grand frère d'Eline</option><option>Racines &amp; famille</option><option>Autonomie</option><option>Autre</option></select></div>
+      </div>
+      <div class="field"><label for="f-text">Ce qu'on a observé</label><textarea id="f-text" required placeholder="Ex. : ce soir, il m'a dit « Je veux la grande voiture rouge » tout seul, en français."></textarea></div>
+      <button type="submit" id="f-submit">Ajouter au carnet</button>
+      <p class="note" id="form-note" hidden></p>
+    </form>
+    <ul class="entries" id="entries"><li class="note" id="entries-empty">Le carnet est vide pour l'instant. La première observation que vous ajouterez apparaîtra ici.</li></ul>
+  </div>
+</section>
+
+<footer>Dernière mise à jour du plan : 6 novembre 2026. Ce fil directeur grandit avec Emeer : on y ajoute objectifs, activités et piliers au fur et à mesure.</footer>
+</div>
+
+<script>
+(function(){
+  // Âge d'Emeer
+  const birth = new Date(2022, 7, 9), now = new Date();
+  let m = (now.getFullYear()-birth.getFullYear())*12 + (now.getMonth()-birth.getMonth());
+  if (now.getDate() < birth.getDate()) m--;
+  const y = Math.floor(m/12), mo = m%12;
+  document.getElementById('age').textContent = y + ' ans' + (mo ? ' et ' + mo + ' mois' : '');
+
+  const ACTIONS = [
+    {id:'a1', t:"Proposer la répartition des langues à Salma et la décider ensemble", who:'Papa', when:'Cette semaine'},
+    {id:'a2', t:"Passer les dessins animés de la semaine en français (langue audio)", who:'Papa & Maman', when:'Cette semaine'},
+    {id:'a3', t:"Choisir le moment anglais de maman (bain, histoire du soir…)", who:'Maman', when:'Cette semaine'},
+    {id:'a4', t:"Lancer le rendez-vous « français avec papa », 15 min chaque soir", who:'Papa', when:'Novembre 2026'},
+    {id:'a5', t:"Faire le point avec la maîtresse sur son français en classe", who:'Papa & Maman', when:'Début janv. 2027'},
+    {id:'a6', t:"Décider si on garde le mandarin ou si on libère ce créneau", who:'Papa & Maman', when:'Janv. 2027'}
+  ];
+  const ul = document.getElementById('actions');
+  let done = {}, db = null, canWrite = true;
+
+  function renderActions(){
+    ul.innerHTML = '';
+    ACTIONS.forEach(a => {
+      const li = document.createElement('li'); if (done[a.id]) li.className = 'done';
+      const cb = document.createElement('input'); cb.type='checkbox'; cb.id='cb-'+a.id; cb.checked=!!done[a.id]; cb.disabled = !db || !canWrite;
+      cb.addEventListener('change', () => toggle(a.id, cb.checked));
+      const lab = document.createElement('label'); lab.htmlFor = cb.id;
+      const ow = document.createElement('span'); ow.className='owner'; ow.textContent = a.who;
+      const t = document.createElement('span'); t.className='t'; t.textContent = a.t;
+      lab.append(ow, t);
+      const w = document.createElement('span'); w.className='when'; w.textContent = a.when;
+      li.append(cb, lab, w); ul.appendChild(li);
+    });
+  }
+  renderActions();
+
+  let writing = false;
+  async function toggle(id, val){
+    if (!db || writing) return;
+    const next = Object.assign({}, done, {[id]: val});
+    done = next; renderActions(); writing = true;
+    try { await db.doc('etat/actions').set({done: next}); }
+    catch(e){ onWriteError(e); }
+    finally { writing = false; }
+  }
+
+  // Carnet
+  const fDate = document.getElementById('f-date');
+  const d = new Date(); fDate.value = d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  const form = document.getElementById('entry-form'), formNote = document.getElementById('form-note');
+  const list = document.getElementById('entries'), empty = document.getElementById('entries-empty');
+  const actNote = document.getElementById('actions-note');
+
+  function fmt(iso){ const [Y,M,D] = iso.split('-').map(Number); return new Date(Y,M-1,D).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'}); }
+
+  function renderEntries(docs){
+    list.querySelectorAll('.entry').forEach(n=>n.remove());
+    empty.hidden = docs.length > 0;
+    docs.forEach(doc => {
+      const e = doc.data(); if (!e) return;
+      const li = document.createElement('li'); li.className='entry';
+      const meta = document.createElement('div'); meta.className='meta';
+      const dt = document.createElement('span'); dt.textContent = e.date ? fmt(e.date) : '';
+      const who = document.createElement('span'); who.className='chip ' + (e.who==='Maman' ? 'en':'fr'); who.textContent = e.who || '';
+      const pil = document.createElement('span'); pil.className='chip'; pil.style.background='var(--sunk)'; pil.style.color='var(--muted)'; pil.textContent = e.pillar || '';
+      meta.append(dt, who, pil);
+      if (canWrite){
+        const del = document.createElement('span'); del.className='del';
+        const b = document.createElement('button'); b.type='button'; b.className='ghost'; b.textContent='Supprimer';
+        b.addEventListener('click', () => {
+          if (b.dataset.armed){ db.collection('journal').doc(doc.id).delete().catch(onWriteError); }
+          else { b.dataset.armed='1'; b.textContent='Confirmer la suppression'; setTimeout(()=>{ if(b.isConnected){ delete b.dataset.armed; b.textContent='Supprimer'; } }, 4000); }
+        });
+        del.append(b); meta.append(del);
+      }
+      const txt = document.createElement('p'); txt.className='txt'; txt.textContent = e.text || '';
+      li.append(meta, txt); list.appendChild(li);
+    });
+  }
+
+  function onWriteError(e){
+    if (e && e.code === 'invalid_argument'){ canWrite = false; setReadOnly('Vous pouvez lire ce carnet mais pas y écrire. Demandez à Youssef de vous donner l\'accès en modification.'); }
+    else if (e && e.code === 'quota_exceeded'){ formNote.hidden=false; formNote.textContent='Le carnet est plein. Supprimez quelques anciennes notes pour en ajouter.'; }
+    else { formNote.hidden=false; formNote.textContent='L\'enregistrement n\'a pas abouti. Réessayez dans un instant.'; }
+  }
+  function setReadOnly(msg){
+    form.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=true);
+    formNote.hidden=false; formNote.textContent=msg; renderActions();
+  }
+
+  form.addEventListener('submit', async ev => {
+    ev.preventDefault();
+    const text = document.getElementById('f-text').value.trim();
+    if (!text || !db) return;
+    const btn = document.getElementById('f-submit'); btn.disabled = true; formNote.hidden = true;
+    try {
+      await db.collection('journal').add({date: fDate.value, who: document.getElementById('f-who').value, pillar: document.getElementById('f-pillar').value, text, createdAt: Date.now()});
+      document.getElementById('f-text').value='';
+    } catch(e){ onWriteError(e); }
+    finally { if (canWrite) btn.disabled = false; }
+  });
+
+  // Connexion au stockage partagé
+  form.querySelectorAll('button').forEach(b=>b.disabled=true);
+  (async () => {
+    const c = window.claude;
+    db = c && c.use ? await c.use('db') : null;
+    if (!db){
+      setReadOnly('Le carnet partagé et les cases à cocher fonctionnent quand la page est ouverte sur claude.ai avec un compte connecté.');
+      actNote.hidden=false; actNote.textContent='Ouvrez la page sur claude.ai, connecté, pour cocher les actions.';
+      return;
+    }
+    try { const user = await c.use('user'); if (user){ const w = await user.can('data.write'); if (w === false) canWrite = false; } } catch(_){}
+    if (!canWrite) setReadOnly('Vous pouvez lire ce carnet mais pas y écrire. Demandez à Youssef de vous donner l\'accès en modification.');
+    else form.querySelectorAll('button').forEach(b=>b.disabled=false);
+    renderActions();
+
+    let tA = setTimeout(()=>{ actNote.hidden=false; actNote.textContent='Les cases cochées ne sont pas encore chargées. Elles peuvent ne pas être à jour.'; }, 10000);
+    db.doc('etat/actions').onSnapshot(s => {
+      if (!s.metadata.fromCache){ clearTimeout(tA); actNote.hidden = true; }
+      if (writing) return;
+      const v = s.exists ? (s.data().done || {}) : {};
+      done = Object.assign({}, v); renderActions();
+    }, () => { clearTimeout(tA); actNote.hidden=false; actNote.textContent='Les cases cochées ne peuvent pas être chargées pour le moment.'; });
+
+    let tJ = setTimeout(()=>{ empty.textContent='Le carnet ne répond pas encore. Les notes apparaîtront dès qu\'il sera joignable.'; }, 10000);
+    db.collection('journal').orderBy('createdAt','desc').limit(300).onSnapshot(s => {
+      if (!s.metadata.fromCache){ clearTimeout(tJ); empty.textContent='Le carnet est vide pour l\'instant. La première observation que vous ajouterez apparaîtra ici.'; }
+      const docs = s.docs.slice().sort((a,b)=>{ const A=a.data()||{},B=b.data()||{}; return (B.date||'').localeCompare(A.date||'') || (B.createdAt||0)-(A.createdAt||0); });
+      renderEntries(docs);
+    }, () => { clearTimeout(tJ); empty.hidden=false; empty.textContent='Le carnet ne peut pas être chargé pour le moment.'; });
+  })();
+})();
+</script>
+
+</body></html>

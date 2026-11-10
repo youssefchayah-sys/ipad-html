@@ -1,0 +1,984 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>BE A BETTER DIGITAL ENTREPRENEUR</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: blueprint dossier — sticky table of contents on the left, long-form sections on the right, navy ground, gold for decisions, teal for mechanisms */
+:root{
+  --bg:#0B1626; --bg-2:#101F35; --panel:#13243D; --line:#22385A; --line-2:#2D4870;
+  --fg:#E8EDF4; --fg-2:#A9B7CB; --fg-3:#7F90A8;
+  --gold:#D4A94E; --gold-soft:rgba(212,169,78,.12);
+  --teal:#3FB8AF; --teal-soft:rgba(63,184,175,.12);
+  --rose:#E07A6B; --rose-soft:rgba(224,122,107,.12);
+  --green:#6CC48A;
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --sans:"DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#F7F8FB; --bg-2:#EEF1F6; --panel:#FFFFFF; --line:#D9DFE9; --line-2:#C5CFDD;
+  --fg:#0E1B2E; --fg-2:#3D4E66; --fg-3:#66768C;
+  --gold:#9A7020; --gold-soft:rgba(154,112,32,.10);
+  --teal:#1C7F78; --teal-soft:rgba(28,127,120,.10);
+  --rose:#B24A3B; --rose-soft:rgba(178,74,59,.10); --green:#2E8A4E;
+  color-scheme:light;}}
+:root[data-theme="light"]{
+  --bg:#F7F8FB; --bg-2:#EEF1F6; --panel:#FFFFFF; --line:#D9DFE9; --line-2:#C5CFDD;
+  --fg:#0E1B2E; --fg-2:#3D4E66; --fg-3:#66768C;
+  --gold:#9A7020; --gold-soft:rgba(154,112,32,.10);
+  --teal:#1C7F78; --teal-soft:rgba(28,127,120,.10);
+  --rose:#B24A3B; --rose-soft:rgba(178,74,59,.10); --green:#2E8A4E;
+  color-scheme:light;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));}
+a{color:var(--teal)}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:230px minmax(0,1fr);gap:48px;padding-block:40px 80px}
+@media (max-width:960px){.wrap{grid-template-columns:minmax(0,1fr);gap:24px}}
+/* TOC */
+nav.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);align-self:start;max-height:calc(100vh - 48px);overflow:auto;font-size:13.5px}
+nav.toc .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-3);margin-bottom:12px}
+nav.toc ol{list-style:none;margin:0;padding:0;display:grid;gap:2px;counter-reset:t}
+nav.toc li a{display:grid;grid-template-columns:26px 1fr;gap:4px;color:var(--fg-2);text-decoration:none;padding:5px 8px;border-radius:6px}
+nav.toc li a:hover{background:var(--bg-2);color:var(--fg)}
+nav.toc li a span{font-family:var(--mono);font-size:11.5px;color:var(--fg-3);padding-top:2px}
+@media (max-width:960px){nav.toc{position:static;max-height:none;border:1px solid var(--line);border-radius:10px;padding:16px;background:var(--bg-2)}
+  nav.toc ol{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}}
+main{min-width:0}
+/* Hero */
+.hero{padding-bottom:36px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(34px,5vw,54px);line-height:1.08;margin:14px 0 18px;text-wrap:balance;letter-spacing:-.01em}
+h1 em{font-style:italic;color:var(--gold);font-weight:500}
+.lede{font-size:18.5px;color:var(--fg-2);max-width:70ch;margin:0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:28px}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--bg-2)}
+.kpi b{display:block;font-family:var(--serif);font-size:30px;font-weight:600;color:var(--fg);line-height:1.1;font-variant-numeric:tabular-nums}
+.kpi span{font-size:13px;color:var(--fg-3)}
+.correction{margin-top:24px;border:1px solid var(--gold);background:var(--gold-soft);border-radius:10px;padding:16px 18px;font-size:15px}
+.correction strong{color:var(--gold)}
+/* Sections */
+section{padding-top:56px;scroll-margin-top:24px}
+.sec-head{display:flex;gap:16px;align-items:baseline;margin-bottom:8px;flex-wrap:wrap}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--gold);border:1px solid var(--line-2);border-radius:6px;padding:2px 8px}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.2vw,34px);line-height:1.15;margin:0;text-wrap:balance}
+h3{font-family:var(--sans);font-weight:700;font-size:18px;margin:32px 0 10px;letter-spacing:-.005em}
+h4{font-family:var(--sans);font-weight:600;font-size:15.5px;margin:0 0 6px}
+p{max-width:75ch;margin:0 0 14px}
+.lead{font-size:17.5px;color:var(--fg-2);max-width:75ch;margin:10px 0 22px}
+ul,ol{max-width:75ch;padding-left:22px;margin:0 0 14px}
+li{margin-bottom:6px}
+li::marker{color:var(--fg-3)}
+strong{color:var(--fg);font-weight:600}
+.muted{color:var(--fg-3)}
+.small{font-size:13.5px}
+/* Callouts */
+.call{border-left:3px solid var(--teal);background:var(--teal-soft);padding:14px 18px;border-radius:0 10px 10px 0;margin:18px 0;max-width:80ch}
+.call.gold{border-color:var(--gold);background:var(--gold-soft)}
+.call.rose{border-color:var(--rose);background:var(--rose-soft)}
+.call .t{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:4px}
+.call.gold .t{color:var(--gold)} .call.rose .t{color:var(--rose)}
+.call p:last-child,.call ul:last-child{margin-bottom:0}
+/* Grids & cards */
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--panel);min-width:0}
+.card p{font-size:15px}
+.card ul{font-size:14.5px;margin-bottom:0}
+.tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid var(--line-2);color:var(--fg-2);margin:0 4px 4px 0;white-space:nowrap}
+.tag.teal{border-color:var(--teal);color:var(--teal)}
+.tag.gold{border-color:var(--gold);color:var(--gold)}
+.tag.rose{border-color:var(--rose);color:var(--rose)}
+/* Format cards */
+.fmt{border:1px solid var(--line);border-radius:12px;background:var(--panel);overflow:hidden;min-width:0}
+.fmt header{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;background:var(--bg-2)}
+.fmt header h4{font-size:17px;margin:0}
+.fmt .body{padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px 24px}
+.fmt dl{margin:0}
+.fmt dt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3);margin-bottom:3px}
+.fmt dd{margin:0 0 10px;font-size:14.5px;color:var(--fg)}
+.fmt .ex{grid-column:1/-1;border-top:1px dashed var(--line-2);padding-top:12px;font-size:14px;color:var(--fg-2)}
+.fmt .ex b{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--gold)}
+/* Tables */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:14px 0 18px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
+th,td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--line)}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3);font-weight:500;background:var(--bg-2);position:sticky;top:0}
+tr:last-child td{border-bottom:none}
+td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+td .ttl{font-family:var(--serif);font-weight:500;font-size:15px;color:var(--fg)}
+tr.hl td{background:var(--gold-soft)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:1px}
+.d-w{background:var(--teal)} .d-m{background:var(--gold)} .d-e{background:var(--rose)} .d-d{background:#8D9BF0} .d-s{background:var(--green)} .d-v{background:var(--fg-3)}
+.lvl{font-family:var(--mono);letter-spacing:1px;color:var(--gold);white-space:nowrap}
+.lvl i{color:var(--line-2);font-style:normal}
+/* Matrix */
+.mx td{text-align:center;font-family:var(--mono);font-size:13px}
+.mx td:first-child{text-align:left;font-family:var(--sans);font-weight:600}
+.m3{color:var(--gold);font-weight:600} .m2{color:var(--teal)} .m1{color:var(--fg-3)} .m0{color:var(--line-2)}
+/* Pipeline */
+.pipe{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:18px 0;counter-reset:p}
+.pipe div{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--panel);position:relative;font-size:13.5px;color:var(--fg-2)}
+.pipe div b{display:block;color:var(--fg);font-size:14.5px;margin-bottom:2px}
+.pipe div::before{counter-increment:p;content:counter(p,decimal-leading-zero);font-family:var(--mono);font-size:11px;color:var(--gold);display:block;margin-bottom:4px}
+.pipe div.key{border-color:var(--gold);background:var(--gold-soft)}
+/* Asset tree */
+.tree{display:grid;gap:12px;margin:18px 0}
+.tree .root{border:1px solid var(--line-2);border-radius:10px;padding:12px 16px;text-align:center;background:var(--bg-2)}
+.tree .master{border:2px solid var(--gold);background:var(--gold-soft);border-radius:10px;padding:12px 16px;text-align:center}
+.tree .arrow{text-align:center;color:var(--fg-3);font-family:var(--mono);line-height:1}
+.tree .branches{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.tree .br{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--panel)}
+.tree .br h4{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.tree .br ul{font-size:14px;margin:6px 0 0;padding-left:18px}
+/* Gantt */
+.gantt-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel);margin:16px 0}
+.gantt{display:grid;grid-template-columns:230px repeat(36,minmax(18px,1fr));min-width:900px;font-size:13px}
+.gantt .h{font-family:var(--mono);font-size:10.5px;color:var(--fg-3);padding:10px 0 8px;text-align:center;border-bottom:1px solid var(--line);background:var(--bg-2)}
+.gantt .h.lab{text-align:left;padding-left:14px}
+.gantt .h.y{border-left:1px solid var(--line-2)}
+.gantt .lab{padding:7px 14px;border-bottom:1px solid var(--line);color:var(--fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gantt .lane{grid-column:2 / -1;border-bottom:1px solid var(--line);position:relative;display:grid;grid-template-columns:repeat(36,1fr);align-items:center;
+  background-image:linear-gradient(to right,var(--line-2) 1px,transparent 1px);background-size:calc(100%/3) 100%}
+.gantt .bar{height:14px;border-radius:7px;align-self:center}
+.b-free{background:var(--teal)} .b-pay{background:var(--gold)} .b-rec{background:linear-gradient(90deg,var(--gold),var(--rose))} .b-cond{background:repeating-linear-gradient(45deg,var(--fg-3) 0 4px,transparent 4px 8px);border:1px solid var(--fg-3)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--fg-2);margin:8px 0 0}
+.legend i{display:inline-block;width:22px;height:10px;border-radius:5px;margin-right:6px;vertical-align:0}
+/* Phases */
+.phases{display:grid;gap:12px;margin:18px 0}
+.phase{display:grid;grid-template-columns:190px minmax(0,1fr) 220px;gap:20px;border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--panel)}
+.phase.now{border:2px solid var(--gold);background:linear-gradient(0deg,var(--gold-soft),var(--gold-soft)),var(--panel)}
+.phase .n{font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.15}
+.phase .when{font-family:var(--mono);font-size:12px;color:var(--fg-3);margin-top:4px}
+.phase ul{margin:0;font-size:14.5px}
+.phase .gate{border-left:1px dashed var(--line-2);padding-left:16px;font-size:14px}
+.phase .gate .t{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:6px}
+@media (max-width:820px){.phase{grid-template-columns:minmax(0,1fr)}.phase .gate{border-left:none;border-top:1px dashed var(--line-2);padding:12px 0 0}}
+/* Checklist */
+.weeks{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.week{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--panel)}
+.week h4{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.week h4 small{font-family:var(--mono);font-size:11px;color:var(--fg-3);font-weight:400}
+.week label{display:grid;grid-template-columns:20px 1fr;gap:8px;font-size:14.5px;padding:5px 0;cursor:pointer;color:var(--fg-2)}
+.week input{accent-color:var(--gold);width:16px;height:16px;margin-top:3px}
+.week input:checked + span{text-decoration:line-through;color:var(--fg-3)}
+.progress{font-family:var(--mono);font-size:13px;color:var(--gold);margin:6px 0 14px}
+/* Decision */
+.options{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.opt{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--panel)}
+.opt.rec{border:2px solid var(--gold)}
+.opt .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3)}
+.opt.rec .lbl{color:var(--gold)}
+.opt h4{font-family:var(--serif);font-size:19px;font-weight:600;margin:6px 0 8px}
+.opt p{font-size:14.5px;margin-bottom:6px}
+.sources li{font-size:14px}
+footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--fg-3)}
+</style>
+
+<div class="wrap">
+<nav class="toc" aria-label="Sommaire">
+  <div class="k">Sommaire</div>
+  <ol>
+    <li><a href="#these"><span>01</span>Thèse et règles d'or</a></li>
+    <li><a href="#faceless"><span>02</span>Le choix faceless</a></li>
+    <li><a href="#piliers"><span>03</span>Piliers éditoriaux</a></li>
+    <li><a href="#formats"><span>04</span>Catalogue des formats</a></li>
+    <li><a href="#matrice"><span>05</span>Matrice sujet × format</a></li>
+    <li><a href="#packaging"><span>06</span>Packaging sans visage</a></li>
+    <li><a href="#identite"><span>07</span>Identité et marque</a></li>
+    <li><a href="#langues"><span>08</span>Stratégie linguistique</a></li>
+    <li><a href="#calendrier"><span>09</span>Les 30 premières vidéos</a></li>
+    <li><a href="#production"><span>10</span>Moteur de production</a></li>
+    <li><a href="#outils"><span>11</span>Outils et budget</a></li>
+    <li><a href="#plateformes"><span>12</span>Distribution multi-plateforme</a></li>
+    <li><a href="#derives"><span>13</span>Catalogue des dérivés</a></li>
+    <li><a href="#roadmap"><span>14</span>Feuille de route</a></li>
+    <li><a href="#trajectoire"><span>15</span>Trajectoire et revenus</a></li>
+    <li><a href="#statut"><span>16</span>Statut, fiscalité, EDF</a></li>
+    <li><a href="#carriere"><span>17</span>Effet carrière</a></li>
+    <li><a href="#pilotage"><span>18</span>KPIs, rituels, pièges</a></li>
+    <li><a href="#plan90"><span>19</span>Plan d'action 90 jours</a></li>
+    <li><a href="#sources"><span>20</span>Sources</a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="eyebrow">Plan directeur · marque éducative Finance × Énergie × Mégaprojets · octobre 2026</div>
+  <h1>BE A BETTER <em>DIGITAL ENTREPRENEUR</em></h1>
+  <p style="font-family:var(--serif);font-size:clamp(20px,2.4vw,26px);color:var(--fg-2);margin:-6px 0 16px">Construire un actif, pas une chaîne</p>
+  <p class="lede">Une marque éducative sans visage, portée par ta voix, qui transforme chaque heure de préparation à la reconversion Project Finance en propriété intellectuelle réutilisable : vidéos, guides, modèles Excel, bibliothèque de deals, formations. Elle vise trois communautés linguistiques et se monétise par étages.</p>
+  <div class="kpis">
+    <div class="kpi"><b>0</b><span>apparition face caméra</span></div>
+    <div class="kpi"><b>6</b><span>formats faceless maîtrisés</span></div>
+    <div class="kpi"><b>3</b><span>langues : EN, FR, AR</span></div>
+    <div class="kpi"><b>30</b><span>vidéos planifiées</span></div>
+    <div class="kpi"><b>20</b><span>actifs dérivés</span></div>
+    <div class="kpi"><b>5</b><span>phases à jalons</span></div>
+  </div>
+  <div class="correction"><strong>Principe structurant.</strong> Tu ne montres jamais ton visage. Tout le dispositif (formats, outils, budget, packaging, identité, doublage) est conçu pour un modèle faceless : animation whiteboard, motion design, video essays, animations de données, screencasts Excel. Ta voix et ta signature visuelle remplacent ton visage.</div>
+</header>
+
+<!-- 01 -->
+<section id="these">
+  <div class="sec-head"><span class="sec-num">01</span><h2>Thèse et règles d'or</h2></div>
+  <p class="lead">L'objectif des 12 premiers mois est d'accumuler de la propriété intellectuelle et de la crédibilité, pas des revenus. YouTube sert de canal d'acquisition. L'actif, c'est la bibliothèque.</p>
+  <div class="grid g2">
+    <div class="card"><h4>1 · Une recherche, dix actifs</h4><p>Aucune heure d'étude ne doit produire un seul livrable. Chaque sujet passe par une <strong>master note</strong>, dont sortent la vidéo, les Shorts, le post LinkedIn, la fiche PDF et le futur chapitre d'e-book.</p></div>
+    <div class="card"><h4>2 · Niche d'abord, élargissement ensuite</h4><p>Tu entres par une porte étroite, le financement de l'énergie et des mégaprojets, là où tes 13 ans dans le nucléaire sont un avantage injuste. Corporate finance, development finance et macroéconomie viennent ensuite, comme extensions du même terrain.</p></div>
+    <div class="card"><h4>3 · La carrière prime sur la monétisation</h4><p>Tant que la reconversion n'est pas faite, chaque arbitrage se tranche par une question : qu'est-ce qui renforce le plus ma crédibilité auprès d'un recruteur PF à Genève, Londres ou dans le Golfe ? Le revenu suit la réputation.</p></div>
+    <div class="card"><h4>4 · Des actifs faits pour durer</h4><p>Un visuel, un schéma ou une animation produits une fois doivent resservir dans 10 vidéos, 3 langues et 4 produits. Le faceless rend cela possible : rien n'est lié à ta présence physique, tout est découpable, traduisible et licenciable.</p></div>
+    <div class="card"><h4>5 · Régularité avant perfection</h4><p>24 vidéos longues correctes en 12 mois battent 8 vidéos parfaites. L'algorithme, l'audience et ta propre courbe d'apprentissage récompensent la cadence.</p></div>
+    <div class="card"><h4>6 · Rigueur non négociable</h4><p>Ton public est fait de banquiers, d'ingénieurs et d'étudiants en finance. Une erreur de calcul visible coûte plus cher qu'une vidéo manquée. Chaque chiffre est sourcé, chaque modèle vérifié.</p></div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section id="faceless">
+  <div class="sec-head"><span class="sec-num">02</span><h2>Le choix faceless : forces, coûts et parades</h2></div>
+  <p class="lead">Le format sans visage convient bien à ton projet. Il protège ta discrétion vis-à-vis de ton employeur et rend le multilingue presque gratuit. Il produit aussi des actifs visuels réutilisables. En échange, il demande plus de temps de production et un effort délibéré pour créer de la confiance sans visage.</p>
+  <div class="grid g2">
+    <div class="card">
+      <h4 style="color:var(--teal)">Ce que le faceless t'apporte</h4>
+      <ul>
+        <li><strong>Discrétion professionnelle.</strong> Tu n'es pas reconnu dans les couloirs d'EDF, et tu sépares nettement ton activité de ton employeur. Ce n'est pas un bouclier juridique (voir section 16), mais cela réduit les frictions.</li>
+        <li><strong>Doublage sans synchronisation labiale.</strong> Une piste FR ou AR se pose sur la même vidéo sans effet « film mal doublé ». C'est le levier n°1 de ta stratégie trilingue.</li>
+        <li><strong>Actifs réutilisables.</strong> Chaque animation de DSCR ou de waterfall resservira dans l'e-book, la formation, le workshop B2B et les licences.</li>
+        <li><strong>Contenu intemporel.</strong> Pas de coupe de cheveux ni de décor daté. Une vidéo sur le debt sculpting reste regardable pendant 10 ans.</li>
+        <li><strong>Délégable.</strong> Un monteur ou un motion designer freelance peut reprendre ta production sans que tu sois présent.</li>
+        <li><strong>Revendable.</strong> Une marque qui ne dépend pas de ton visage a une valeur de cession si un jour tu veux la vendre.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--rose)">Ce qu'il te coûte, et la parade</h4>
+      <ul>
+        <li><strong>Plus de temps par vidéo</strong> : une animation demande 2 à 3 fois plus d'heures qu'un face caméra. <em>Parade</em> : bibliothèque d'assets réutilisables, templates, et un format screencast plus léger dans le mix.</li>
+        <li><strong>Moins de confiance spontanée</strong> : on s'attache moins vite à une voix qu'à un visage. <em>Parade</em> : narration à la première personne, ton parcours d'ingénieur nucléaire raconté, voix constante et chaleureuse.</li>
+        <li><strong>Risque « AI slop »</strong> : depuis juillet 2025, YouTube démonétise les contenus « inauthentiques », produits en masse et répétitifs. <em>Parade</em> : ta vraie voix, des visuels sur mesure, une analyse originale. Jamais de voix de synthèse sur la version anglaise.</li>
+        <li><strong>Signal carrière plus faible</strong> : une marque anonyme ne te met pas en avant. <em>Parade</em> : marque sans visage mais auteur identifié sur LinkedIn (option recommandée en section 07).</li>
+        <li><strong>Miniatures plus difficiles</strong> : sans visage expressif, il faut d'autres leviers. <em>Parade</em> : chiffres, contrastes, objets, mascotte (section 06).</li>
+      </ul>
+    </div>
+  </div>
+  <div class="call"><span class="t">Références de style à étudier</span>
+    <p>Des chaînes à succès prouvent que le modèle fonctionne en finance, en économie et en vulgarisation. <strong>The Swedish Investor</strong> fait de l'animation dessinée sur l'investissement. <strong>Economics Explained</strong> et <strong>PolyMatter</strong> font des video essays économiques. <strong>Wendover Productions</strong> et <strong>RealLifeLore</strong> font du motion design, des cartes et des données. <strong>Company Man</strong> raconte des case studies d'entreprises en voix off sur archives. <strong>Kurzgesagt</strong> pousse l'animation de marque au plus haut niveau. Analyse 3 vidéos de chacune : structure du hook, rythme des visuels, durée des plans, type de miniature.</p>
+  </div>
+</section>
+
+<!-- 03 -->
+<section id="piliers">
+  <div class="sec-head"><span class="sec-num">03</span><h2>Piliers éditoriaux</h2></div>
+  <p class="lead">Six piliers couvrent tout ce que tu as cité : Project Finance, Corporate Finance, development finance (je pense que c'est ce que tu visais par « demand finance », corrige-moi sinon), économie, et des sujets particuliers. Ils s'ouvrent progressivement, dans cet ordre.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Pilier</th><th>Contenu type</th><th>Pourquoi toi</th><th>Ouverture</th><th class="num">Poids an 1</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td><span class="ttl">1 · Project Finance</span></td><td>SPV, DSCR, sculpting, waterfall, risk allocation, term sheets, refinancing</td><td>Le cœur de ta reconversion et de ta formation CPFA</td><td>Mois 1</td><td class="num">40 %</td></tr>
+      <tr class="hl"><td><span class="ttl">2 · Énergie et mégaprojets</span></td><td>Nucléaire, éolien, solaire, hydrogène, CfD, RAB, PPA, LCOE, retards et dépassements</td><td>13 ans de terrain, Hinkley Point C, EPR2 : ton avantage injuste</td><td>Mois 1</td><td class="num">30 %</td></tr>
+      <tr><td><span class="ttl">3 · Corporate Finance</span></td><td>DCF, WACC, BFR, ROIC, structure du capital, M&amp;A</td><td>Pont naturel depuis le PF, fort volume de recherche</td><td>Mois 6</td><td class="num">15 %</td></tr>
+      <tr><td><span class="ttl">4 · Development finance</span></td><td>DFI (IFC, BAD, BERD), blended finance, PPP émergents, garanties souveraines</td><td>Parle directement à tes publics francophone africain et arabophone</td><td>Mois 9</td><td class="num">10 %</td></tr>
+      <tr><td><span class="ttl">5 · Économie et macro</span></td><td>Taux d'intérêt, inflation, coût du capital, politique énergétique, qui finance le monde</td><td>Donne le contexte qui explique les deals</td><td>Mois 9</td><td class="num">5 %</td></tr>
+      <tr><td><span class="ttl">6 · Sujets particuliers</span></td><td>Value investing, analyse crédit, carrières en finance</td><td>Tes centres d'intérêt, à tester sans diluer la niche</td><td>Année 2</td><td class="num">ponctuel</td></tr>
+    </tbody>
+  </table></div>
+  <div class="call gold"><span class="t">Règle de dilution</span><p>Pas plus de 30 % de contenu hors piliers 1 et 2 pendant la première année. L'algorithme apprend à qui te recommander à partir de tes 20 premières vidéos. Si elles partent dans toutes les directions, il ne trouve personne.</p></div>
+</section>
+
+<!-- 04 -->
+<section id="formats">
+  <div class="sec-head"><span class="sec-num">04</span><h2>Catalogue des formats faceless</h2></div>
+  <p class="lead">Six formats principaux, chacun assigné aux sujets qu'il sert le mieux. Les durées de production sont des estimations pour une vidéo de 10 minutes : la première valeur pour tes 5 premières vidéos, la seconde une fois ta bibliothèque d'assets constituée (après 15 à 20 vidéos).</p>
+
+  <div class="grid" style="gap:16px">
+  <article class="fmt">
+    <header><h4><span class="dot d-w"></span>A · Animation whiteboard</h4><div><span class="tag teal">Concepts</span><span class="tag">Mécanismes</span></div></header>
+    <div class="body">
+      <dl><dt>Le rendu</dt><dd>Une main ou un trait dessine progressivement des schémas sur fond blanc, synchronisés avec ta voix. Le spectateur voit la pensée se construire.</dd>
+          <dt>Idéal pour</dt><dd>SPV, structure contractuelle, cash flow waterfall, risk allocation, flux entre sponsors, banques et offtaker.</dd></dl>
+      <dl><dt>Outils</dt><dd>VideoScribe (environ 21 $/mois), Doodly, ou dessin à main levée sur iPad (Procreate) enregistré en time-lapse. Excalidraw (gratuit) pour les schémas en style croquis.</dd>
+          <dt>Technique de rétention</dt><dd>Le schéma se complète au fil de la vidéo. Le spectateur reste pour voir l'image finale. Révèle la pièce manquante juste avant la conclusion.</dd></dl>
+      <dl><dt>Temps de production</dt><dd>18–25 h, puis 9–12 h</dd>
+          <dt>Coût / difficulté</dt><dd><span class="lvl">●●<i>●</i></span> coût · <span class="lvl">●●<i>●</i></span> difficulté</dd></dl>
+      <div class="ex">Exemple : <b>Why Create a Company Just for One Project?</b> Le schéma part d'une centrale seule, puis ajoute la SPV, les sponsors, les prêteurs, l'EPC, l'O&amp;M et l'offtaker, jusqu'à la carte contractuelle complète.</div>
+    </div>
+  </article>
+
+  <article class="fmt">
+    <header><h4><span class="dot d-m"></span>B · Motion graphics explicatif</h4><div><span class="tag teal">Concepts chiffrés</span><span class="tag">Comparaisons</span></div></header>
+    <div class="body">
+      <dl><dt>Le rendu</dt><dd>Formes plates animées, icônes, chiffres qui apparaissent et se transforment, dans ta charte graphique. Style Wendover ou Kurzgesagt simplifié.</dd>
+          <dt>Idéal pour</dt><dd>DSCR, WACC, PF vs Corporate, CfD vs PPA vs RAB, tout ce qui compare ou transforme des chiffres.</dd></dl>
+      <dl><dt>Outils</dt><dd>Keynote (gratuit sur Mac) ou PowerPoint avec la transition Morph : l'outil le plus sous-estimé du faceless. Canva Pro pour démarrer, After Effects plus tard ou via un freelance.</dd>
+          <dt>Technique de rétention</dt><dd>Un changement visuel toutes les 4 à 6 secondes. Un « projet fil rouge » chiffré (voir section 07) qui revient à chaque vidéo.</dd></dl>
+      <dl><dt>Temps de production</dt><dd>15–20 h, puis 8–10 h</dd>
+          <dt>Coût / difficulté</dt><dd><span class="lvl">●<i>●●</i></span> coût (Keynote) · <span class="lvl">●●<i>●</i></span> difficulté</dd></dl>
+      <div class="ex">Exemple : <b>The Ratio That Can Kill a $1 Billion Project</b>. Une jauge DSCR descend sous 1,0x pendant que les barres de CFADS rétrécissent. Le covenant déclenche alors un lock-up visuel de la cascade.</div>
+    </div>
+  </article>
+
+  <article class="fmt">
+    <header><h4><span class="dot d-e"></span>C · Video essay documentaire</h4><div><span class="tag gold">Case studies</span><span class="tag">Storytelling</span></div></header>
+    <div class="body">
+      <dl><dt>Le rendu</dt><dd>Narration documentaire sur photos d'archives, cartes, timelines, extraits de rapports officiels zoomés, images de chantier libres de droits. Style Company Man ou Economics Explained.</dd>
+          <dt>Idéal pour</dt><dd>Hinkley Point C, Vogtle, giga-projets saoudiens, faillites, dépassements, refinancements. Ce sont tes meilleures vidéos de croissance.</dd></dl>
+      <dl><dt>Outils</dt><dd>DaVinci Resolve (gratuit), Wikimedia Commons, kits presse officiels, banques d'images (Storyblocks, Envato Elements), cartes animées (Mapbox Studio, ou Google Earth Studio sous conditions d'attribution).</dd>
+          <dt>Technique de rétention</dt><dd>Cold open sur le moment de crise. Structure en actes. Re-hook toutes les 2 à 3 minutes (« et c'est là que les prêteurs ont refusé »).</dd></dl>
+      <dl><dt>Temps de production</dt><dd>20–30 h, puis 12–16 h (la recherche pèse lourd)</dd>
+          <dt>Coût / difficulté</dt><dd><span class="lvl">●●<i>●</i></span> coût · <span class="lvl">●●●</span> difficulté</dd></dl>
+      <div class="ex">Exemple : <b>Who Paid for Hinkley Point C?</b> Uniquement sur sources publiques (NAO, communiqués, presse). Tu ne t'appuies jamais sur ton expérience interne du projet.</div>
+    </div>
+  </article>
+
+  <article class="fmt">
+    <header><h4><span class="dot d-d"></span>D · Animation de données et de cartes</h4><div><span class="tag teal">Macro</span><span class="tag">Énergie</span></div></header>
+    <div class="body">
+      <dl><dt>Le rendu</dt><dd>Graphiques qui se construisent, courbes animées, cartes qui se colorent, barres qui s'empilent. Les données racontent l'histoire.</dd>
+          <dt>Idéal pour</dt><dd>Effet du WACC sur le LCOE, coût des retards, taux d'intérêt et décisions d'investissement, carte des investissements énergétiques du Golfe.</dd></dl>
+      <dl><dt>Outils</dt><dd>Flourish et Datawrapper (offres gratuites), Python (matplotlib animé ou Manim, la bibliothèque d'animation mathématique, parfaite pour un ingénieur), Excel pour les données sources.</dd>
+          <dt>Technique de rétention</dt><dd>Annonce la question avant de montrer la courbe (« devinez ce qui arrive au coût quand le chantier prend 3 ans de retard »). Le spectateur attend la révélation.</dd></dl>
+      <dl><dt>Temps de production</dt><dd>15–25 h, puis 8–12 h</dd>
+          <dt>Coût / difficulté</dt><dd><span class="lvl">●<i>●●</i></span> coût · <span class="lvl">●●●</span> difficulté (Manim), <span class="lvl">●<i>●●</i></span> (Flourish)</dd></dl>
+      <div class="ex">Exemple : <b>Why 1% of WACC Changes Everything for Nuclear</b>. Une courbe de LCOE s'envole quand le curseur du coût du capital passe de 5 % à 10 %.</div>
+    </div>
+  </article>
+
+  <article class="fmt">
+    <header><h4><span class="dot d-s"></span>E · Screencast Excel commenté</h4><div><span class="tag gold">Modélisation</span><span class="tag">Conversion</span></div></header>
+    <div class="body">
+      <dl><dt>Le rendu</dt><dd>Ton écran Excel, zooms dynamiques sur les cellules, annotations, ta voix. Faceless par nature et le plus rapide à produire.</dd>
+          <dt>Idéal pour</dt><dd>Debt sizing, sculpting, modèle 3 états financiers, DCF, sensibilités. C'est le format qui vend tes templates.</dd></dl>
+      <dl><dt>Outils</dt><dd>OBS (gratuit), Excel, Camtasia ou Screen Studio (Mac) pour les zooms automatiques, ZoomIt (Windows, gratuit) pour annoter.</dd>
+          <dt>Technique de rétention</dt><dd>Montre le résultat final dès les 20 premières secondes, puis reconstruis-le. Fichier de départ téléchargeable contre e-mail.</dd></dl>
+      <dl><dt>Temps de production</dt><dd>8–12 h, puis 5–7 h</dd>
+          <dt>Coût / difficulté</dt><dd><span class="lvl">●<i>●●</i></span> coût · <span class="lvl">●<i>●●</i></span> difficulté</dd></dl>
+      <div class="ex">Exemple : <b>Build a Debt Sculpting Model in 15 Minutes</b>. La version simple est gratuite, la version complète avec DSRA et sensibilités devient ton premier produit payant.</div>
+    </div>
+  </article>
+
+  <article class="fmt">
+    <header><h4><span class="dot d-v"></span>F · Typographie animée et formats courts</h4><div><span class="tag">Shorts</span><span class="tag">Reels</span><span class="tag">TikTok</span></div></header>
+    <div class="body">
+      <dl><dt>Le rendu</dt><dd>Texte animé plein écran, un seul graphique, un seul chiffre choc, au format vertical 9:16, en 30 à 60 secondes.</dd>
+          <dt>Idéal pour</dt><dd>Une définition, un ratio, un chiffre de deal, une idée reçue démontée. Toujours extrait d'une vidéo longue existante.</dd></dl>
+      <dl><dt>Outils</dt><dd>CapCut ou DaVinci Resolve en vertical, Canva, réutilisation directe des scènes de la vidéo longue recadrées.</dd>
+          <dt>Technique de rétention</dt><dd>La réponse est promise dans la première seconde et livrée avant la 45e. La boucle de fin renvoie au début.</dd></dl>
+      <dl><dt>Temps de production</dt><dd>1–2 h, puis 30–60 min (dérivé)</dd>
+          <dt>Coût / difficulté</dt><dd><span class="lvl">●<i>●●</i></span> coût · <span class="lvl">●<i>●●</i></span> difficulté</dd></dl>
+      <div class="ex">Exemple : <b>DSCR in 45 seconds</b>, extrait de la vidéo n°4, publié sur YouTube Shorts, Reels, TikTok et LinkedIn.</div>
+    </div>
+  </article>
+  </div>
+
+  <h3>Formats complémentaires</h3>
+  <div class="grid g3">
+    <div class="card"><h4>Podcast audio</h4><p>La bande son des case studies, avec une intro adaptée. Diffusé sur Spotify et Apple Podcasts. Coût marginal quasi nul, à lancer en phase 2.</p></div>
+    <div class="card"><h4>Mascotte ou personnage</h4><p>Un personnage illustré original (un ingénieur casqué devenu banquier, par exemple) qui incarne ta marque à l'écran et sur les miniatures. Il remplace le visage sans tomber dans l'avatar IA réaliste.</p></div>
+    <div class="card"><h4>Voix off sur plans de bureau</h4><p>Mains sur le clavier, carnet de notes, pile de rapports, sans visage. Pour les vidéos « carrière et transition », plus personnelles.</p></div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section id="matrice">
+  <div class="sec-head"><span class="sec-num">05</span><h2>Matrice catégorie × format</h2></div>
+  <p class="lead">Quelle technique pour quelle catégorie de vidéo. Le format se choisit selon ce que le spectateur doit voir pour comprendre, pas selon tes préférences de production.</p>
+  <div class="tbl"><table class="mx">
+    <thead><tr><th>Catégorie</th><th>Whiteboard</th><th>Motion</th><th>Video essay</th><th>Données / cartes</th><th>Screencast</th><th>Shorts</th></tr></thead>
+    <tbody>
+      <tr><td>Concepts PF (SPV, waterfall, risques)</td><td class="m3">★★★</td><td class="m2">★★</td><td class="m0">—</td><td class="m1">★</td><td class="m1">★</td><td class="m2">★★</td></tr>
+      <tr><td>Ratios et chiffres (DSCR, WACC, IRR)</td><td class="m2">★★</td><td class="m3">★★★</td><td class="m0">—</td><td class="m2">★★</td><td class="m2">★★</td><td class="m3">★★★</td></tr>
+      <tr><td>Case studies de deals</td><td class="m1">★</td><td class="m2">★★</td><td class="m3">★★★</td><td class="m2">★★</td><td class="m0">—</td><td class="m2">★★</td></tr>
+      <tr><td>Modélisation Excel</td><td class="m0">—</td><td class="m1">★</td><td class="m0">—</td><td class="m1">★</td><td class="m3">★★★</td><td class="m1">★</td></tr>
+      <tr><td>Énergie et mécanismes de revenu</td><td class="m2">★★</td><td class="m3">★★★</td><td class="m2">★★</td><td class="m3">★★★</td><td class="m0">—</td><td class="m2">★★</td></tr>
+      <tr><td>Corporate finance et valorisation</td><td class="m3">★★★</td><td class="m2">★★</td><td class="m1">★</td><td class="m1">★</td><td class="m3">★★★</td><td class="m2">★★</td></tr>
+      <tr><td>Macro et économie</td><td class="m1">★</td><td class="m2">★★</td><td class="m3">★★★</td><td class="m3">★★★</td><td class="m0">—</td><td class="m2">★★</td></tr>
+      <tr><td>Actualité et décryptage</td><td class="m0">—</td><td class="m2">★★</td><td class="m3">★★★</td><td class="m2">★★</td><td class="m0">—</td><td class="m3">★★★</td></tr>
+      <tr><td>Carrière et transition</td><td class="m1">★</td><td class="m0">—</td><td class="m3">★★★ (voix off)</td><td class="m0">—</td><td class="m0">—</td><td class="m2">★★</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small muted">★★★ format naturel · ★★ bon choix · ★ possible en appoint · — à éviter. Le mix cible de la première année : 35 % whiteboard ou motion, 30 % video essays, 20 % screencasts, 15 % données. Les Shorts se dérivent de tout.</p>
+</section>
+
+<!-- 06 -->
+<section id="packaging">
+  <div class="sec-head"><span class="sec-num">06</span><h2>Packaging sans visage : titres, miniatures, hooks</h2></div>
+  <p class="lead">Sans visage, la miniature doit gagner le clic par une tension visuelle : un chiffre, un contraste, un objet en danger. Le processus reste le même pour chaque vidéo : sujet, 5 angles, 10 titres, 3 miniatures, choix du couple, hook, puis seulement le script.</p>
+
+  <h3>Les 6 leviers de miniature faceless</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Levier</th><th>Principe</th><th>Exemple pour ta niche</th></tr></thead>
+    <tbody>
+      <tr><td><b>Le chiffre qui explose</b></td><td>Deux nombres et une flèche. Le cerveau calcule l'écart et veut l'explication.</td><td>Photo de centrale + « $14B → $35B » en très gros</td></tr>
+      <tr><td><b>L'objet en danger</b></td><td>Un actif monumental avec un signal d'alerte (fissure, flèche rouge, tampon « DEFAULT »).</td><td>Éolienne offshore barrée d'un tampon « CANCELLED »</td></tr>
+      <tr><td><b>Le schéma incomplet</b></td><td>Une structure avec une pièce manquante, marquée d'un « ? ».</td><td>Carte SPV avec la case « Who pays? » vide</td></tr>
+      <tr><td><b>Le contraste avant / après</b></td><td>Deux états côte à côte, séparés par une ligne nette.</td><td>« Corporate » contre « Project » : un bilan contre une SPV isolée</td></tr>
+      <tr><td><b>La jauge ou l'instrument</b></td><td>Un cadran, une jauge, un thermomètre dans le rouge. Tu parles à des ingénieurs, l'instrument leur parle.</td><td>Jauge DSCR bloquée à 0,9x</td></tr>
+      <tr><td><b>La mascotte qui réagit</b></td><td>Ton personnage illustré remplace le visage expressif : surprise, inquiétude, sourire.</td><td>La mascotte devant une pile de factures géante</td></tr>
+    </tbody>
+  </table></div>
+  <div class="call"><span class="t">Règles de miniature</span>
+    <ul>
+      <li>3 mots maximum sur la miniature, et jamais les mêmes que dans le titre : la miniature ajoute une deuxième information.</li>
+      <li>Lisible à la taille d'un timbre sur téléphone : teste toujours à 120 px de large.</li>
+      <li>Une palette de marque constante (bleu nuit, or, sarcelle) pour être reconnu dans le fil sans visage.</li>
+      <li>Utilise l'outil natif « Test &amp; Compare » de YouTube pour tester 3 miniatures sur chaque vidéo importante.</li>
+    </ul>
+  </div>
+
+  <h3>Formules de titres par catégorie</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Catégorie</th><th>Formule</th><th>Titre faible</th><th>Titre fort</th></tr></thead>
+    <tbody>
+      <tr><td>Concept</td><td>La question naïve que tout le monde se pose</td><td>Project Finance Explained</td><td>Who Puts $2 Billion Into a Project Before It Makes $1?</td></tr>
+      <tr><td>Ratio</td><td>L'enjeu dramatique d'un chiffre technique</td><td>Understanding DSCR</td><td>The Ratio That Can Kill a $1 Billion Project</td></tr>
+      <tr><td>Case study</td><td>Le paradoxe ou l'échec chiffré</td><td>Vogtle Case Study</td><td>The Nuclear Plant That Doubled Its Budget</td></tr>
+      <tr><td>Modélisation</td><td>Le résultat concret dans un temps donné</td><td>Debt Sculpting Tutorial</td><td>Build a Debt Sculpting Model in 15 Minutes</td></tr>
+      <tr><td>Macro</td><td>Le lien caché entre deux mondes</td><td>Interest Rates and Energy</td><td>Why Interest Rates Decide Which Power Plants Get Built</td></tr>
+      <tr><td>Carrière</td><td>Le parcours chiffré et daté</td><td>My Career Change</td><td>From Nuclear Engineer to Project Finance: Year One</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Structure de script par format</h3>
+  <div class="grid g3">
+    <div class="card"><h4>Concept (whiteboard, motion)</h4><ol class="small"><li>Hook : la tension (30 s)</li><li>Intuition : l'analogie du quotidien</li><li>Mécanisme : le schéma se construit</li><li>Exemple chiffré : le projet fil rouge</li><li>Implication : pourquoi ça compte pour un banquier</li><li>Appel à l'action : la fiche à télécharger</li></ol></div>
+    <div class="card"><h4>Case study (video essay)</h4><ol class="small"><li>Cold open : le moment de crise</li><li>Contexte : le projet, ses promesses</li><li>Le montage financier, schéma à l'appui</li><li>Ce qui s'est passé : la timeline</li><li>La conséquence financière : IDC, equity, ratios</li><li>Les 3 à 5 leçons pour tout projet</li></ol></div>
+    <div class="card"><h4>Modélisation (screencast)</h4><ol class="small"><li>Le résultat final montré d'emblée</li><li>Les hypothèses d'entrée</li><li>La construction pas à pas</li><li>Les contrôles de cohérence</li><li>La sensibilité qui change tout</li><li>Le fichier : gratuit ou complet</li></ol></div>
+  </div>
+
+  <h3>Hook de 30 secondes : la formule</h3>
+  <div class="call gold"><span class="t">Tension · Promesse · Entrée</span>
+    <p><em>« En 2009, ce réacteur devait coûter 14 milliards de dollars. Il en a coûté plus de 30. Mais le plus intéressant n'est pas le dépassement, c'est qui a fini par le payer. Pour le comprendre, il faut regarder comment le projet a été financé dès le premier jour. »</em></p>
+    <p class="small">Jamais de « Bonjour à tous, aujourd'hui on va parler de… ». Ton logo sonore vient après le hook, pas avant.</p>
+  </div>
+</section>
+
+<!-- 07 -->
+<section id="identite">
+  <div class="sec-head"><span class="sec-num">07</span><h2>Identité et marque sans visage</h2></div>
+  <p class="lead">Sans visage, ta marque repose sur quatre piliers : une voix reconnaissable, un système visuel constant, un projet fil rouge, et un narrateur qui a une histoire.</p>
+  <div class="grid g2">
+    <div class="card"><h4>La voix, ton nouveau visage</h4><ul>
+      <li>C'est le poste où il faut investir en premier : micro dynamique et traitement acoustique (section 11).</li>
+      <li>Un débit de 140 à 160 mots par minute, avec des pauses avant les chiffres clés.</li>
+      <li>Enregistre ta voix anglaise toi-même, sans voix de synthèse : c'est ta protection contre la démonétisation.</li>
+      <li>Ton accent francophone est une signature, pas un défaut. Clarté avant tout.</li>
+    </ul></div>
+    <div class="card"><h4>Le système visuel</h4><ul>
+      <li>Palette : bleu nuit, or, sarcelle, plus le rouge réservé aux alertes.</li>
+      <li>Deux polices maximum, partout : vidéos, miniatures, PDF, site.</li>
+      <li>Une bibliothèque d'icônes maison : SPV, banque, sponsor, EPC, offtaker, État, DFI, centrale, éolienne.</li>
+      <li>Une transition signature et un logo sonore de 2 secondes.</li>
+    </ul></div>
+    <div class="card"><h4>Le projet fil rouge</h4><p>Un projet fictif récurrent, par exemple « Atlas Wind » : 300 MW, 450 M€ de CAPEX, 70 % de dette. Il revient dans chaque vidéo concept. Le spectateur le connaît, tu n'as pas à réexpliquer les bases, et il devient le cœur de ton modèle Excel payant et de ton e-book.</p></div>
+    <div class="card"><h4>Le narrateur</h4><p>« Un ingénieur qui a passé 13 ans à construire des centrales nucléaires et qui apprend aujourd'hui comment on les finance. » Raconté à la première personne, ce personnage crée la confiance qu'un visage aurait créée. Il donne aussi une raison de suivre la chaîne au-delà des sujets.</p></div>
+  </div>
+
+  <h3>Décision à prendre : le degré d'anonymat</h3>
+  <p>Le faceless pose une question que le face caméra ne pose pas : est-ce qu'on sait que c'est toi ?</p>
+  <div class="options">
+    <div class="opt"><div class="lbl">Option A</div><h4>Anonymat total</h4><p>Pseudo, aucun lien avec ton nom.</p><p class="small muted">Discrétion maximale, mais aucun bénéfice carrière : tu perds l'un des deux objectifs du projet.</p></div>
+    <div class="opt rec"><div class="lbl">Recommandée · Option B</div><h4>Marque sans visage, auteur identifié</h4><p>Une marque propre pour la chaîne. Ton nom figure dans la page « À propos » et ton LinkedIn met en avant la chaîne comme réalisation.</p><p class="small muted">Les recruteurs voient la preuve, le grand public voit la marque. C'est le meilleur des deux mondes, à condition que le cadre EDF soit validé avant.</p></div>
+    <div class="opt"><div class="lbl">Option C</div><h4>Marque personnelle</h4><p>La chaîne porte ton nom.</p><p class="small muted">Signal carrière maximal, mais la marque est moins cessible et l'exposition est plus forte vis-à-vis de ton employeur.</p></div>
+  </div>
+
+  <h3>Critères pour le nom de marque</h3>
+  <ul>
+    <li>Prononçable en anglais, en français et en arabe sans ambiguïté.</li>
+    <li>Assez large pour couvrir le PF, la corporate finance et la macro, mais assez typé pour évoquer les infrastructures (capital, ouvrages, actifs).</li>
+    <li>Disponible en .com, sur YouTube, LinkedIn, TikTok, Instagram et X. Vérifie aussi la base de marques de l'INPI et de l'EUIPO avant de t'engager.</li>
+    <li>Aucune référence à EDF, au nucléaire français ou à un organisme de formation (CFI, PFI).</li>
+  </ul>
+</section>
+
+<!-- 08 -->
+<section id="langues">
+  <div class="sec-head"><span class="sec-num">08</span><h2>Stratégie linguistique : trois communautés, un seul tronc</h2></div>
+  <p class="lead">Tu produis en anglais, puis le français et l'arabe se greffent sur la même vidéo grâce aux pistes audio multilingues. Le faceless rend cette stratégie presque gratuite : pas de lèvres à synchroniser, seulement une voix à remplacer.</p>
+  <div class="call"><span class="t">Le levier technique</span>
+    <p>YouTube a ouvert en septembre 2025 la fonction de pistes audio multilingues à tous les créateurs. Pendant le pilote, les créateurs qui l'utilisaient tiraient en moyenne plus de 25 % de leur temps de visionnage des langues autres que la langue principale. YouTube teste aussi des miniatures déclinées par langue. Une seule vidéo sert donc trois audiences, et chaque vue renforce la même chaîne (<a href="https://techcrunch.com/2025/09/10/youtubes-multi-language-audio-feature-for-dubbing-videos-rolls-out-to-all-creators/" target="_blank" rel="noopener">TechCrunch</a>).</p>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>Langue</th><th>Rôle</th><th>Public réel</th><th>Comment</th><th>Quand</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td><b>Anglais</b></td><td>Langue maître</td><td>Professionnels PF du monde entier, y compris les expatriés du Golfe (Indiens, Européens, Américains) que tu as croisés au PFI. Recruteurs de Genève, Londres, Dubaï, Riyad.</td><td>Ta voix, script natif, titres optimisés</td><td>Jour 1</td></tr>
+      <tr><td><b>Français</b></td><td>Branche réseau et niche</td><td>Ton réseau énergie en France et en Suisse romande, étudiants des écoles de commerce et d'ingénieurs, professionnels de l'Afrique francophone, où l'IFC, la BAD et de nombreux PPP financent les infrastructures. Quasi aucune concurrence sérieuse en PF francophone.</td><td>Piste audio enregistrée par toi, titre et description traduits, LinkedIn FR</td><td>Mois 6</td></tr>
+      <tr><td><b>Arabe</b></td><td>Pari sur un océan bleu</td><td>Étudiants, juniors et ingénieurs saoudiens, émiratis, égyptiens et maghrébins, portés par la nationalisation des emplois (Saudization, Emiratisation) et par les giga-projets et PPP du Golfe. Contenu finance de qualité quasi inexistant en arabe.</td><td>Piste audio en arabe standard adouci, compréhensible du Golfe au Maghreb, Shorts arabes natifs en test</td><td>Mois 7 à 9</td></tr>
+    </tbody>
+  </table></div>
+  <div class="call gold"><span class="t">Une nuance sur la cible arabe</span>
+    <p>Les participants que tu as vus au PFI travaillent dans le Golfe, mais ils consomment en anglais. Ils sont déjà couverts par ta chaîne principale. Le public arabophone est différent : plus junior, plus pédagogique, plus orienté carrière. C'est un vrai marché, mais il se construit avec des contenus fondamentaux (les vidéos 1 à 10), et non avec des case studies pointus.</p>
+  </div>
+  <h3>Règles de production multilingue</h3>
+  <ul>
+    <li><strong>Texte à l'écran minimal</strong> : chiffres et symboles plutôt que mots. Les termes techniques (DSCR, SPV, CFADS) restent en anglais dans toutes les versions, comme dans le métier.</li>
+    <li><strong>Calques de texte séparés</strong> dans tes templates, pour exporter une version FR ou AR des rares écrans textuels.</li>
+    <li><strong>Arabe de droite à gauche</strong> : prévois des mises en page miroir pour les écrans textuels et les miniatures arabes.</li>
+    <li><strong>Ta voix, même en doublage</strong> : enregistre toi-même les pistes FR et AR. Si le temps manque, utilise un clone de ta propre voix (ElevenLabs, par exemple) relu ligne par ligne, et signale-le dans la description.</li>
+    <li><strong>Seuil de chaîne dédiée</strong> : une langue mérite sa propre chaîne quand sa piste dépasse environ 20 % du temps de visionnage pendant 3 mois consécutifs. Avant ce seuil, c'est une branche du même arbre.</li>
+  </ul>
+</section>
+
+<!-- 09 -->
+<section id="calendrier">
+  <div class="sec-head"><span class="sec-num">09</span><h2>Les 30 premières vidéos dans l'ordre</h2></div>
+  <p class="lead">L'ordre suit ta courbe d'apprentissage et ta préparation d'entretien. Les vidéos 1 à 10 posent le socle PF, les vidéos 11 à 18 l'appliquent à l'énergie, et les vidéos 19 à 30 ouvrent la corporate finance, la development finance et la macro. À une vidéo longue toutes les deux semaines, ce bloc couvre environ 14 mois.</p>
+  <div class="tbl"><table>
+    <thead><tr><th class="num">#</th><th>Titre de travail (EN)</th><th>Pilier</th><th>Format</th><th>Langues</th><th>Actif dérivé principal</th></tr></thead>
+    <tbody>
+      <tr><td class="num">01</td><td class="ttl">Who Puts $2 Billion Into a Project Before It Makes $1?</td><td>PF</td><td><span class="dot d-w"></span>Whiteboard</td><td>EN</td><td>Cheat sheet « PF on one page » (lead magnet)</td></tr>
+      <tr><td class="num">02</td><td class="ttl">Project Finance vs Corporate Finance in 10 Minutes</td><td>PF</td><td><span class="dot d-m"></span>Motion</td><td>EN</td><td>Tableau comparatif PDF</td></tr>
+      <tr><td class="num">03</td><td class="ttl">Why Create a Company Just for One Project?</td><td>PF</td><td><span class="dot d-w"></span>Whiteboard</td><td>EN</td><td>Carte contractuelle type</td></tr>
+      <tr class="hl"><td class="num">04</td><td class="ttl">The Ratio That Can Kill a $1 Billion Project</td><td>PF</td><td><span class="dot d-m"></span>Motion</td><td>EN</td><td>Calculateur DSCR en ligne gratuit</td></tr>
+      <tr><td class="num">05</td><td class="ttl">How Banks Decide How Much a Project Can Borrow</td><td>PF</td><td><span class="dot d-s"></span>Screencast</td><td>EN</td><td>Modèle Excel de debt sizing (contre e-mail)</td></tr>
+      <tr><td class="num">06</td><td class="ttl">Where Does the Cash Go? The Cash Flow Waterfall</td><td>PF</td><td><span class="dot d-w"></span>Whiteboard</td><td>EN</td><td>Infographie waterfall</td></tr>
+      <tr><td class="num">07</td><td class="ttl">P50, P90, P99: Why Lenders Think in Probabilities</td><td>PF</td><td><span class="dot d-d"></span>Données</td><td>EN</td><td>Fiche scénarios et sizing</td></tr>
+      <tr class="hl"><td class="num">08</td><td class="ttl">Who Paid for Hinkley Point C?</td><td>Énergie</td><td><span class="dot d-e"></span>Video essay</td><td>EN</td><td>Deal sheet HPC (sources publiques)</td></tr>
+      <tr><td class="num">09</td><td class="ttl">Who Takes the Risk? The 8 Contracts Behind Every Project</td><td>PF</td><td><span class="dot d-w"></span>Whiteboard</td><td>EN</td><td>Matrice d'allocation des risques</td></tr>
+      <tr><td class="num">10</td><td class="ttl">Build a Debt Sculpting Model in 15 Minutes</td><td>PF</td><td><span class="dot d-s"></span>Screencast</td><td>EN</td><td>Template gratuit, puis version premium</td></tr>
+      <tr><td class="num">11</td><td class="ttl">How to Finance a Wind Farm, Step by Step</td><td>Énergie</td><td><span class="dot d-m"></span>Motion</td><td>EN · FR</td><td>Deal sheet éolien</td></tr>
+      <tr><td class="num">12</td><td class="ttl">What Happens When a Project Is 3 Years Late?</td><td>Énergie</td><td><span class="dot d-d"></span>Données</td><td>EN · FR</td><td>Fiche construction risk</td></tr>
+      <tr class="hl"><td class="num">13</td><td class="ttl">Why 1% of WACC Changes Everything for Nuclear</td><td>Énergie</td><td><span class="dot d-d"></span>Données</td><td>EN · FR</td><td>Calculateur WACC / LCOE</td></tr>
+      <tr><td class="num">14</td><td class="ttl">CfD, PPA, RAB: Three Ways to Pay for Electricity</td><td>Énergie</td><td><span class="dot d-m"></span>Motion</td><td>EN · FR</td><td>Comparatif des mécanismes de revenu</td></tr>
+      <tr><td class="num">15</td><td class="ttl">The Nuclear Plant That Doubled Its Budget</td><td>Énergie</td><td><span class="dot d-e"></span>Video essay</td><td>EN · FR</td><td>Deal sheet Vogtle</td></tr>
+      <tr><td class="num">16</td><td class="ttl">How Saudi Arabia Finances Its Giga-Projects</td><td>Énergie</td><td><span class="dot d-e"></span>Essay + cartes</td><td>EN · FR · AR</td><td>Premier test complet de la piste arabe</td></tr>
+      <tr><td class="num">17</td><td class="ttl">Read a Term Sheet Like a Banker</td><td>PF</td><td><span class="dot d-s"></span>Screencast annoté</td><td>EN · FR · AR</td><td>Term sheet annotée</td></tr>
+      <tr><td class="num">18</td><td class="ttl">Equity IRR vs Project IRR: Who Really Gets Paid?</td><td>PF</td><td><span class="dot d-w"></span>Whiteboard</td><td>EN · FR · AR</td><td>Fiche rendements</td></tr>
+      <tr><td class="num">19</td><td class="ttl">How Much Is a Company Worth? DCF Explained</td><td>Corporate</td><td><span class="dot d-m"></span>Motion</td><td>EN · FR · AR</td><td>Modèle DCF simple</td></tr>
+      <tr><td class="num">20</td><td class="ttl">How Can a Profitable Company Run Out of Cash?</td><td>Corporate</td><td><span class="dot d-w"></span>Whiteboard</td><td>EN · FR · AR</td><td>Fiche BFR</td></tr>
+      <tr><td class="num">21</td><td class="ttl">How Development Banks Finance Africa's Power Plants</td><td>Dev. finance</td><td><span class="dot d-e"></span>Essay + cartes</td><td>EN · FR</td><td>Fiche DFI (IFC, BAD, BERD)</td></tr>
+      <tr><td class="num">22</td><td class="ttl">Blended Finance: How Public Money De-risks Private Capital</td><td>Dev. finance</td><td><span class="dot d-w"></span>Whiteboard</td><td>EN · FR · AR</td><td>Schéma blended finance</td></tr>
+      <tr><td class="num">23</td><td class="ttl">Why Interest Rates Decide Which Power Plants Get Built</td><td>Macro</td><td><span class="dot d-d"></span>Données</td><td>EN · FR · AR</td><td>Infographie taux et LCOE</td></tr>
+      <tr><td class="num">24</td><td class="ttl">Who Finances the World? Banks, Pension Funds, Infra Funds, States</td><td>Macro</td><td><span class="dot d-m"></span>Motion + carte</td><td>EN · FR · AR</td><td>Carte des prêteurs</td></tr>
+      <tr><td class="num">25</td><td class="ttl">The Desalination Deal: How Gulf PPPs Work</td><td>Dev. finance</td><td><span class="dot d-e"></span>Video essay</td><td>EN · AR</td><td>Deal sheet PPP du Golfe</td></tr>
+      <tr><td class="num">26</td><td class="ttl">Refinancing: How Sponsors Make Money After Construction</td><td>PF</td><td><span class="dot d-w"></span>Whiteboard</td><td>EN · FR · AR</td><td>Fiche refinancement</td></tr>
+      <tr><td class="num">27</td><td class="ttl">Build a 3-Statement Model From Scratch</td><td>Corporate</td><td><span class="dot d-s"></span>Screencast</td><td>EN · FR</td><td>Template 3 états financiers</td></tr>
+      <tr><td class="num">28</td><td class="ttl">ROIC: The Number That Reveals a Great Business</td><td>Corporate</td><td><span class="dot d-m"></span>Motion</td><td>EN · FR · AR</td><td>Fiche ROIC</td></tr>
+      <tr><td class="num">29</td><td class="ttl">The Offshore Wind Crash: What Went Wrong in 2023</td><td>Énergie</td><td><span class="dot d-e"></span>Video essay</td><td>EN · FR</td><td>Deal sheet et leçons</td></tr>
+      <tr><td class="num">30</td><td class="ttl">From Nuclear Engineer to Project Finance: Year One</td><td>Carrière</td><td><span class="dot d-v"></span>Voix off sur plans</td><td>EN · FR · AR</td><td>Newsletter spéciale, bilan public</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small muted">Lignes surlignées : les paris « vitrine », qui combinent ta légitimité énergie et un fort potentiel de clic. Ce sont elles qui méritent le plus de temps de packaging. Chaque vidéo génère en plus 2 à 4 Shorts, un post LinkedIn et une édition de newsletter.</p>
+</section>
+
+<!-- 10 -->
+<section id="production">
+  <div class="sec-head"><span class="sec-num">10</span><h2>Moteur de production</h2></div>
+  <p class="lead">La pièce maîtresse est la <strong>master note</strong> : un document unique par sujet, rédigé une fois, dont tout le reste est extrait. C'est elle ton actif de fond, pas la vidéo.</p>
+
+  <div class="tree" role="img" aria-label="Une recherche alimente une master note puis trois étages d'actifs">
+    <div class="root"><b>Une recherche approfondie</b><br><span class="small muted">environ 3 h d'étude, qui sont aussi ta préparation d'entretien</span></div>
+    <div class="arrow">↓</div>
+    <div class="master"><b>Master note</b><br><span class="small">notions, chiffres, schémas, sources, 5 angles, 10 titres</span></div>
+    <div class="arrow">↓ ↓ ↓</div>
+    <div class="branches">
+      <div class="br"><h4>Diffusion <span class="tag teal">gratuit</span></h4><ul><li>Vidéo longue YouTube</li><li>2 à 4 Shorts, Reels, TikTok</li><li>Épisode de podcast</li><li>Post ou carrousel LinkedIn</li><li>Newsletter</li><li>Pistes FR et AR</li></ul></div>
+      <div class="br"><h4>Bibliothèque <span class="tag">contre e-mail</span></h4><ul><li>Deal sheet ou fiche concept</li><li>Cheat sheet PDF</li><li>Calculateur en ligne</li><li>Modèle Excel de base</li><li>Entrée de la Case Library</li></ul></div>
+      <div class="br"><h4>Produits <span class="tag gold">payant</span></h4><ul><li>Chapitre de l'e-book</li><li>Template Excel premium</li><li>Module de formation</li><li>Cas pour workshop B2B</li><li>Contenu licenciable</li></ul></div>
+    </div>
+  </div>
+
+  <h3>Le cycle d'une vidéo (deux semaines)</h3>
+  <div class="pipe">
+    <div><b>Étude</b>Cours CPFA, rapports, exemple chiffré</div>
+    <div class="key"><b>Master note</b>Synthèse en anglais, sources</div>
+    <div class="key"><b>Packaging</b>5 angles, 10 titres, 3 miniatures, hook</div>
+    <div><b>Script</b>Rédigé avec Claude, réécrit avec ta voix</div>
+    <div><b>Storyboard</b>Une ligne de visuel par phrase</div>
+    <div><b>Voix</b>Enregistrement EN en une session</div>
+    <div><b>Animation</b>Assets de la bibliothèque d'abord</div>
+    <div><b>Montage</b>Son, musique, sous-titres</div>
+    <div><b>Doublage</b>Pistes FR et AR</div>
+    <div><b>Déclinaisons</b>Shorts, LinkedIn, newsletter, fiche</div>
+    <div><b>Revue</b>CTR, rétention, commentaires</div>
+  </div>
+
+  <h3>Budget temps par format</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Format</th><th class="num">Vidéos 1–5</th><th class="num">Après 20 vidéos</th><th>Ce qui fait baisser le temps</th></tr></thead>
+    <tbody>
+      <tr><td><span class="dot d-w"></span>Whiteboard</td><td class="num">18–25 h</td><td class="num">9–12 h</td><td>Bibliothèque de 50 à 80 icônes et schémas maison</td></tr>
+      <tr><td><span class="dot d-m"></span>Motion graphics</td><td class="num">15–20 h</td><td class="num">8–10 h</td><td>Templates Keynote ou PowerPoint par type de scène</td></tr>
+      <tr><td><span class="dot d-e"></span>Video essay</td><td class="num">20–30 h</td><td class="num">12–16 h</td><td>Dossier de recherche réutilisé, banque d'images organisée</td></tr>
+      <tr><td><span class="dot d-d"></span>Données et cartes</td><td class="num">15–25 h</td><td class="num">8–12 h</td><td>Scripts Python ou modèles Flourish réutilisables</td></tr>
+      <tr><td><span class="dot d-s"></span>Screencast Excel</td><td class="num">8–12 h</td><td class="num">5–7 h</td><td>Modèle préparé avant l'enregistrement</td></tr>
+      <tr><td><span class="dot d-v"></span>Short dérivé</td><td class="num">1–2 h</td><td class="num">0,5–1 h</td><td>Scènes recadrées depuis la vidéo longue</td></tr>
+    </tbody>
+  </table></div>
+  <div class="call rose"><span class="t">Réalité de capacité</span><p>Avec un emploi de cadre, compte environ 10 heures par semaine. Cela donne une vidéo longue toutes les deux semaines, plus 2 Shorts par semaine. Le passage à une vidéo par semaine se fera par la délégation (monteur ou animateur freelance), financée par les premiers revenus en phase 3, et non par plus d'heures de ta part.</p></div>
+
+  <h3>Ce que tu délègues, et quand</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Tâche</th><th>Toi seul</th><th>Délégable</th><th>Déclencheur</th></tr></thead>
+    <tbody>
+      <tr><td>Recherche, master note, script</td><td>Toujours</td><td>Jamais : c'est ton expertise et ta préparation</td><td>—</td></tr>
+      <tr><td>Voix anglaise</td><td>Toujours</td><td>Jamais : c'est ta signature</td><td>—</td></tr>
+      <tr><td>Montage et sous-titres</td><td>Phases 0 à 2</td><td>Monteur freelance (Malt, Upwork)</td><td>Revenu récurrent couvrant le coût</td></tr>
+      <tr><td>Animation motion et whiteboard</td><td>Phases 0 à 2</td><td>Motion designer freelance</td><td>Phase 3</td></tr>
+      <tr><td>Miniatures</td><td>Phases 0 à 1</td><td>Designer de miniatures</td><td>Phase 2</td></tr>
+      <tr><td>Shorts et réseaux</td><td>Phases 0 à 1</td><td>Assistant virtuel</td><td>Phase 3</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 11 -->
+<section id="outils">
+  <div class="sec-head"><span class="sec-num">11</span><h2>Outils et budget faceless</h2></div>
+  <p class="lead">Ni caméra, ni éclairage, ni décor. Le budget va dans le son, parce que ta voix est ton visage, puis dans les outils d'animation. Le démarrage tient en <strong>350 à 600 €</strong> d'achats ponctuels et <strong>40 à 90 € par mois</strong>.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Poste</th><th>Démarrage (phases 0–1)</th><th>Plus tard</th><th>Ordre de prix</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td><b>Micro</b></td><td>Micro dynamique USB/XLR, qui capte peu la pièce (type Shure MV7+ ou Rode PodMic USB)</td><td>Interface audio + micro XLR haut de gamme</td><td class="num">200–280 €</td></tr>
+      <tr class="hl"><td><b>Acoustique</b></td><td>Bras articulé, filtre anti-pop, panneaux absorbants ou réflecteur derrière le micro. Une pièce avec tapis et rideaux.</td><td>Cabine ou coin traité</td><td class="num">80–200 €</td></tr>
+      <tr><td><b>Casque de monitoring</b></td><td>Casque fermé (type Audio-Technica M40x / M50x)</td><td>—</td><td class="num">90–150 €</td></tr>
+      <tr><td><b>Traitement de la voix</b></td><td>DaVinci Resolve Fairlight (gratuit), Adobe Podcast Enhance, Descript Studio Sound</td><td>iZotope RX</td><td class="num">0–15 €/mois</td></tr>
+      <tr><td><b>Whiteboard</b></td><td>VideoScribe, ou Excalidraw (gratuit) en screen recording</td><td>Dessin iPad + Procreate</td><td class="num">≈21 $/mois</td></tr>
+      <tr><td><b>Motion graphics</b></td><td>Keynote (gratuit) ou PowerPoint Morph, Canva Pro</td><td>After Effects, ou freelance</td><td class="num">0–12 €/mois</td></tr>
+      <tr><td><b>Données et cartes</b></td><td>Flourish, Datawrapper (gratuits), Python + matplotlib ou Manim</td><td>Mapbox Studio</td><td class="num">0 €</td></tr>
+      <tr><td><b>Screencast</b></td><td>OBS (gratuit), ZoomIt (Windows)</td><td>Camtasia ou Screen Studio</td><td class="num">0 €, puis ≈ 200–300 € une fois</td></tr>
+      <tr><td><b>Images et archives</b></td><td>Wikimedia Commons, kits presse, sites officiels avec licence vérifiée</td><td>Storyblocks ou Envato Elements</td><td class="num">0, puis 15–30 €/mois</td></tr>
+      <tr><td><b>Musique et effets</b></td><td>Bibliothèque audio YouTube (gratuite)</td><td>Epidemic Sound ou Artlist</td><td class="num">0, puis 10–20 €/mois</td></tr>
+      <tr><td><b>Montage</b></td><td>DaVinci Resolve (gratuit) ou Descript (montage par le texte)</td><td>—</td><td class="num">0–24 €/mois</td></tr>
+      <tr><td><b>Doublage FR / AR</b></td><td>Ta propre voix ; en appoint, clone de ta voix (ElevenLabs) ou doublage natif YouTube</td><td>—</td><td class="num">0–22 €/mois</td></tr>
+      <tr><td><b>Miniatures</b></td><td>Canva ou Figma (gratuit), « Test &amp; Compare » de YouTube</td><td>Photoshop</td><td class="num">inclus</td></tr>
+      <tr><td><b>Recherche et script</b></td><td>Claude, cours CPFA et CFI (comme sources de compréhension uniquement), rapports publics</td><td>—</td><td class="num">existant</td></tr>
+      <tr><td><b>Base de connaissances</b></td><td>Notion ou Obsidian : master notes, deal sheets, idées, assets</td><td>—</td><td class="num">0–10 €/mois</td></tr>
+      <tr><td><b>Analyse YouTube</b></td><td>YouTube Studio</td><td>vidIQ ou TubeBuddy</td><td class="num">0, puis 10–20 €/mois</td></tr>
+      <tr><td><b>Planification réseaux</b></td><td>Planificateurs natifs</td><td>Metricool ou Buffer</td><td class="num">0, puis 15–20 €/mois</td></tr>
+      <tr><td><b>Newsletter</b></td><td>Beehiiv ou Kit, gratuits jusqu'à quelques milliers d'abonnés</td><td>Plan payant</td><td class="num">0 €</td></tr>
+      <tr><td><b>Vente de produits</b></td><td>Gumroad ou Lemon Squeezy, qui gèrent la TVA européenne</td><td>Site propre + plateforme de cours (Podia, Teachable)</td><td class="num">commission</td></tr>
+      <tr><td><b>Site et calculateurs</b></td><td>Page de liens simple</td><td>Site avec calculateurs DSCR, WACC, IRR</td><td class="num">0–20 €/an au départ</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small muted">Les prix sont des ordres de grandeur, à vérifier au moment de l'achat. Seul le tarif de VideoScribe a été vérifié (Capterra). N'achète rien de la colonne « Plus tard » avant que le jalon de la phase correspondante soit atteint.</p>
+  <div class="call"><span class="t">Ton vrai investissement</span><p>C'est un poste d'enregistrement fixe et toujours prêt : micro branché, pièce traitée, template de projet ouvert. Si chaque session commence par 30 minutes d'installation, la régularité meurt en trois mois.</p></div>
+</section>
+
+<!-- 12 -->
+<section id="plateformes">
+  <div class="sec-head"><span class="sec-num">12</span><h2>Distribution multi-plateforme</h2></div>
+  <p class="lead">YouTube est la vitrine. Les autres plateformes recyclent les mêmes actifs sans création supplémentaire, et chacune joue un rôle distinct dans le funnel.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Plateforme</th><th>Format</th><th>Rôle</th><th>Langues</th><th>Démarrage</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td><b>YouTube long</b></td><td>Vidéos de 8 à 20 min</td><td>Vitrine, recherche, autorité, revenus publicitaires</td><td>EN + pistes FR / AR</td><td>Mois 1</td></tr>
+      <tr><td><b>YouTube Shorts</b></td><td>Extraits de 30 à 60 s</td><td>Découverte, alimentation de la chaîne principale</td><td>EN, puis AR natifs</td><td>Mois 2</td></tr>
+      <tr class="hl"><td><b>LinkedIn</b></td><td>Carrousels PDF, vidéos natives courtes, posts</td><td>Signal carrière, recruteurs, B2B, workshops</td><td>EN + FR</td><td>Mois 0</td></tr>
+      <tr><td><b>Newsletter</b></td><td>Synthèse hebdomadaire ou bimensuelle + un graphique</td><td>Audience possédée, conversion vers les produits</td><td>EN, puis édition FR</td><td>Mois 2</td></tr>
+      <tr><td><b>TikTok</b></td><td>Mêmes Shorts</td><td>Public étudiant et jeune, surtout en arabe</td><td>EN, AR</td><td>Mois 4</td></tr>
+      <tr><td><b>Instagram Reels</b></td><td>Mêmes Shorts + carrousels</td><td>Audiences Golfe et Maghreb</td><td>EN, AR</td><td>Mois 4</td></tr>
+      <tr><td><b>Site web</b></td><td>Calculateurs, deal sheets, articles</td><td>Trafic Google, captation d'e-mails, boutique</td><td>EN</td><td>Mois 4</td></tr>
+      <tr><td><b>Podcast</b></td><td>Audio des case studies</td><td>Écoute en déplacement, fidélisation</td><td>EN</td><td>Mois 10</td></tr>
+      <tr><td><b>X (Twitter)</b></td><td>Fils de discussion sur les deals</td><td>Communauté finance, journalistes</td><td>EN</td><td>Optionnel</td></tr>
+      <tr><td><b>Udemy ou équivalent</b></td><td>Cours structurés</td><td>Distribution de la formation sur une place de marché</td><td>EN, FR</td><td>Année 2–3</td></tr>
+    </tbody>
+  </table></div>
+  <div class="call gold"><span class="t">Règle de concentration</span><p>Pendant les 3 premiers mois, ne gère que YouTube, Shorts, LinkedIn et la newsletter. Les autres plateformes s'ajoutent une par une, seulement quand le rythme de publication principal est stable.</p></div>
+</section>
+
+<!-- 13 -->
+<section id="derives">
+  <div class="sec-head"><span class="sec-num">13</span><h2>Catalogue des dérivés</h2></div>
+  <p class="lead">Vingt sources de valeur, toutes issues de la même bibliothèque. Elles sont classées par ordre d'introduction. Chacune a un prérequis : la lancer avant revient à vendre une centrale avant son raccordement.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Dérivé</th><th>Exemple concret</th><th>Prérequis</th><th>Prix indicatif</th><th>Type de revenu</th><th>Effort additionnel</th><th>Valeur carrière</th></tr></thead>
+    <tbody>
+      <tr><td><b>Posts LinkedIn</b></td><td>Carrousel « DSCR en 8 slides »</td><td>Aucun</td><td>Gratuit</td><td>Indirect</td><td>Très faible</td><td class="lvl">●●●</td></tr>
+      <tr><td><b>Shorts, Reels, TikTok</b></td><td>« DSCR en 45 secondes »</td><td>Vidéo longue</td><td>Gratuit</td><td>Acquisition</td><td>Très faible</td><td class="lvl">●<i>●●</i></td></tr>
+      <tr><td><b>Lead magnet gratuit</b></td><td>« 25 PF Ratios Cheat Sheet »</td><td>Vidéos 1–4</td><td>Gratuit contre e-mail</td><td>Liste e-mail</td><td>Faible</td><td class="lvl">●●<i>●</i></td></tr>
+      <tr><td><b>Newsletter</b></td><td>« The Deal Sheet », bimensuelle</td><td>Lead magnet</td><td>Gratuit, premium plus tard</td><td>Audience possédée</td><td>Faible</td><td class="lvl">●●<i>●</i></td></tr>
+      <tr><td><b>Calculateurs web</b></td><td>DSCR, WACC, IRR, LCOE</td><td>Site</td><td>Gratuit</td><td>Trafic SEO</td><td>Moyen une fois</td><td class="lvl">●●<i>●</i></td></tr>
+      <tr><td><b>Templates Excel</b></td><td>Modèle debt sculpting complet</td><td>10 vidéos, 300 abonnés newsletter</td><td>15–40 €</td><td>Ponctuel</td><td>Moyen</td><td class="lvl">●●●</td></tr>
+      <tr><td><b>Cheat sheets premium</b></td><td>Pack « Term sheet decoded »</td><td>Templates lancés</td><td>3–9 €</td><td>Ponctuel</td><td>Faible</td><td class="lvl">●<i>●●</i></td></tr>
+      <tr><td><b>Mini-guides</b></td><td>« DSCR &amp; Debt Sculpting » (25 pages)</td><td>5 vidéos sur le sujet</td><td>5–12 €</td><td>Ponctuel</td><td>Moyen</td><td class="lvl">●●<i>●</i></td></tr>
+      <tr><td><b>Affiliation</b></td><td>Livres, outils, formations que tu utilises</td><td>Audience régulière</td><td>Commission</td><td>Passif</td><td>Très faible</td><td class="lvl">●<i>●●</i></td></tr>
+      <tr><td><b>Revenus YouTube</b></td><td>Publicité, abonnements de chaîne, Super Thanks</td><td>Seuils YPP</td><td>Variable</td><td>Récurrent</td><td>Nul</td><td class="lvl">●<i>●●</i></td></tr>
+      <tr><td><b>Podcast</b></td><td>Audio des case studies</td><td>10 case studies</td><td>Gratuit + sponsor</td><td>Acquisition</td><td>Très faible</td><td class="lvl">●<i>●●</i></td></tr>
+      <tr><td><b>E-book</b></td><td>« Project Finance: The Practical Guide » (80–120 p.)</td><td>20 vidéos</td><td>10–20 €</td><td>Ponctuel, durable</td><td>Moyen</td><td class="lvl">●●●</td></tr>
+      <tr><td><b>Éditions linguistiques</b></td><td>Même guide en FR et en AR</td><td>E-book EN + pistes audio qui fonctionnent</td><td>Prix adapté au marché</td><td>Ponctuel</td><td>Faible à moyen</td><td class="lvl">●<i>●●</i></td></tr>
+      <tr><td><b>Bundle</b></td><td>E-book + 3 modèles + cheat sheets</td><td>E-book + templates</td><td>30–60 €</td><td>Ponctuel</td><td>Très faible</td><td class="lvl">●<i>●●</i></td></tr>
+      <tr><td><b>Sponsoring</b></td><td>Outils de modélisation, données, formations finance</td><td>5 000 abonnés environ, audience qualifiée</td><td>Par vidéo</td><td>Ponctuel</td><td>Faible</td><td class="lvl">●<i>●●</i></td></tr>
+      <tr><td><b>Case Library (abonnement)</b></td><td>50 à 100 deal sheets, mise à jour mensuelle</td><td>20 deal sheets minimum</td><td>5–15 €/mois</td><td>Récurrent</td><td>Moyen</td><td class="lvl">●●●</td></tr>
+      <tr><td><b>Formation en ligne</b></td><td>« Project Finance Fundamentals » en 8 modules</td><td>E-book, 1 500 abonnés newsletter</td><td>150–400 €</td><td>Ponctuel, élevé</td><td>Élevé</td><td class="lvl">●●●</td></tr>
+      <tr><td><b>Workshops B2B</b></td><td>« PF for Engineers &amp; Project Managers »</td><td>Formation + références</td><td>Sur devis</td><td>Ponctuel, élevé</td><td>Élevé</td><td class="lvl">●●●</td></tr>
+      <tr><td><b>Conférences</b></td><td>Salons énergie, écoles, associations</td><td>Visibilité établie</td><td>Sur devis</td><td>Ponctuel</td><td>Faible après préparation</td><td class="lvl">●●●</td></tr>
+      <tr><td><b>Licences</b></td><td>Écoles et entreprises utilisant tes animations</td><td>Catalogue animé de qualité</td><td>Licence annuelle</td><td>Récurrent</td><td>Très faible</td><td class="lvl">●●<i>●</i></td></tr>
+      <tr><td><b>Assistant IA</b></td><td>« Finance Tutor » entraîné sur ta bibliothèque</td><td>Bibliothèque volumineuse</td><td>Abonnement</td><td>Récurrent</td><td>Moyen</td><td class="lvl">●<i>●●</i></td></tr>
+    </tbody>
+  </table></div>
+  <p class="small muted">Prix indicatifs à tester. Les revenus B2B dépendent de ta crédibilité et du marché. Les seuils d'audience sont des repères de prudence, pas des règles.</p>
+  <div class="call"><span class="t">Respect de la propriété intellectuelle</span><p>Tes produits doivent être tes propres créations : explications, schémas, exemples et modèles. Ne reprends ni ne reformules de trop près les supports, modèles ou graphiques du CFI, du PFI ou d'autres organismes. Ils te servent à comprendre, pas de matière première.</p></div>
+</section>
+
+<!-- 14 -->
+<section id="roadmap">
+  <div class="sec-head"><span class="sec-num">14</span><h2>Feuille de route chronologique</h2></div>
+  <p class="lead">On ne passe à la phase suivante qu'après avoir franchi son jalon, et non parce que le calendrier le dit. La logique est celle d'un projet d'infrastructure : construction (CAPEX en temps, zéro revenu), mise en service, puis exploitation, où l'actif produit du cash flow sans que l'effort augmente au même rythme.</p>
+
+  <div class="phases">
+    <div class="phase"><div><div class="n">0 · Fondations</div><div class="when">Mois 0 à 1 · développement</div></div>
+      <ul><li>Validation RH et déontologie EDF, par écrit</li><li>Nom de marque, comptes, charte visuelle, mascotte</li><li>Micro et pièce traitée, templates de scènes, 30 premières icônes</li><li>5 master notes et 3 scripts d'avance</li><li>Profil LinkedIn repositionné</li></ul>
+      <div class="gate"><span class="t">Jalon</span>Accord écrit de l'employeur · 3 vidéos prêtes à publier · charte et bibliothèque d'assets en place</div></div>
+    <div class="phase now"><div><div class="n">1 · Construire l'IP</div><div class="when">Mois 1 à 6 · construction</div></div>
+      <ul><li>1 vidéo longue EN toutes les 2 semaines, 2 Shorts par semaine</li><li>LinkedIn : 2 posts par semaine</li><li>Lead magnet + newsletter dès le mois 2</li><li>Calculateurs DSCR et WACC gratuits au mois 4</li><li>Revue mensuelle des statistiques</li></ul>
+      <div class="gate"><span class="t">Jalon</span>12 vidéos publiées · 300 inscrits newsletter · temps de production réduit d'un tiers</div></div>
+    <div class="phase"><div><div class="n">2 · Premiers revenus</div><div class="when">Mois 6 à 12 · mise en service</div></div>
+      <ul><li>Pistes audio FR (mois 6) et AR (mois 7 à 9), Shorts arabes en test</li><li>Création de la micro-entreprise avant la première vente</li><li>Templates Excel payants, mini-guides, affiliation</li><li>Monétisation YouTube dès que les seuils sont atteints</li><li>Podcast à partir du mois 10</li></ul>
+      <div class="gate"><span class="t">Jalon</span>Seuils YPP atteints · premier produit vendu · 1 000 inscrits newsletter</div></div>
+    <div class="phase"><div><div class="n">3 · Système</div><div class="when">Année 2 · exploitation</div></div>
+      <ul><li>E-book Project Finance et bundle</li><li>Case Library sur abonnement</li><li>Sponsoring, premier freelance (montage, puis animation)</li><li>Passage à 1 vidéo par semaine grâce à la délégation</li><li>Chaîne FR ou AR dédiée si le seuil de 20 % est atteint</li></ul>
+      <div class="gate"><span class="t">Jalon</span>Revenu récurrent stable sur 3 mois, qui couvre au moins les coûts de délégation</div></div>
+    <div class="phase"><div><div class="n">4 · Échelle</div><div class="when">Année 3 et au-delà · optimisation</div></div>
+      <ul><li>Formation complète PF et corporate finance</li><li>Workshops B2B, conférences, licences</li><li>Outils web premium, assistant IA</li><li>Éditions FR et AR des produits</li></ul>
+      <div class="gate"><span class="t">Décision</span>Structure juridique (SASU ou rester en micro-entreprise), arbitrage avec ton poste en finance</div></div>
+  </div>
+
+  <h3>Introduction des dérivés sur 36 mois</h3>
+  <div class="gantt-wrap"><div class="gantt" id="gantt" role="img" aria-label="Calendrier d'introduction des dérivés sur 36 mois"></div></div>
+  <div class="legend"><span><i class="b-free"></i>Gratuit (acquisition)</span><span><i class="b-pay"></i>Payant ponctuel</span><span><i class="b-rec"></i>Récurrent</span><span><i class="b-cond"></i>Conditionnel (si seuil atteint)</span></div>
+
+  <h3>Pourquoi cet ordre</h3>
+  <ul>
+    <li><strong>LinkedIn dès le mois 0</strong> : ton signal carrière démarre avant même la première vidéo.</li>
+    <li><strong>Newsletter dès le mois 2</strong> : c'est la seule audience qui t'appartient. Chaque mois sans capter d'e-mails est perdu pour toujours.</li>
+    <li><strong>Templates avant e-book</strong> : un template se construit en quelques soirs et sert ta formation en modélisation. L'e-book exige 20 vidéos de matière.</li>
+    <li><strong>Langues au mois 6</strong> : il faut d'abord stabiliser le processus en anglais, sinon tu tripleras tes erreurs.</li>
+    <li><strong>Abonnement en année 2</strong> : on ne vend un abonnement qu'avec un catalogue déjà épais.</li>
+    <li><strong>Formation et B2B en dernier</strong> : ce sont les produits les plus chers. Ils exigent une crédibilité démontrée et du temps de support incompatible avec la phase 1.</li>
+  </ul>
+</section>
+
+<!-- 15 -->
+<section id="trajectoire">
+  <div class="sec-head"><span class="sec-num">15</span><h2>Trajectoire et revenus : hypothèses de travail</h2></div>
+  <p class="lead">Ces fourchettes sont des hypothèses de planification, pas des prévisions. Elles servent à calibrer les attentes et doivent être recalées sur tes vraies données au mois 6. Elles supposent une cadence tenue et un packaging travaillé.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Horizon</th><th class="num">Vidéos longues</th><th class="num">Abonnés YouTube</th><th class="num">Inscrits newsletter</th><th class="num">Revenu mensuel</th><th>Source dominante</th></tr></thead>
+    <tbody>
+      <tr><td>Mois 6</td><td class="num">12</td><td class="num">100 – 1 000</td><td class="num">100 – 400</td><td class="num">0 €</td><td>Aucune : phase de construction</td></tr>
+      <tr><td>Mois 12</td><td class="num">24</td><td class="num">500 – 3 000</td><td class="num">400 – 1 500</td><td class="num">0 – 300 €</td><td>Templates, affiliation</td></tr>
+      <tr><td>Mois 24</td><td class="num">60–70</td><td class="num">3 000 – 15 000</td><td class="num">1 500 – 6 000</td><td class="num">300 – 2 500 €</td><td>Produits numériques, puis YouTube</td></tr>
+      <tr><td>Mois 36</td><td class="num">110–120</td><td class="num">10 000 – 50 000</td><td class="num">5 000 – 15 000</td><td class="num">1 500 – 8 000 €</td><td>Formation, abonnement, B2B</td></tr>
+    </tbody>
+  </table></div>
+  <div class="call gold"><span class="t">Lecture</span>
+    <p>Dans une niche aussi spécialisée, la publicité ne sera jamais le moteur principal. La valeur vient de la qualité de l'audience : quelques milliers de professionnels de l'infrastructure valent plus que cent mille curieux. Le revenu se fait sur les produits, le B2B et l'effet carrière. Le scénario bas reste un succès si la chaîne t'a fait décrocher ton poste en Project Finance.</p>
+  </div>
+</section>
+
+<!-- 16 -->
+<section id="statut">
+  <div class="sec-head"><span class="sec-num">16</span><h2>Statut, fiscalité, droits et cadre EDF</h2></div>
+  <p class="lead">La <strong>micro-entreprise</strong> est le bon véhicule. Tu la crées au moment de la première vente, pas avant. Pour 2026–2028, le plafond est de 83 600 € de chiffre d'affaires pour les prestations de services et activités libérales, et de 203 100 € pour la vente de marchandises (<a href="https://www.entreprises.cci-paris-idf.fr/actualites/micro-entrepreneur-revalorisation-des-seuils-pour-2026-2028" target="_blank" rel="noopener">CCI Paris Île-de-France</a>). Tu as de la marge pour plusieurs années.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Sujet</th><th>Ce qu'il faut savoir</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td><b>Moment de création</b></td><td>Tant que la chaîne ne génère rien, il n'y a rien à déclarer. La création prend quelques jours en ligne.</td><td>Créer au mois 6 environ, avant la première vente ou l'activation de la monétisation</td></tr>
+      <tr><td><b>Nature des revenus</b></td><td>Publicité YouTube, sponsoring et formation relèvent en pratique des BNC. Les produits numériques téléchargeables sont traités comme des prestations de services, pas comme des marchandises.</td><td>Faire valider le code d'activité par un expert-comptable (une consultation suffit)</td></tr>
+      <tr><td><b>Versement libératoire</b></td><td>Il n'est intéressant qu'avec un taux marginal d'imposition modéré. Avec un salaire de cadre, il faut faire le calcul.</td><td>Simuler les deux options avant de choisir</td></tr>
+      <tr><td><b>TVA</b></td><td>Franchise en base tant que tu restes sous les seuils, qui sont distincts de ceux du régime micro. Au-delà de 10 000 € par an de ventes numériques à des particuliers d'autres pays de l'UE, c'est la TVA du pays de l'acheteur qui s'applique.</td><td>Vendre via un « merchant of record » (Gumroad, Lemon Squeezy) qui collecte et reverse la TVA à ta place</td></tr>
+      <tr><td><b>Paiements YouTube</b></td><td>AdSense exige des informations fiscales, notamment pour la retenue américaine sur les vues venant des États-Unis.</td><td>Remplir le formulaire fiscal dans AdSense pour bénéficier de la convention franco-américaine</td></tr>
+      <tr><td><b>Compte bancaire</b></td><td>Compte dédié obligatoire dès que le chiffre d'affaires dépasse 10 000 € deux années de suite.</td><td>En ouvrir un dès la création, par hygiène</td></tr>
+      <tr><td><b>Passage en société</b></td><td>Une SASU ou une EURL devient intéressante quand les charges réelles (freelances, logiciels) pèsent lourd, ou au-delà de 40 à 50 k€ de bénéfice récurrent.</td><td>Revoir en phase 3 ou 4</td></tr>
+      <tr><td><b>Si tu t'installes à Genève</b></td><td>Le régime fiscal change complètement : statut d'indépendant suisse et règles de ton futur employeur.</td><td>Anticiper avec un fiscaliste transfrontalier avant le déménagement</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Droits d'auteur : le point critique du faceless</h3>
+  <p>Un format faceless repose sur des visuels. Chaque image, extrait ou musique doit avoir une source légale. Le droit français de citation est bien plus étroit que le « fair use » américain.</p>
+  <ul>
+    <li><strong>Photos de projets</strong> : Wikimedia Commons (respecte la licence et l'attribution), kits presse officiels (vérifie les conditions), banques d'images sous licence.</li>
+    <li><strong>Articles et rapports</strong> : cite de courts extraits en mentionnant la source, sans reproduire de pages entières.</li>
+    <li><strong>Musique</strong> : uniquement sous licence (bibliothèque YouTube, Epidemic Sound, Artlist). Une musique non licenciée expose à des réclamations Content ID qui détournent tes revenus.</li>
+    <li><strong>Images générées par IA</strong> : acceptables pour des illustrations, jamais pour simuler un vrai projet ou une vraie personne. YouTube exige de signaler les contenus synthétiques réalistes.</li>
+    <li><strong>Logos d'entreprises</strong> : un usage informatif est toléré, mais jamais sur une miniature qui laisserait croire à un partenariat.</li>
+  </ul>
+
+  <h3>Le cadre EDF : à régler avant la première vidéo</h3>
+  <p>Un salarié peut cumuler son emploi avec une micro-entreprise, dans trois limites : l'obligation de loyauté (pas de concurrence, pas de dénigrement, pas d'informations internes), une éventuelle clause d'exclusivité dans ton contrat, et les règles propres au statut des IEG, au code de déontologie du groupe et à la communication sur le nucléaire. Le faceless réduit ton exposition, mais il ne te protège pas juridiquement : si une vidéo pose problème, l'anonymat ne change rien à tes obligations.</p>
+  <div class="call rose"><span class="t">Checklist employeur</span>
+    <ul>
+      <li>Relire ton contrat de travail : clause d'exclusivité, propriété intellectuelle, confidentialité.</li>
+      <li>Consulter le code de déontologie et la charte réseaux sociaux du groupe EDF.</li>
+      <li>Poser la question par écrit aux RH ou au déontologue, avant toute vidéo sur le nucléaire.</li>
+      <li>Ne jamais citer EDF comme employeur sur la chaîne. Mentionner dans la description : « opinions personnelles, sources publiques uniquement ».</li>
+      <li>Ne jamais utiliser d'informations, de chiffres, de documents ou de photos obtenus dans le cadre de ton travail, y compris sur Hinkley Point C et l'EPR2.</li>
+    </ul>
+  </div>
+  <p class="small muted">Rien de tout ceci n'est un conseil juridique ou fiscal formel. Une heure avec un expert-comptable avant la première facture coûte peu et évite les erreurs de structure.</p>
+</section>
+
+<!-- 17 -->
+<section id="carriere">
+  <div class="sec-head"><span class="sec-num">17</span><h2>Effet carrière : l'actif au service de la reconversion</h2></div>
+  <p class="lead">La chaîne est un portfolio public. En entretien, elle remplace l'argument « je me suis formé » par une preuve : « voici 30 explications publiques et vérifiables de ce que vous faites tous les jours ».</p>
+  <div class="grid g2">
+    <div class="card"><h4>Préparation d'entretien intégrée</h4><p>Les 20 premières vidéos couvrent les questions techniques classiques d'un entretien PF : DSCR, sculpting, waterfall, risk allocation, term sheet, IRR. Écrire et enregistrer l'explication est la meilleure répétition possible.</p></div>
+    <div class="card"><h4>Networking légitime</h4><p>Chaque case study est un prétexte pour contacter un banquier, un sponsor ou un conseil du deal : « je prépare une analyse publique de ce projet, accepteriez-vous 20 minutes d'échange ? ». Une interview audio publiée devient un format à part entière, sans visage.</p></div>
+    <div class="card"><h4>Signal LinkedIn</h4><p>Chaque vidéo se décline en carrousel ou en post natif. Les recruteurs de Genève, de Londres et du Golfe voient ton contenu sans jamais aller sur YouTube. C'est là que l'option B (auteur identifié) prend toute sa valeur.</p></div>
+    <div class="card"><h4>Plan B entrepreneurial</h4><p>Si la reconversion prend plus de temps que prévu, l'actif continue de croître et de produire de la crédibilité. Le temps de formation n'est jamais perdu.</p></div>
+  </div>
+  <div class="call gold"><span class="t">Arbitrage à anticiper</span><p>Le jour où tu rejoins une banque ou un fonds, ton nouvel employeur aura sa propre politique de conformité. Commenter des deals sur lesquels il est positionné peut devenir impossible. Construis donc dès maintenant une large part du catalogue sur des concepts intemporels et des deals historiques, publiables quel que soit ton employeur. Négocie aussi ce point au moment de ton embauche.</p></div>
+</section>
+
+<!-- 18 -->
+<section id="pilotage">
+  <div class="sec-head"><span class="sec-num">18</span><h2>KPIs, rituels et pièges</h2></div>
+  <p class="lead">Le seul KPI qui compte la première année est la régularité. Les autres indicateurs servent à diagnostiquer, pas à juger.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Indicateur</th><th>Ce qu'il mesure</th><th>Repère</th><th>Si c'est faible</th></tr></thead>
+    <tbody>
+      <tr><td><b>Vidéos publiées / plan</b></td><td>La discipline</td><td class="num">100 %</td><td>Réduire l'ambition visuelle, pas la cadence</td></tr>
+      <tr><td><b>Taux de clic (CTR)</b></td><td>La miniature et le titre</td><td class="num">4–10 %</td><td>Tester 3 miniatures, retravailler le titre</td></tr>
+      <tr><td><b>Rétention à 30 s</b></td><td>Le hook</td><td class="num">&gt; 65–70 %</td><td>Couper l'intro, entrer plus vite dans la tension</td></tr>
+      <tr><td><b>Durée moyenne vue</b></td><td>Le rythme et le fond</td><td class="num">&gt; 40 % (10 min)</td><td>Plus de changements visuels, re-hooks plus fréquents</td></tr>
+      <tr><td><b>Part des pistes FR / AR</b></td><td>La traction linguistique</td><td class="num">seuil 20 %</td><td>Revoir titres traduits et miniatures localisées</td></tr>
+      <tr><td><b>Inscrits newsletter par vidéo</b></td><td>La conversion vers un actif possédé</td><td class="num">à suivre</td><td>Améliorer le lead magnet et l'appel à l'action</td></tr>
+      <tr><td><b>Heures par vidéo</b></td><td>L'efficacité du moteur</td><td class="num">−30 % à M6</td><td>Enrichir la bibliothèque d'assets et les templates</td></tr>
+      <tr><td><b>Messages LinkedIn entrants</b></td><td>L'effet carrière</td><td>Qualitatif</td><td>Plus de carrousels, plus de case studies</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Rituel sur deux semaines (environ 20 h)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Bloc</th><th class="num">Durée</th><th>Quand</th></tr></thead>
+    <tbody>
+      <tr><td>Étude et master note</td><td class="num">5 h</td><td>Soirées de la semaine 1</td></tr>
+      <tr><td>Packaging : angles, titres, miniatures, hook</td><td class="num">1,5 h</td><td>Week-end de la semaine 1</td></tr>
+      <tr><td>Script et storyboard</td><td class="num">3 h</td><td>Week-end de la semaine 1</td></tr>
+      <tr><td>Enregistrement de la voix</td><td class="num">1,5 h</td><td>Début de semaine 2, voix reposée</td></tr>
+      <tr><td>Animation et montage</td><td class="num">6 h</td><td>Soirées et week-end de la semaine 2</td></tr>
+      <tr><td>Déclinaisons : Shorts, LinkedIn, newsletter, fiche</td><td class="num">2,5 h</td><td>Semaine 2</td></tr>
+      <tr><td>Revue des statistiques de la vidéo précédente</td><td class="num">0,5 h</td><td>Le dimanche</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Les huit pièges classiques</h3>
+  <div class="grid g2">
+    <div class="card"><h4>1 · Le perfectionnisme de lancement</h4><p>Repousser la première vidéo pour un logo ou une animation parfaite. La vidéo 1 sera imparfaite par construction. La 30e sera bonne parce que la 1 existe.</p></div>
+    <div class="card"><h4>2 · L'animation chronophage</h4><p>Passer 40 heures sur une vidéo parce que chaque scène est faite sur mesure. Bibliothèque d'assets d'abord, création ensuite.</p></div>
+    <div class="card"><h4>3 · La dispersion précoce</h4><p>Six piliers et trois langues dès le premier mois. L'algorithme ne sait plus à qui te recommander.</p></div>
+    <div class="card"><h4>4 · La chaîne IA générique</h4><p>Voix de synthèse et visuels template, c'est le contraire de ton avantage et la cible directe de la politique de démonétisation de YouTube.</p></div>
+    <div class="card"><h4>5 · La monétisation prématurée</h4><p>Vendre avant d'avoir donné abaisse la confiance. Il faut 10 à 20 vidéos gratuites de qualité avant le premier produit payant.</p></div>
+    <div class="card"><h4>6 · L'oubli de l'audience possédée</h4><p>Accumuler des abonnés YouTube sans capter d'e-mails. YouTube peut changer ses règles demain, ta liste e-mail reste à toi.</p></div>
+    <div class="card"><h4>7 · Le problème de droits</h4><p>Une photo ou une musique sans licence peut détourner tes revenus ou faire supprimer une vidéo. Chaque visuel a une source traçable.</p></div>
+    <div class="card"><h4>8 · Le conflit avec l'employeur</h4><p>Une seule vidéo mal cadrée sur le nucléaire peut coûter plus cher que tout ce que la chaîne rapportera. Les garde-fous de la section 16 ne sont pas optionnels.</p></div>
+  </div>
+</section>
+
+<!-- 19 -->
+<section id="plan90">
+  <div class="sec-head"><span class="sec-num">19</span><h2>Plan d'action des 90 premiers jours</h2></div>
+  <p class="lead">Treize semaines pour passer de l'idée à 6 vidéos publiées et à un système qui tourne. Coche au fur et à mesure : ta progression reste enregistrée dans ton navigateur.</p>
+  <div class="progress" id="progress">0 / 0 tâches</div>
+  <div class="weeks" id="weeks">
+    <div class="week"><h4>Semaines 1–2 <small>cadre</small></h4>
+      <label><input type="checkbox" id="t1"><span>Relire le contrat de travail et le code de déontologie EDF</span></label>
+      <label><input type="checkbox" id="t2"><span>Envoyer la demande écrite aux RH ou au déontologue</span></label>
+      <label><input type="checkbox" id="t3"><span>Choisir le degré d'anonymat (option B recommandée)</span></label>
+      <label><input type="checkbox" id="t4"><span>Lister 10 noms de marque, en retenir 3, vérifier domaines, réseaux et INPI/EUIPO</span></label>
+      <label><input type="checkbox" id="t5"><span>Commander le micro, le bras, le filtre et le traitement acoustique</span></label>
+      <label><input type="checkbox" id="t6"><span>Analyser 3 vidéos de 4 chaînes de référence faceless</span></label>
+    </div>
+    <div class="week"><h4>Semaines 3–4 <small>système</small></h4>
+      <label><input type="checkbox" id="t7"><span>Fixer le nom, réserver les comptes et le domaine</span></label>
+      <label><input type="checkbox" id="t8"><span>Charte visuelle : palette, 2 polices, logo, mascotte</span></label>
+      <label><input type="checkbox" id="t9"><span>Concevoir le projet fil rouge (« Atlas Wind ») et son modèle chiffré</span></label>
+      <label><input type="checkbox" id="t10"><span>Créer 30 icônes PF et 5 templates de scènes</span></label>
+      <label><input type="checkbox" id="t11"><span>Mettre en place Notion ou Obsidian : modèle de master note</span></label>
+      <label><input type="checkbox" id="t12"><span>Enregistrer un test de voix de 2 minutes et le faire écouter</span></label>
+    </div>
+    <div class="week"><h4>Semaines 5–6 <small>production</small></h4>
+      <label><input type="checkbox" id="t13"><span>Rédiger les master notes des vidéos 1 à 5</span></label>
+      <label><input type="checkbox" id="t14"><span>Packaging complet des vidéos 1 à 3</span></label>
+      <label><input type="checkbox" id="t15"><span>Produire les vidéos 1 et 2 de bout en bout</span></label>
+      <label><input type="checkbox" id="t16"><span>Créer le lead magnet « PF on one page »</span></label>
+      <label><input type="checkbox" id="t17"><span>Ouvrir la newsletter (Beehiiv ou Kit) et la page de capture</span></label>
+      <label><input type="checkbox" id="t18"><span>Repositionner le profil LinkedIn</span></label>
+    </div>
+    <div class="week"><h4>Semaines 7–8 <small>lancement</small></h4>
+      <label><input type="checkbox" id="t19"><span>Publier les vidéos 1 et 2</span></label>
+      <label><input type="checkbox" id="t20"><span>Publier 4 Shorts dérivés</span></label>
+      <label><input type="checkbox" id="t21"><span>Publier 4 posts ou carrousels LinkedIn</span></label>
+      <label><input type="checkbox" id="t22"><span>Envoyer la première newsletter</span></label>
+      <label><input type="checkbox" id="t23"><span>Produire la vidéo 3</span></label>
+    </div>
+    <div class="week"><h4>Semaines 9–10 <small>cadence</small></h4>
+      <label><input type="checkbox" id="t24"><span>Publier les vidéos 3 et 4</span></label>
+      <label><input type="checkbox" id="t25"><span>Construire le calculateur DSCR gratuit</span></label>
+      <label><input type="checkbox" id="t26"><span>Tester 3 miniatures sur la vidéo 4</span></label>
+      <label><input type="checkbox" id="t27"><span>Mesurer les heures réelles par vidéo et par format</span></label>
+    </div>
+    <div class="week"><h4>Semaines 11–13 <small>bilan</small></h4>
+      <label><input type="checkbox" id="t28"><span>Publier les vidéos 5 et 6</span></label>
+      <label><input type="checkbox" id="t29"><span>Préparer le modèle Excel de debt sizing (lead magnet n°2)</span></label>
+      <label><input type="checkbox" id="t30"><span>Bilan à 90 jours : CTR, rétention, temps de production, inscrits</span></label>
+      <label><input type="checkbox" id="t31"><span>Ajuster le calendrier des vidéos 7 à 18</span></label>
+      <label><input type="checkbox" id="t32"><span>Décider de la cadence de la phase 1 pour la suite</span></label>
+    </div>
+  </div>
+</section>
+
+<!-- 20 -->
+<section id="sources">
+  <div class="sec-head"><span class="sec-num">20</span><h2>Sources</h2></div>
+  <ul class="sources">
+    <li><a href="https://www.entreprises.cci-paris-idf.fr/actualites/micro-entrepreneur-revalorisation-des-seuils-pour-2026-2028" target="_blank" rel="noopener">CCI Paris Île-de-France : seuils micro-entreprise 2026–2028</a></li>
+    <li><a href="https://techcrunch.com/2025/09/10/youtubes-multi-language-audio-feature-for-dubbing-videos-rolls-out-to-all-creators/" target="_blank" rel="noopener">TechCrunch : pistes audio multilingues ouvertes à tous les créateurs (septembre 2025)</a></li>
+    <li><a href="https://www.plagiarismtoday.com/2025/07/08/youtube-targets-inauthentic-content/" target="_blank" rel="noopener">Plagiarism Today : politique YouTube sur les contenus « inauthentiques » (juillet 2025)</a></li>
+    <li><a href="https://www.capterra.com/p/182209/VideoScribe/pricing/" target="_blank" rel="noopener">Capterra : tarif VideoScribe</a></li>
+  </ul>
+  <p class="small muted">Les autres prix, durées de production et trajectoires sont des ordres de grandeur et des hypothèses de travail, signalés comme tels dans le texte.</p>
+</section>
+
+<footer>Plan directeur établi le 29 octobre 2026. À revoir au bilan des 90 jours.</footer>
+</main>
+</div>
+
+<script>
+(function(){
+  // Gantt: derivative introduction over 36 months
+  var rows=[
+    ["Posts LinkedIn",0,36,"free"],["Vidéos longues EN",1,36,"free"],["Shorts, Reels, TikTok",2,36,"free"],
+    ["Newsletter + lead magnet",2,36,"free"],["Calculateurs web",4,36,"free"],["Pistes audio FR",6,36,"free"],
+    ["Pistes audio AR",8,36,"free"],["Templates Excel",7,36,"pay"],["Mini-guides, cheat sheets",8,36,"pay"],
+    ["Affiliation",8,36,"rec"],["Podcast",10,36,"free"],["Revenus YouTube (YPP)",10,36,"cond"],
+    ["E-book PF",13,36,"pay"],["Sponsoring",14,36,"cond"],["Case Library (abonnement)",16,36,"rec"],
+    ["Chaîne FR ou AR dédiée",18,36,"cond"],["Formation en ligne",24,36,"pay"],["Workshops B2B, conférences",26,36,"pay"],
+    ["Licences",28,36,"rec"],["Assistant IA, outils premium",30,36,"rec"]];
+  var g=document.getElementById('gantt'); if(!g) return;
+  var h='<div class="h lab">Dérivé</div>';
+  for(var m=1;m<=36;m++){var y=(m-1)%12===0;h+='<div class="h'+(y?' y':'')+'">'+(y?'A'+(Math.floor((m-1)/12)+1):(m%3===0?m:''))+'</div>';}
+  var cls={free:'b-free',pay:'b-pay',rec:'b-rec',cond:'b-cond'};
+  rows.forEach(function(r){
+    var s=Math.max(1,r[1]+1);
+    h+='<div class="lab" title="'+r[0]+'">'+r[0]+'</div><div class="lane"><div class="bar '+cls[r[3]]+'" style="grid-column:'+s+' / '+(r[2]+1)+'" title="'+r[0]+' : mois '+r[1]+' → '+r[2]+'"></div></div>';
+  });
+  g.innerHTML=h;
+
+  // Checklist persistence
+  var boxes=[].slice.call(document.querySelectorAll('#weeks input[type=checkbox]'));
+  var key='blueprint-plan90';
+  var saved={};
+  try{saved=JSON.parse(localStorage.getItem(key)||'{}')||{};}catch(e){saved={};}
+  function upd(){
+    var n=boxes.filter(function(b){return b.checked}).length;
+    document.getElementById('progress').textContent=n+' / '+boxes.length+' tâches terminées';
+  }
+  boxes.forEach(function(b){
+    if(saved[b.id]) b.checked=true;
+    b.addEventListener('change',function(){
+      saved[b.id]=b.checked;
+      try{localStorage.setItem(key,JSON.stringify(saved));}catch(e){}
+      upd();
+    });
+  });
+  upd();
+})();
+</script>
+
+</body></html>

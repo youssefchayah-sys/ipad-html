@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Value Investor's Master Ratio Reference — Quality · Value · Price</title>
+<style>
+  :root{
+    --bg:#0f1419; --panel:#161d26; --panel2:#1b2531; --ink:#e8edf2; --mut:#9fb0c0;
+    --line:#2a3644; --quality:#2f9e6f; --qualbg:#12271f; --value:#c98a2b; --valbg:#2a2113;
+    --price:#4f8ef0; --pribg:#132033; --bridge:#a86ad6; --bridgebg:#221733;
+    --acc:#5ac8fa; --warn:#e05a5a;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;font-size:15px;}
+  .wrap{max-width:1180px;margin:0 auto;padding:36px 26px 90px;}
+  header.top{border-bottom:2px solid var(--line);padding-bottom:22px;margin-bottom:8px;}
+  h1{font-size:30px;margin:0 0 6px;letter-spacing:-.4px;}
+  .sub{color:var(--mut);font-size:15px;margin:0;}
+  .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+    padding:3px 9px;border-radius:5px;margin-right:6px;vertical-align:middle;}
+  .t-q{background:var(--qualbg);color:var(--quality);border:1px solid var(--quality);}
+  .t-v{background:var(--valbg);color:var(--value);border:1px solid var(--value);}
+  .t-p{background:var(--pribg);color:var(--price);border:1px solid var(--price);}
+  .t-b{background:var(--bridgebg);color:var(--bridge);border:1px solid var(--bridge);}
+  .legend{margin:20px 0 6px;padding:16px 18px;background:var(--panel);border:1px solid var(--line);border-radius:10px;}
+  .legend b{color:var(--ink);}
+  .legend .row{margin:6px 0;color:var(--mut);font-size:14px;}
+  .stmt{display:inline-block;font-size:11px;font-weight:700;padding:1px 6px;border-radius:4px;margin:0 2px;border:1px solid var(--line);}
+  .s-is{background:#1d2a1f;color:#7fd6a0;} .s-bs{background:#1a2333;color:#8db4e8;}
+  .s-cf{background:#2a2033;color:#c99ae0;} .s-mkt{background:#33261a;color:#e0b57f;}
+  h2.eng{font-size:22px;margin:44px 0 4px;padding:14px 18px;border-radius:10px 10px 0 0;letter-spacing:-.3px;}
+  h2.q{background:linear-gradient(90deg,var(--qualbg),transparent);border-left:5px solid var(--quality);}
+  h2.v{background:linear-gradient(90deg,var(--valbg),transparent);border-left:5px solid var(--value);}
+  h2.b{background:linear-gradient(90deg,var(--bridgebg),transparent);border-left:5px solid var(--bridge);}
+  .engnote{color:var(--mut);font-size:14px;margin:0 0 14px;padding:0 18px;font-style:italic;}
+  h3.cat{font-size:16px;margin:26px 0 8px;color:var(--acc);font-weight:700;
+    border-bottom:1px solid var(--line);padding-bottom:5px;}
+  table{width:100%;border-collapse:collapse;margin:6px 0 8px;font-size:13.5px;}
+  th{text-align:left;background:var(--panel2);color:var(--mut);font-weight:600;font-size:11px;
+    text-transform:uppercase;letter-spacing:.5px;padding:9px 11px;border-bottom:2px solid var(--line);}
+  td{padding:10px 11px;border-bottom:1px solid var(--line);vertical-align:top;}
+  tr:hover td{background:var(--panel);}
+  td.name{font-weight:700;color:var(--ink);white-space:nowrap;}
+  td.cat{color:var(--mut);font-size:12px;white-space:nowrap;}
+  td.formula{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;color:#c9d6e2;}
+  td.why{color:var(--mut);}
+  td.why b{color:var(--ink);font-weight:600;}
+  .col-name{width:16%;} .col-cat{width:11%;} .col-formula{width:27%;} .col-stmt{width:8%;} .col-why{width:38%;}
+  .synth{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px 26px;margin:16px 0;}
+  .synth h4{margin:0 0 10px;font-size:17px;color:var(--acc);}
+  .eqbox{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace;background:var(--bg);
+    border:1px solid var(--line);border-radius:8px;padding:13px 16px;margin:12px 0;font-size:14px;
+    color:#dfe9f2;overflow-x:auto;}
+  .eqbox .hl{color:var(--acc);font-weight:700;}
+  .flow{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;margin:18px 0;}
+  .flowcard{flex:1;min-width:150px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:14px;}
+  .flowcard .h{font-weight:700;font-size:13px;margin-bottom:6px;}
+  .flowcard.q .h{color:var(--quality);} .flowcard.b .h{color:var(--bridge);} .flowcard.v .h{color:var(--value);} .flowcard.d .h{color:var(--warn);}
+  .flowcard p{margin:0;font-size:12.5px;color:var(--mut);}
+  .arrow{align-self:center;color:var(--mut);font-size:22px;}
+  .callout{border-left:4px solid var(--acc);background:var(--panel);padding:14px 18px;border-radius:0 8px 8px 0;margin:18px 0;color:var(--mut);}
+  .callout b{color:var(--ink);}
+  .warnbox{border-left:4px solid var(--warn);background:#241618;}
+  .lens{border-left:4px solid var(--quality);background:var(--qualbg);padding:13px 18px;border-radius:0 8px 8px 0;margin:10px 0 22px;color:var(--mut);font-size:13.5px;}
+  .lens b{color:var(--ink);}
+  .lens .lh{color:var(--quality);font-weight:700;font-size:12px;letter-spacing:.5px;text-transform:uppercase;display:block;margin-bottom:5px;}
+  html{scroll-behavior:smooth;}
+  h2.eng,h3.cat{scroll-margin-top:16px;}
+  .navbar{position:sticky;top:0;z-index:50;background:rgba(15,20,25,.94);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);margin:0 -26px 8px;padding:10px 26px;}
+  .navbar .navrow{display:flex;flex-wrap:wrap;gap:7px;align-items:center;max-width:1180px;margin:0 auto;}
+  .navbar a{font-size:12.5px;font-weight:600;text-decoration:none;padding:5px 11px;border-radius:20px;
+    border:1px solid var(--line);white-space:nowrap;transition:all .15s;color:var(--mut);background:var(--panel2);}
+  .navbar a:hover{filter:brightness(1.3);border-color:var(--acc);color:var(--ink);}
+  .navbar a.q-link{color:var(--quality);border-color:var(--quality);background:var(--qualbg);}
+  .navbar a.v-link{color:var(--value);border-color:var(--value);background:var(--valbg);}
+  .navbar a.b-link{color:var(--bridge);border-color:var(--bridge);background:var(--bridgebg);}
+  .navbar a.s-link{color:var(--acc);border-color:var(--acc);background:#12222e;}
+  .navbar .navlabel{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--mut);margin-right:2px;}
+  .toplink{float:right;font-size:11px;font-weight:600;color:var(--mut);text-decoration:none;
+    padding:3px 10px;border:1px solid var(--line);border-radius:14px;margin-top:4px;}
+  .toplink:hover{color:var(--acc);border-color:var(--acc);}
+  footer{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);color:var(--mut);font-size:12.5px;}
+  @media print{body{background:#fff;color:#111;}.wrap{max-width:100%;}
+    td.why,.sub,.engnote{color:#333;}tr:hover td{background:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <h1>The Value Investor's Master Ratio Reference</h1>
+  <p class="sub">Two engines of judgment — <b style="color:var(--quality)">Quality</b> ("Is it a wonderful business?") and <b style="color:var(--value)">Value / Price</b> ("Is it cheap enough?") — with every ratio, its category, formula, source statement, and what it reveals. Built for Youssef · CMSA + value-investing synthesis.</p>
+</header>
+
+<div class="legend">
+  <div class="row"><b>The two engines &amp; the bridge:</b></div>
+  <div class="row"><span class="tag t-q">Quality Engine</span> Munger / DuPont — decomposes business performance. Uses financial statements only (no market price).</div>
+  <div class="row"><span class="tag t-p">Price / Value Engine</span> Graham — decomposes what you pay vs. what it's worth. Needs market price.</div>
+  <div class="row"><span class="tag t-b">The Bridge</span> Justified multiples &amp; value-driver models that convert Quality output (ROE/ROIC) into the price it deserves.</div>
+  <div class="row" style="margin-top:12px"><b>Statement source key:</b>
+    <span class="stmt s-is">IS</span> Income Statement &nbsp;
+    <span class="stmt s-bs">BS</span> Balance Sheet &nbsp;
+    <span class="stmt s-cf">CF</span> Cash Flow Statement &nbsp;
+    <span class="stmt s-mkt">MKT</span> Market data (price/shares)</div>
+</div>
+
+<nav class="navbar" id="top">
+  <div class="navrow">
+    <span class="navlabel">Quality</span>
+    <a class="q-link" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#engine-quality">Engine 1</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#cat-a">A·Returns</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#cat-b">B·Margins</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#cat-c">C·Efficiency</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#cat-d">D·Leverage</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#cat-e">E·Liquidity</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#cat-f">F·Growth</a>
+    <span class="navlabel" style="margin-left:6px">Price</span>
+    <a class="v-link" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#engine-price">Engine 2</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#cat-g">G·Multiples</a>
+    <span class="navlabel" style="margin-left:6px">Bridge</span>
+    <a class="b-link" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#engine-bridge">H·Justified</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#articulate">3 Models</a>
+    <a class="s-link" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#synthesis">Synthesis</a>
+    <span class="navlabel" style="margin-left:6px">Decide</span>
+    <a class="s-link" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#when-return">When·Return</a>
+    <a class="s-link" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#when-price">When·Price</a>
+    <span class="navlabel" style="margin-left:6px">ETFs</span>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#etf-l1">L1·Basket</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#etf-l2">L2·Wrapper</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#etf-l3">L3·Return</a>
+    <span class="navlabel" style="margin-left:6px">Foundations</span>
+    <a class="s-link" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#concepts">Concepts</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#c-market">Markets</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#c-players">Players</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#c-instruments">Instruments</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#c-accounting">Accounting</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#c-capital">Capital</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#c-macro">Macro</a>
+    <span class="navlabel" style="margin-left:6px">Derivations</span>
+    <a class="s-link" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#deepdives">Deep-Dives</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#dd-nopat">NOPAT</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#dd-ic">IC=NA</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#dd-fcf">FCF</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#dd-incroic">Incr·ROIC</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#dd-wacc">WACC</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#dd-leverage">Leverage</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#dd-days">Turnover↔Days</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#dd-nwc">ΔNWC</a>
+    <span class="navlabel" style="margin-left:6px">Accounting</span>
+    <a class="s-link" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#accounting-fund">Fundamentals</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#af-drcr">Debits/Credits</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#af-bs">Balance Sheet</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#af-debt">Debt Taxonomy</a>
+    <a href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#af-adjusting">Adjusting Entries</a>
+  </div>
+</nav>
+
+<!-- ================= ENGINE 1 : QUALITY ================= -->
+<h2 class="eng q" id="engine-quality">ENGINE 1 — The Quality Engine <span style="font-weight:400;font-size:15px;color:var(--mut)">· "Is it a wonderful business?"</span></h2>
+<p class="engnote">Every ratio below is built from the financial statements alone. It measures the business — never the price. Read the LEVEL (how good) and, above all, the TREND over 5–10 years (stable = moat; eroding = moat dissolving).</p>
+
+<h3 class="cat" id="cat-a">A · Return on Capital Ratios — the ultimate quality tests <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<table>
+<thead><tr><th class="col-name">Ratio</th><th class="col-cat">Category</th><th class="col-formula">Formula</th><th class="col-stmt">Uses</th><th class="col-why">Why / what it reveals</th></tr></thead>
+<tbody>
+<tr><td class="name">ROE — Return on Equity</td><td class="cat">Return on capital</td><td class="formula">Net Income ÷ Shareholders' Equity</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why">Return to <b>owners only</b>. Direct but <b>inflatable by leverage</b> — always decompose with DuPont before trusting it.</td></tr>
+<tr><td class="name">ROA — Return on Assets</td><td class="cat">Return on capital</td><td class="formula">Net Income ÷ Total Assets</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why"><b>Asset efficiency</b> — profit per dollar of assets, regardless of funding. Harder to game with debt than ROE.</td></tr>
+<tr><td class="name">RONA — Return on Net Assets</td><td class="cat">Return on capital</td><td class="formula">Net Income ÷ (PP&amp;E + Net Working Capital)</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why">Return on the <b>operating</b> capital actually deployed (strips cash &amp; non-operating). Denominator ≈ Invested Capital.</td></tr>
+<tr><td class="name">ROIC — Return on Invested Capital</td><td class="cat">Return on capital</td><td class="formula">NOPAT ÷ Invested Capital<br>(Net Debt + Equity)</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why"><b>The king.</b> Return to <b>all</b> capital providers, leverage-neutral. Compared to WACC = the truest test of value creation.</td></tr>
+<tr><td class="name">ROCE — Return on Capital Employed</td><td class="cat">Return on capital</td><td class="formula">EBIT ÷ (Total Assets − Current Liabilities)</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why">Pre-tax cousin of ROIC. Good for cross-country / cross-tax comparisons since it ignores tax differences.</td></tr>
+<tr><td class="name">CROIC — Cash ROIC</td><td class="cat">Return on capital</td><td class="formula">Free Cash Flow ÷ Invested Capital</td><td><span class="stmt s-cf">CF</span><span class="stmt s-bs">BS</span></td><td class="why">ROIC using <b>real cash</b> instead of accounting profit — resistant to earnings games.</td></tr>
+<tr><td class="name">Incremental ROIC</td><td class="cat">Reinvestment economics</td><td class="formula">Δ NOPAT ÷ Δ Invested Capital</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why"><b>The compounder test.</b> What return does NEW capital earn? High incremental ROIC = a machine that reinvests at high rates.</td></tr>
+<tr><td class="name">ROIC − WACC Spread</td><td class="cat">Value creation</td><td class="formula">ROIC − Weighted Avg. Cost of Capital</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span><span class="stmt s-mkt">MKT</span></td><td class="why">Positive = business <b>creates</b> value with each euro; negative = it <b>destroys</b> value even while growing.</td></tr>
+</tbody>
+</table>
+
+<h3 class="cat" id="cat-b">B · Margin Ratios — profitability &amp; moat fingerprint <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<table>
+<thead><tr><th class="col-name">Ratio</th><th class="col-cat">Category</th><th class="col-formula">Formula</th><th class="col-stmt">Uses</th><th class="col-why">Why / what it reveals</th></tr></thead>
+<tbody>
+<tr><td class="name">Gross Margin</td><td class="cat">Margin</td><td class="formula">Gross Profit ÷ Revenue</td><td><span class="stmt s-is">IS</span></td><td class="why"><b>Pricing power / moat.</b> High &amp; stable = customers pay up, rivals can't undercut. The single best moat fingerprint.</td></tr>
+<tr><td class="name">EBITDA Margin</td><td class="cat">Margin</td><td class="formula">EBITDA ÷ Revenue</td><td><span class="stmt s-is">IS</span></td><td class="why">Rough cash-operating profitability. <b>Use warily</b> — ignores the real cost of maintaining assets (depreciation/capex).</td></tr>
+<tr><td class="name">EBIT / Operating Margin</td><td class="cat">Margin</td><td class="formula">EBIT ÷ Revenue</td><td><span class="stmt s-is">IS</span></td><td class="why"><b>Financing-neutral operational efficiency</b> — the analyst's favourite. Comparable across companies regardless of debt.</td></tr>
+<tr><td class="name">EBT Margin</td><td class="cat">Margin</td><td class="formula">Earnings Before Tax ÷ Revenue</td><td><span class="stmt s-is">IS</span></td><td class="why">Operating margin after the interest bill — shows the drag of financing before tax.</td></tr>
+<tr><td class="name">Net Profit Margin</td><td class="cat">Margin</td><td class="formula">Net Income ÷ Revenue</td><td><span class="stmt s-is">IS</span></td><td class="why">Final shareholder take. Most complete but <b>contaminated</b> by leverage &amp; tax — don't judge quality from it alone.</td></tr>
+<tr><td class="name">FCF Margin</td><td class="cat">Margin (cash)</td><td class="formula">Free Cash Flow ÷ Revenue<br>(FCF = CFO − CapEx)</td><td><span class="stmt s-cf">CF</span><span class="stmt s-is">IS</span></td><td class="why"><b>The truth serum.</b> How many cents of each sales dollar become real, spendable cash. Cash is fact; earnings are opinion.</td></tr>
+<tr><td class="name">SG&amp;A % of Revenue</td><td class="cat">Cost structure</td><td class="formula">SG&amp;A ÷ Revenue</td><td><span class="stmt s-is">IS</span></td><td class="why">Overhead discipline. Creeping up = bloat; falling with scale = operating leverage working.</td></tr>
+<tr><td class="name">Depreciation % of Revenue</td><td class="cat">Cost structure</td><td class="formula">Depreciation ÷ Revenue</td><td><span class="stmt s-is">IS</span></td><td class="why">Capital intensity proxy — how much of sales is consumed replacing worn assets.</td></tr>
+<tr><td class="name">Tax % of Revenue</td><td class="cat">Cost structure</td><td class="formula">Tax ÷ Revenue</td><td><span class="stmt s-is">IS</span></td><td class="why">Tax drag on sales. Watch for one-off/low tax years flattering net margin.</td></tr>
+<tr><td class="name">Tax Burden</td><td class="cat">DuPont 5-step</td><td class="formula">Net Income ÷ EBT</td><td><span class="stmt s-is">IS</span></td><td class="why">Fraction of pre-tax profit surviving tax (e.g. 0.65 = 35% rate). Isolates the <b>tax effect</b>.</td></tr>
+<tr><td class="name">Interest Burden</td><td class="cat">DuPont 5-step</td><td class="formula">EBT ÷ EBIT</td><td><span class="stmt s-is">IS</span></td><td class="why">Fraction of operating profit surviving interest. Low = heavy debt eating earnings. Isolates the <b>financing effect</b>.</td></tr>
+<tr><td class="name">Effective Tax Rate</td><td class="cat">Support metric</td><td class="formula">Tax ÷ EBT</td><td><span class="stmt s-is">IS</span></td><td class="why">Actual tax rate paid — the input to NOPAT = EBIT × (1 − rate).</td></tr>
+<tr><td class="name">Effective Interest Rate</td><td class="cat">Support metric</td><td class="formula">Interest Expense ÷ Total Interest-Bearing Debt</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why">Average cost of the company's debt — a real-world input to the cost-of-debt leg of WACC.</td></tr>
+</tbody>
+</table>
+
+<h3 class="cat" id="cat-c">C · Asset Utilization / Efficiency Ratios — the DuPont turnover lever <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<table>
+<thead><tr><th class="col-name">Ratio</th><th class="col-cat">Category</th><th class="col-formula">Formula</th><th class="col-stmt">Uses</th><th class="col-why">Why / what it reveals</th></tr></thead>
+<tbody>
+<tr><td class="name">Asset Turnover</td><td class="cat">Efficiency</td><td class="formula">Revenue ÷ Total Assets</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why"><b>Sales per dollar of assets.</b> The efficiency half of DuPont. Retailers win here (low margin × high turnover).</td></tr>
+<tr><td class="name">Fixed Asset (PP&amp;E) Turnover</td><td class="cat">Efficiency</td><td class="formula">Revenue ÷ PP&amp;E</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why">How hard the physical asset base works. Key for asset-heavy businesses (stores, plants, grids).</td></tr>
+<tr><td class="name">Inventory Turnover</td><td class="cat">Efficiency</td><td class="formula">COGS ÷ Inventory</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why">How fast stock sells. High = lean, fresh, low obsolescence risk.</td></tr>
+<tr><td class="name">Inventory Days (DIO)</td><td class="cat">Efficiency (days)</td><td class="formula">Inventory × 365 ÷ COGS</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why">Days stock sits before selling. Lower = tighter operations.</td></tr>
+<tr><td class="name">A/R Turnover</td><td class="cat">Efficiency</td><td class="formula">Revenue ÷ Accounts Receivable</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why">How quickly customers pay. High = strong collection / cash discipline.</td></tr>
+<tr><td class="name">A/R Days (DSO)</td><td class="cat">Efficiency (days)</td><td class="formula">Accounts Receivable × 365 ÷ Revenue</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why">Days to collect from customers. Rising DSO can signal channel-stuffing or weak customers.</td></tr>
+<tr><td class="name">A/P Turnover</td><td class="cat">Efficiency</td><td class="formula">COGS ÷ Accounts Payable</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why">How fast the company pays suppliers. Lower turnover = using suppliers as free financing.</td></tr>
+<tr><td class="name">A/P Days (DPO)</td><td class="cat">Efficiency (days)</td><td class="formula">Accounts Payable × 365 ÷ COGS</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why">Days taken to pay suppliers. Higher = more supplier float (a good-guy source of free capital).</td></tr>
+<tr><td class="name">Cash Turnover / Cash Days</td><td class="cat">Efficiency</td><td class="formula">Revenue ÷ Cash&nbsp;&nbsp;|&nbsp;&nbsp;Cash × 365 ÷ Revenue</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why">How much cash the business carries relative to sales — idle-cash check.</td></tr>
+<tr><td class="name">Cash Conversion Cycle</td><td class="cat">Working capital</td><td class="formula">DSO + DIO − DPO</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why"><b>Days cash is trapped in operations.</b> Negative (Walmart, Costco) = suppliers finance you = a hidden moat / float.</td></tr>
+<tr><td class="name">Working Capital % of Revenue</td><td class="cat">Working capital</td><td class="formula">Net Working Capital ÷ Revenue</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why">How much cash growth consumes. Low/negative = capital-light compounder.</td></tr>
+<tr><td class="name">CapEx % of Revenue</td><td class="cat">Capital intensity</td><td class="formula">CapEx ÷ Revenue</td><td><span class="stmt s-cf">CF</span><span class="stmt s-is">IS</span></td><td class="why">How capital-hungry the model is. Split into maintenance vs. growth capex to find true owner earnings.</td></tr>
+</tbody>
+</table>
+
+<h3 class="cat" id="cat-d">D · Leverage / Solvency Ratios — balance-sheet fragility <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<table>
+<thead><tr><th class="col-name">Ratio</th><th class="col-cat">Category</th><th class="col-formula">Formula</th><th class="col-stmt">Uses</th><th class="col-why">Why / what it reveals</th></tr></thead>
+<tbody>
+<tr><td class="name">Total Assets ÷ Equity</td><td class="cat">Leverage (DuPont)</td><td class="formula">Total Assets ÷ Equity</td><td><span class="stmt s-bs">BS</span></td><td class="why">The <b>equity multiplier</b> — DuPont's leverage lever. The term that inflates ROE with debt.</td></tr>
+<tr><td class="name">Total Liabilities ÷ Equity</td><td class="cat">Leverage</td><td class="formula">Total Liabilities ÷ Equity</td><td><span class="stmt s-bs">BS</span></td><td class="why">Broadest gearing measure — all obligations vs. owner capital.</td></tr>
+<tr><td class="name">Debt ÷ Equity</td><td class="cat">Leverage</td><td class="formula">Interest-Bearing Debt ÷ Equity</td><td><span class="stmt s-bs">BS</span></td><td class="why">Cleanest gearing — only real (interest-bearing) debt vs. equity.</td></tr>
+<tr><td class="name">Debt ÷ EBITDA</td><td class="cat">Leverage</td><td class="formula">Interest-Bearing Debt ÷ EBITDA</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why">Years of gross earnings to repay debt. &gt;3–4× starts to look stretched.</td></tr>
+<tr><td class="name">Net Debt ÷ EBITDA</td><td class="cat">Leverage</td><td class="formula">(Interest-Bearing Debt − Cash) ÷ EBITDA</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why">Same, netting out cash — the true leverage lenders watch. Negative = net cash fortress.</td></tr>
+<tr><td class="name">Net Debt ÷ FCF</td><td class="cat">Leverage (cash)</td><td class="formula">(Debt − Cash) ÷ Free Cash Flow</td><td><span class="stmt s-cf">CF</span><span class="stmt s-bs">BS</span></td><td class="why">The <b>real</b> repayment test — can actual cash service the debt? Stricter than EBITDA versions.</td></tr>
+<tr><td class="name">EBIT Interest Coverage</td><td class="cat">Coverage</td><td class="formula">EBIT ÷ Interest Expense</td><td><span class="stmt s-is">IS</span></td><td class="why">How many times operating profit covers the interest bill. Stricter than the EBITDA version.</td></tr>
+<tr><td class="name">Altman Z-Score</td><td class="cat">Distress risk</td><td class="formula">Composite (5 weighted ratios)</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span><span class="stmt s-mkt">MKT</span></td><td class="why">Bankruptcy-probability triage. &lt;1.8 = distress zone; &gt;3 = safe. Fast recession stress-test.</td></tr>
+</tbody>
+</table>
+
+<h3 class="cat" id="cat-e">E · Liquidity Ratios — can it survive the next 12 months? <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<table>
+<thead><tr><th class="col-name">Ratio</th><th class="col-cat">Category</th><th class="col-formula">Formula</th><th class="col-stmt">Uses</th><th class="col-why">Why / what it reveals</th></tr></thead>
+<tbody>
+<tr><td class="name">Current Ratio</td><td class="cat">Liquidity</td><td class="formula">Current Assets ÷ Current Liabilities</td><td><span class="stmt s-bs">BS</span></td><td class="why">Can short-term assets cover short-term bills? &gt;1 = yes. Basic solvency check.</td></tr>
+<tr><td class="name">Quick Ratio (Acid Test)</td><td class="cat">Liquidity</td><td class="formula">(Current Assets − Inventory) ÷ Current Liabilities</td><td><span class="stmt s-bs">BS</span></td><td class="why">Stricter — excludes inventory (which may not sell fast). The real short-term crunch test.</td></tr>
+<tr><td class="name">Cash Ratio</td><td class="cat">Liquidity</td><td class="formula">Cash &amp; Equivalents ÷ Current Liabilities</td><td><span class="stmt s-bs">BS</span></td><td class="why">Most conservative — only actual cash. Survival in a total credit freeze.</td></tr>
+<tr><td class="name">Interest Coverage (EBITDA)</td><td class="cat">Coverage</td><td class="formula">EBITDA ÷ Interest Expense</td><td><span class="stmt s-is">IS</span></td><td class="why">Times over the company can pay its interest. &lt;2× is a red flag.</td></tr>
+<tr><td class="name">Defensive Interval</td><td class="cat">Liquidity</td><td class="formula">Liquid Assets ÷ Daily Operating Expense</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why">How many DAYS the company survives with zero revenue. Brutal but honest recession stress-test.</td></tr>
+</tbody>
+</table>
+
+<h3 class="cat" id="cat-f">F · Growth &amp; Leverage-Sensitivity Ratios <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<table>
+<thead><tr><th class="col-name">Ratio</th><th class="col-cat">Category</th><th class="col-formula">Formula</th><th class="col-stmt">Uses</th><th class="col-why">Why / what it reveals</th></tr></thead>
+<tbody>
+<tr><td class="name">Revenue / EBITDA / EBIT / NI / Asset Growth</td><td class="cat">Growth</td><td class="formula">(Currentᵧ − Priorᵧ) ÷ Priorᵧ</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why">Year-over-year expansion at each level. Compare growth of EACH line — if NI grows faster than revenue, margins or leverage are rising.</td></tr>
+<tr><td class="name">Degree of Operating Leverage (DOL)</td><td class="cat">Leverage sensitivity</td><td class="formula">%Δ EBIT ÷ %Δ Revenue</td><td><span class="stmt s-is">IS</span></td><td class="why">How fixed costs <b>amplify</b> sales changes into operating profit. High DOL = coiled spring (great up, brutal down).</td></tr>
+<tr><td class="name">Degree of Financial Leverage (DFL)</td><td class="cat">Leverage sensitivity</td><td class="formula">%Δ Net Income ÷ %Δ EBIT</td><td><span class="stmt s-is">IS</span></td><td class="why">How DEBT amplifies operating swings into bottom-line swings.</td></tr>
+<tr><td class="name">Degree of Total Leverage (DTL)</td><td class="cat">Leverage sensitivity</td><td class="formula">DOL × DFL = %Δ NI ÷ %Δ Revenue</td><td><span class="stmt s-is">IS</span></td><td class="why">Combined amplification — how violently earnings swing per unit of sales change. The recession volatility gauge.</td></tr>
+<tr><td class="name">Per-Share Growth (EPS, FCF/sh, BVPS)</td><td class="cat">Growth (per share)</td><td class="formula">Δ (Metric ÷ Shares Outstanding)</td><td><span class="stmt s-is">IS</span><span class="stmt s-cf">CF</span><span class="stmt s-mkt">MKT</span></td><td class="why"><b>The only growth an owner feels.</b> Total growth financed by share issuance makes YOU poorer. Buffett tracks per-share intrinsic value.</td></tr>
+<tr><td class="name">Sustainable Growth Rate</td><td class="cat">Growth capacity</td><td class="formula">ROE × (1 − Payout Ratio)</td><td><span class="stmt s-is">IS</span></td><td class="why">Growth funded purely from retained earnings, no new capital. The self-financing ceiling.</td></tr>
+</tbody>
+</table>
+
+<!-- ================= ENGINE 2 : PRICE / VALUE ================= -->
+<h2 class="eng v" id="engine-price">ENGINE 2 — The Price / Value Engine <span style="font-weight:400;font-size:15px;color:var(--mut)">· "Is it selling for less than it's worth?"</span></h2>
+<p class="engnote">These need the market price (MKT). Quality tells you WHAT to want; valuation tells you WHAT to pay. A wonderful business at a terrible price still violates Rule #1.</p>
+
+<h3 class="cat" id="cat-g">G · Market Valuation Multiples — what the market charges <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<table>
+<thead><tr><th class="col-name">Ratio</th><th class="col-cat">Category</th><th class="col-formula">Formula</th><th class="col-stmt">Uses</th><th class="col-why">Why / what it reveals</th></tr></thead>
+<tbody>
+<tr><td class="name">P/E — Price / Earnings</td><td class="cat">Equity multiple</td><td class="formula">Price ÷ EPS&nbsp;&nbsp;(= Market Cap ÷ Net Income)</td><td><span class="stmt s-mkt">MKT</span><span class="stmt s-is">IS</span></td><td class="why">Years of earnings you pay for. Simple, but distorted by leverage &amp; one-off earnings.</td></tr>
+<tr><td class="name">Earnings Yield</td><td class="cat">Equity multiple</td><td class="formula">EPS ÷ Price&nbsp;&nbsp;(= 1 ÷ P/E)</td><td><span class="stmt s-mkt">MKT</span><span class="stmt s-is">IS</span></td><td class="why">P/E inverted — the return you'd earn if earnings were paid out. Compare directly to bond yields.</td></tr>
+<tr><td class="name">PEG</td><td class="cat">Growth-adjusted</td><td class="formula">P/E ÷ Earnings Growth %</td><td><span class="stmt s-mkt">MKT</span><span class="stmt s-is">IS</span></td><td class="why">P/E relative to growth. &lt;1 loosely "cheap for the growth." Use as a rough sieve, not a verdict.</td></tr>
+<tr><td class="name">P/B — Price / Book</td><td class="cat">Equity multiple</td><td class="formula">Price ÷ Book Value/sh&nbsp;(= Mkt Cap ÷ Equity)</td><td><span class="stmt s-mkt">MKT</span><span class="stmt s-bs">BS</span></td><td class="why">Price vs. net asset value. Key for banks/insurers &amp; asset-heavy firms. Links directly to ROE (see Bridge).</td></tr>
+<tr><td class="name">P/S — Price / Sales</td><td class="cat">Equity multiple</td><td class="formula">Market Cap ÷ Revenue</td><td><span class="stmt s-mkt">MKT</span><span class="stmt s-is">IS</span></td><td class="why">Useful when earnings are negative/volatile. Meaningless without a margin assumption.</td></tr>
+<tr><td class="name">P/FCF &amp; FCF Yield</td><td class="cat">Cash multiple</td><td class="formula">Mkt Cap ÷ FCF&nbsp;&nbsp;|&nbsp;&nbsp;FCF ÷ Mkt Cap</td><td><span class="stmt s-mkt">MKT</span><span class="stmt s-cf">CF</span></td><td class="why"><b>Buffett's preferred.</b> The real cash return you buy. FCF Yield vs. bond yield = your opportunity-cost test.</td></tr>
+<tr><td class="name">Dividend Yield</td><td class="cat">Income</td><td class="formula">Dividend per Share ÷ Price</td><td><span class="stmt s-mkt">MKT</span><span class="stmt s-is">IS</span></td><td class="why">Cash income per euro invested. Beware the yield trap (high yield from a falling price). Check payout coverage.</td></tr>
+<tr><td class="name">EV / EBITDA</td><td class="cat">Enterprise multiple</td><td class="formula">Enterprise Value ÷ EBITDA<br>(EV = Mkt Cap + Net Debt)</td><td><span class="stmt s-mkt">MKT</span><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why"><b>Capital-structure-neutral</b> — matches ROIC logic (values the whole firm). The standard for comparing across debt loads.</td></tr>
+<tr><td class="name">EV / EBIT</td><td class="cat">Enterprise multiple</td><td class="formula">Enterprise Value ÷ EBIT</td><td><span class="stmt s-mkt">MKT</span><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why">Like EV/EBITDA but respects depreciation — fairer for asset-heavy firms. Greenblatt's "Magic Formula" earnings yield.</td></tr>
+<tr><td class="name">EV / Sales</td><td class="cat">Enterprise multiple</td><td class="formula">Enterprise Value ÷ Revenue</td><td><span class="stmt s-mkt">MKT</span><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span></td><td class="why">Whole-firm sales multiple — for pre-profit or cyclical firms.</td></tr>
+<tr><td class="name">EV / Invested Capital</td><td class="cat">Enterprise multiple</td><td class="formula">Enterprise Value ÷ Invested Capital</td><td><span class="stmt s-mkt">MKT</span><span class="stmt s-bs">BS</span></td><td class="why">Price-to-book for the whole firm. Pair with ROIC/WACC — high-ROIC firms deserve EV/IC &gt; 1 (see Bridge).</td></tr>
+<tr><td class="name">EV / FCF</td><td class="cat">Enterprise multiple</td><td class="formula">Enterprise Value ÷ Free Cash Flow</td><td><span class="stmt s-mkt">MKT</span><span class="stmt s-cf">CF</span><span class="stmt s-bs">BS</span></td><td class="why">Whole-firm cash multiple — arguably the cleanest single valuation number.</td></tr>
+</tbody>
+</table>
+
+<!-- ================= BRIDGE ================= -->
+<h2 class="eng b" id="engine-bridge">THE BRIDGE — Justified Multiples &amp; Value Drivers <span style="font-weight:400;font-size:15px;color:var(--mut)">· converting Quality into deserved Price</span></h2>
+<p class="engnote">These are the gears that mesh the two engines. They take the Quality output (ROE / ROIC / growth) and compute the multiple — the value — that quality DESERVES. The gap vs. the market multiple IS your margin of safety.</p>
+
+<h3 class="cat" id="cat-h">H · Justified / Intrinsic Multiples &amp; Value-Driver Models <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<table>
+<thead><tr><th class="col-name">Model</th><th class="col-cat">Category</th><th class="col-formula">Formula</th><th class="col-stmt">Uses</th><th class="col-why">Why / what it reveals</th></tr></thead>
+<tbody>
+<tr><td class="name">Justified P/B</td><td class="cat">Bridge (equity)</td><td class="formula">(ROE − g) ÷ (r − g)<br><span style="color:var(--mut)">r = cost of equity, g = growth</span></td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span><span class="stmt s-mkt">MKT</span></td><td class="why"><b>The core bridge.</b> Converts ROE (DuPont's output) into the price-to-book it earns. Compare to actual P/B for the margin of safety.</td></tr>
+<tr><td class="name">Justified P/E (leading)</td><td class="cat">Bridge (equity)</td><td class="formula">Payout Ratio ÷ (r − g)</td><td><span class="stmt s-is">IS</span><span class="stmt s-mkt">MKT</span></td><td class="why">The P/E a business deserves given payout, growth &amp; risk. Anchor for judging if the market P/E is fair.</td></tr>
+<tr><td class="name">Justified EV / Invested Capital</td><td class="cat">Bridge (firm)</td><td class="formula">(ROIC − g) ÷ (WACC − g)</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span><span class="stmt s-mkt">MKT</span></td><td class="why">The whole-firm bridge — ROIC's version of justified P/B. If ROIC &gt; WACC, EV/IC &gt; 1 is earned.</td></tr>
+<tr><td class="name">Gordon Growth Value</td><td class="cat">Intrinsic value</td><td class="formula">D₁ ÷ (r − g)</td><td><span class="stmt s-is">IS</span><span class="stmt s-mkt">MKT</span></td><td class="why">Simplest intrinsic value — a perpetuity of growing dividends. The DNA behind every justified multiple.</td></tr>
+<tr><td class="name">McKinsey Value-Driver Model</td><td class="cat">Intrinsic value</td><td class="formula">NOPAT × (1 − g/ROIC) ÷ (WACC − g)</td><td><span class="stmt s-is">IS</span><span class="stmt s-bs">BS</span><span class="stmt s-mkt">MKT</span></td><td class="why"><b>The "DuPont of value."</b> Value factors into ROIC, g, WACC — and PROVES growth only creates value when ROIC &gt; WACC.</td></tr>
+<tr><td class="name">DCF / Owner Earnings Value</td><td class="cat">Intrinsic value</td><td class="formula">Σ FCF ÷ (1+WACC)ⁿ + Terminal Value</td><td><span class="stmt s-cf">CF</span><span class="stmt s-is">IS</span><span class="stmt s-mkt">MKT</span></td><td class="why">The full intrinsic-value engine (your project-finance strength). Owner earnings = NI + D&amp;A − maintenance capex ± WC.</td></tr>
+<tr><td class="name">Total Return Decomposition</td><td class="cat">Return sources</td><td class="formula">Div Yield + Earnings Growth ± Δ Multiple</td><td><span class="stmt s-mkt">MKT</span><span class="stmt s-is">IS</span></td><td class="why"><b>The "DuPont of your return"</b> (Bogle). Splits future return into fundamental (yield+growth) vs. speculative (re-rating). Long run → fundamentals win.</td></tr>
+</tbody>
+</table>
+
+<div class="synth" style="border-color:var(--bridge)" id="articulate">
+  <h4 style="color:var(--bridge)">How the Three Valuation Models Articulate — one equation, three rotations</h4>
+  <p style="color:var(--mut);font-size:13.5px;margin:0 0 6px">The Value Driver Model, the Justified Multiple, and the Total Return Decomposition are <b style="color:var(--ink)">not three tools — they are one equation seen from three angles.</b> The shared root is the Gordon / DCF perpetuity:</p>
+  <div class="eqbox" style="text-align:center;font-size:15px">Value = Cash Flow ÷ ( <span class="hl">r − g</span> )</div>
+  <div class="flow">
+    <div class="flowcard v"><div class="h">① ABSOLUTE — "What is it worth?"</div><p><b>Value Driver Model.</b><br>Value = NOPAT × (1 − g/ROIC) ÷ (WACC − g).<br>The perpetuity in euros. The parent form → gives an intrinsic value to compare vs. market cap. <i>Use for a full DCF verdict.</i></p></div>
+    <div class="flowcard b"><div class="h">② RATIO — "What multiple does it deserve?"</div><p><b>Justified Multiple.</b><br>Divide ① by a fundamental → the euros cancel into a ratio:<br>P/B = (ROE − g)/(r − g); EV/IC = (ROIC − g)/(WACC − g). <i>Use for a fast relative check vs. the market multiple.</i></p></div>
+    <div class="flowcard d"><div class="h">③ RATE — "What will I earn?"</div><p><b>Total Return Decomposition.</b><br>Solve ① for r:&nbsp; r = (D₁/P) + g<br>= Dividend Yield + Growth ± Δ Multiple. <i>Use to forecast forward return and see its sources.</i></p></div>
+  </div>
+  <div class="eqbox" style="font-size:13px;color:var(--mut)">THE CLOSURE:&nbsp; buy at the justified multiple (price = fair value) → the Δ-multiple term = 0 → your return = <span class="hl">Dividend Yield + Growth = r</span>, the very discount rate used in ①. Pay fair value, earn exactly the cost of equity. The three <b style="color:var(--ink)">must</b> agree — they are the same equation.</div>
+  <p style="color:var(--mut);font-size:13px;margin:8px 0 0"><b style="color:var(--ink)">One engine, three dials:</b> choose whether to read the output as a <b>price</b> (①), a <b>multiple</b> (②), or a <b>return</b> (③). Underwrite the yield + growth you can defend; refuse to pay for the speculative re-rating you cannot.</p>
+</div>
+
+<!-- ================= SYNTHESIS ================= -->
+<h2 class="eng b" id="synthesis" style="border-left-color:var(--acc);background:linear-gradient(90deg,#12222e,transparent)">SYNTHESIS — The Two Driver Engines, Fused</h2>
+
+<div class="synth">
+  <h4>Engine 1 · The DuPont Quality Engine — decomposing ROE into its drivers</h4>
+  <div class="eqbox"><b>3-STEP:</b>&nbsp; ROE = <span class="hl">Net Margin</span> × <span class="hl">Asset Turnover</span> × <span class="hl">Equity Multiplier</span><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= (NI/Revenue) × (Revenue/Assets) × (Assets/Equity)</div>
+  <div class="eqbox"><b>5-STEP:</b>&nbsp; ROE = <span class="hl">Tax Burden</span> × <span class="hl">Interest Burden</span> × <span class="hl">Operating Margin</span> × <span class="hl">Asset Turnover</span> × <span class="hl">Equity Multiplier</span><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= (NI/EBT)×(EBT/EBIT)×(EBIT/Rev)×(Rev/Assets)×(Assets/Equity)</div>
+  <p style="color:var(--mut);font-size:13.5px;margin:6px 0 0"><b style="color:var(--ink)">What it does:</b> shatters a single ROE into <b>profitability × efficiency × leverage</b> — and the 5-step further splits profitability into <b>operating skill vs. financing vs. tax</b>. It is the lie-detector for ROE: it forces the number to confess whether the return is <b>earned</b> (margin/turnover) or merely <b>borrowed</b> (equity multiplier).</p>
+</div>
+
+<div class="synth">
+  <h4>Engine 2 · The Value-Driver Engine — decomposing intrinsic value into its drivers</h4>
+  <div class="eqbox">Value = NOPAT × ( 1 − <span class="hl">g</span> / <span class="hl">ROIC</span> ) ÷ ( <span class="hl">WACC</span> − <span class="hl">g</span> )</div>
+  <p style="color:var(--mut);font-size:13.5px;margin:6px 0 0"><b style="color:var(--ink)">What it does:</b> factors a company's entire worth into three drivers — <b>ROIC</b> (quality), <b>g</b> (growth), <b>WACC</b> (cost of capital). The term (1 − g/ROIC) delivers the verdict of value investing: <b>growth creates value only when ROIC &gt; WACC; below it, growth destroys value.</b> Quality is the gatekeeper; growth is worth paying for only once quality clears the cost of capital.</p>
+</div>
+
+<div class="synth" style="border-color:var(--bridge)">
+  <h4 style="color:var(--bridge)">The Gear That Meshes Them — the Justified Multiple</h4>
+  <div class="eqbox">Justified P/B = ( <span class="hl">ROE</span> − g ) ÷ ( r − g ) &nbsp;&nbsp;&nbsp;&nbsp; Justified EV/IC = ( <span class="hl">ROIC</span> − g ) ÷ ( WACC − g )</div>
+  <p style="color:var(--mut);font-size:13.5px;margin:6px 0 0">The justified multiple takes the <b>output of the Quality engine (ROE/ROIC)</b> and turns it into the <b>input of the Price engine (the deserved multiple)</b>. That is the seam where the two machines lock together.</p>
+  <div class="flow">
+    <div class="flowcard q"><div class="h">1 · QUALITY</div><p>DuPont decomposes ROE / ROIC. Confirm it's high, durable &amp; reinvestable across 5–10 yrs.</p></div>
+    <div class="arrow">→</div>
+    <div class="flowcard b"><div class="h">2 · BRIDGE</div><p>Feed ROE/ROIC into the justified multiple → the price the quality DESERVES.</p></div>
+    <div class="arrow">→</div>
+    <div class="flowcard v"><div class="h">3 · PRICE</div><p>Compare deserved multiple vs. the market's actual multiple.</p></div>
+    <div class="arrow">→</div>
+    <div class="flowcard d"><div class="h">4 · MARGIN OF SAFETY</div><p>The gap = your edge. Buy only when deserved ≫ market price.</p></div>
+  </div>
+</div>
+
+<div class="callout">
+  <b>The Buffett Intersection.</b> He does not buy high-quality businesses (Munger's half) <i>or</i> cheap multiples (Graham's half) — he buys <b>high-ROIC businesses trading below their justified multiple</b>. Quality confirmed by DuPont; price confirmed with a margin of safety by the justified multiple. That single intersection — <b>wonderful business AND cheap</b> — is the only place a euro should move.
+</div>
+
+<div class="callout warnbox">
+  <b>The discipline in one line.</b> Quality without price is a <b>wait</b>. Price without quality is a <b>trap</b>. Only <b>quality + price + margin of safety</b> is a <b>buy</b>. This model measures quality brilliantly — never let it move you without the price verdict beside it.
+</div>
+
+<!-- ================= DECISION GUIDE ================= -->
+<h2 class="eng b" id="when-use" style="border-left-color:var(--acc);background:linear-gradient(90deg,#12222e,transparent)">WHEN TO USE EACH RATIO <span style="font-weight:400;font-size:15px;color:var(--mut)">· matching the lens to the question &amp; the business</span></h2>
+<p class="engnote">No ratio is "best" — each is a lens for a different question and a different business type. The art is picking the lens that could <i>falsify</i> your thesis, not the one that flatters it. Then triangulate — the divergences between ratios are where the truth hides.</p>
+
+<h3 class="cat" id="when-return">Return Ratios — when to use each <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<table>
+<thead><tr><th class="col-name">Ratio</th><th style="width:26%">Use when you want to…</th><th style="width:24%">Best for (business type)</th><th style="width:26%">Watch out for</th></tr></thead>
+<tbody>
+<tr><td class="name">ROE</td><td class="why">Know the <b>shareholder's</b> return on their equity; fast screen.</td><td class="why"><b>Banks &amp; insurers</b> (leverage is the model; equity is the natural base).</td><td class="why">Inflated by leverage — <b>always run DuPont first</b>. Never trust naked.</td></tr>
+<tr><td class="name">ROA</td><td class="why">Gauge <b>asset efficiency</b>, leverage-resistant quick read.</td><td class="why">Asset-heavy firms; banks (key metric alongside ROE).</td><td class="why">Numerator (post-interest NI) vs denominator (all assets) slightly mismatched.</td></tr>
+<tr><td class="name">ROIC</td><td class="why">Judge <b>value creation</b> (vs WACC) — the default quality test.</td><td class="why"><b>Capital-heavy operators</b>: retail, industrial, energy, utilities.</td><td class="why">Breaks down for banks/insurers; mind non-operating assets in holdcos.</td></tr>
+<tr><td class="name">ROCE</td><td class="why">Compare <b>across tax regimes / countries</b> (pre-tax).</td><td class="why">Capital-intensive &amp; cross-border peers (EU convention).</td><td class="why">Pre-tax → not directly comparable to after-tax WACC; TA−CL also strips short-term debt.</td></tr>
+<tr><td class="name">CROIC</td><td class="why">Verify earnings are <b>real cash</b>, not accruals.</td><td class="why">Capital-heavy or any firm with suspect earnings quality.</td><td class="why">Lumpy capex makes single years noisy — smooth it.</td></tr>
+<tr><td class="name">Incremental ROIC</td><td class="why">Test whether <b>NEW capital</b> earns well — the compounder/reinvestment test.</td><td class="why">Growing &amp; reinvesting businesses; asset-light compounders.</td><td class="why">Single years explode (near-zero denominator); use 3–5yr span &amp; lag capital.</td></tr>
+</tbody>
+</table>
+<div class="callout"><b>By business type (return side).</b> <b>Banks &amp; insurers →</b> ROE, ROA, ROTCE (ROIC breaks — debt is raw material). <b>Capital-heavy operators →</b> ROIC, ROCE, CROIC. <b>Asset-light compounders →</b> ROIC &amp; Incremental ROIC. <b>Holdcos (Exor, Berkshire) →</b> sum-of-the-parts, never a blended ROIC.</div>
+
+<h3 class="cat" id="when-price">Price / Valuation Ratios — when to use each <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<table>
+<thead><tr><th class="col-name">Ratio</th><th style="width:26%">Use when you want to…</th><th style="width:24%">Best for (business type)</th><th style="width:26%">Watch out for</th></tr></thead>
+<tbody>
+<tr><td class="name">P/E</td><td class="why">Quick screen / compare similar profitable firms.</td><td class="why">Stable, profitable companies.</td><td class="why">Breaks on negative/volatile earnings; distorted by leverage; <b>inverts on cyclicals</b>.</td></tr>
+<tr><td class="name">Earnings Yield (1/PE)</td><td class="why">Compare vs <b>bonds / cash</b> — opportunity cost.</td><td class="why">Any profitable firm; macro asset-allocation.</td><td class="why">Same earnings-quality caveats as P/E.</td></tr>
+<tr><td class="name">PEG</td><td class="why">Contextualize a high P/E against <b>growth</b>.</td><td class="why">Growth companies.</td><td class="why">Only as good as the (fragile) growth estimate.</td></tr>
+<tr><td class="name">P/B (&amp; P/TBV)</td><td class="why">Anchor on <b>net asset value</b> when earnings unreliable.</td><td class="why"><b>Banks, insurers</b>, asset-heavy, deep-value.</td><td class="why">Meaningless for asset-light firms; judge against ROE (justified P/B).</td></tr>
+<tr><td class="name">P/S &amp; EV/Sales</td><td class="why">Value when earnings are <b>negative / depressed</b>.</td><td class="why">Early-stage, turnarounds, cyclicals at trough.</td><td class="why">Useless without a margin assumption.</td></tr>
+<tr><td class="name">P/FCF &amp; FCF Yield</td><td class="why">Get the <b>truest cash</b> value read; vs bond yield.</td><td class="why">Cash-generative businesses (Buffett's preferred).</td><td class="why">Lumpy capex distorts single years; check maintenance vs growth capex.</td></tr>
+<tr><td class="name">Dividend Yield</td><td class="why">Assess <b>income</b> from a mature payer.</td><td class="why">Mature dividend compounders.</td><td class="why"><b>Yield trap</b> — high yield from a falling price; check payout coverage.</td></tr>
+<tr><td class="name">EV/EBITDA</td><td class="why">Compare across <b>different leverage</b> (capital-structure-neutral).</td><td class="why">Cross-company / M&amp;A comparisons.</td><td class="why">Ignores capex (D&amp;A added back) → flatters asset-heavy firms.</td></tr>
+<tr><td class="name">EV/EBIT</td><td class="why">Same, but <b>respect depreciation</b> — fairer for asset-heavy.</td><td class="why">Energy, industrials (Greenblatt Magic Formula).</td><td class="why">Still needs normalized earnings for cyclicals.</td></tr>
+<tr><td class="name">EV/IC</td><td class="why">Pair with <b>ROIC vs WACC</b> — the justified enterprise multiple.</td><td class="why">Capital-intensive businesses.</td><td class="why">Only meaningful read alongside ROIC.</td></tr>
+<tr><td class="name">EV/FCF</td><td class="why">Get the cleanest single whole-firm cash multiple.</td><td class="why">Most operating businesses.</td><td class="why">Capex timing distorts single years.</td></tr>
+<tr><td class="name">Discount to NAV</td><td class="why">Value a <b>holding company</b> — sum-of-parts vs market price.</td><td class="why"><b>Holdcos: Exor, Berkshire, Investor AB</b>.</td><td class="why">NAV is an estimate; discount can persist for years.</td></tr>
+</tbody>
+</table>
+<div class="callout"><b>By business type (price side).</b> <b>Banks &amp; insurers →</b> P/B-vs-ROE &amp; P/E (EV breaks — can't compute meaningful EV). <b>Capital-heavy operators →</b> EV/EBIT, EV/FCF, EV/IC. <b>Asset-light compounders →</b> P/E, P/FCF, PEG. <b>Cyclicals →</b> normalized/mid-cycle earnings &amp; P/B. <b>Holdcos →</b> discount-to-NAV.</div>
+
+<div class="callout warnbox"><b>Three deadly traps.</b> <b>(1) Equity vs Enterprise:</b> when leverage varies across your comparison set, use EV multiples (they neutralize capital structure) — use equity multiples for financials. <b>(2) Cyclical inversion:</b> for energy/commodities/autos, a LOW P/E usually means PEAK earnings (a sell signal) and a high/negative P/E means trough (the buy) — the P/E inverts; use normalized earnings or P/B. <b>(3) A multiple alone lies:</b> a low multiple on collapsing ROIC/margins is a value trap; a high multiple on a durable high-ROIC compounder can be a bargain — never read a price ratio without the quality verdict beside it.</div>
+
+<!-- ================= ETF EXTENSION ================= -->
+<h2 class="eng q" id="etf" style="border-left-color:var(--acc);background:linear-gradient(90deg,#12222e,transparent)">APPLYING THE FRAMEWORK TO ETFs <span style="font-weight:400;font-size:15px;color:var(--mut)">· a basket in a wrapper, not a business</span></h2>
+<p class="engnote">An ETF has no operations, no moat, no COGS — so the engines don't apply to the ETF <i>directly</i>. They apply in THREE layers: the basket it holds, the structure that wraps it, and the valuation you buy it at. Run all three.</p>
+
+<div class="callout"><b>The core reframing.</b> A single stock demands you judge a <b>business</b>. An ETF demands you judge a <b>basket + a structure + a starting valuation</b>. The two engines still run on the basket (Layer 1) — but you bolt on a wrapper checklist (Layer 2), and for broad-market funds your edge migrates from stock <b>selection</b> to <b>cost minimization and valuation-based entry timing</b> (Layer 3).</div>
+
+<h3 class="cat" id="etf-l1">Layer 1 · Look-Through Fundamentals — run both engines on the weighted basket <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<p class="engnote" style="padding:0">You can't compute ROIC on the wrapper — but you can on the weighted-average of everything it holds. Providers publish these "portfolio characteristics." This is where the entire Quality + Price framework transfers intact.</p>
+<table>
+<thead><tr><th class="col-name">Metric (fund-level)</th><th class="col-cat">Category</th><th class="col-formula">How it's built</th><th class="col-stmt">Source</th><th class="col-why">Why / what it reveals</th></tr></thead>
+<tbody>
+<tr><td class="name">Weighted ROE / ROIC</td><td class="cat">Look-through quality</td><td class="formula">Σ (holding weight × holding ROE/ROIC)</td><td><span class="stmt s-mkt">Fund fact-sheet</span></td><td class="why">Is this a basket of <b>wonderful businesses</b> or mediocre ones? A high-ROIC "quality" ETF is a different animal from a cyclical/junk basket at the same price.</td></tr>
+<tr><td class="name">Weighted Net / Gross Margin</td><td class="cat">Look-through quality</td><td class="formula">Σ (weight × holding margin)</td><td><span class="stmt s-mkt">Fact-sheet</span></td><td class="why">Aggregate profitability &amp; moat fingerprint of the basket.</td></tr>
+<tr><td class="name">Weighted Net Debt / EBITDA</td><td class="cat">Look-through leverage</td><td class="formula">Σ (weight × holding leverage)</td><td><span class="stmt s-mkt">Fact-sheet</span></td><td class="why">How fragile is the basket in a downturn? Critical for your recession positioning.</td></tr>
+<tr><td class="name">Weighted P/E · P/B · EV/EBITDA</td><td class="cat">Look-through price</td><td class="formula">Fund's published aggregate multiples</td><td><span class="stmt s-mkt">Fact-sheet</span></td><td class="why">What you PAY for that aggregate quality. Compare to history &amp; to other ETFs — the Price engine at basket level.</td></tr>
+<tr><td class="name">Weighted Div Yield &amp; FCF Yield</td><td class="cat">Look-through price</td><td class="formula">Σ (weight × holding yield)</td><td><span class="stmt s-mkt">Fact-sheet</span></td><td class="why">Cash return of the basket; FCF yield vs. bond yield = your opportunity-cost test at portfolio level.</td></tr>
+</tbody>
+</table>
+
+<h3 class="cat" id="etf-l2">Layer 2 · The Wrapper Checklist — structural quality (no single-stock equivalent) <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<p class="engnote" style="padding:0">Here the "business quality" checks are REPLACED by "structure quality" checks. This layer is pure ETF edge — it has no counterpart in company analysis.</p>
+<table>
+<thead><tr><th class="col-name">Check</th><th class="col-cat">Category</th><th class="col-formula">What to look at</th><th class="col-stmt">Good sign</th><th class="col-why">Why it matters</th></tr></thead>
+<tbody>
+<tr><td class="name">Expense Ratio (TER)</td><td class="cat">Cost</td><td class="formula">Annual % fee</td><td><span class="stmt s-is">low</span></td><td class="why"><b>The #1 controllable variable.</b> 1%/yr can eat 25%+ of final wealth over decades. Your "margin of safety" applied to fees.</td></tr>
+<tr><td class="name">Tracking Difference / Error</td><td class="cat">Fidelity</td><td class="formula">Fund return − index return (and its volatility)</td><td><span class="stmt s-is">small</span></td><td class="why">Does it actually deliver the index, or leak performance beyond the stated fee?</td></tr>
+<tr><td class="name">Liquidity — AUM &amp; Volume</td><td class="cat">Liquidity</td><td class="formula">Assets under mgmt; avg daily volume</td><td><span class="stmt s-is">large</span></td><td class="why">Tiny funds risk closure; thin volume = hard to exit. Prefer deep, established funds.</td></tr>
+<tr><td class="name">Bid-Ask Spread</td><td class="cat">Liquidity</td><td class="formula">Quoted spread %</td><td><span class="stmt s-is">tight</span></td><td class="why">The market-maker's toll YOU pay on every trade. Wide on exotic/thin ETFs — a hidden cost.</td></tr>
+<tr><td class="name">Premium / Discount to NAV</td><td class="cat">Pricing</td><td class="formula">Price vs. net asset value of holdings</td><td><span class="stmt s-is">≈ 0</span></td><td class="why">Are you paying more/less than the basket is actually worth? Persistent premium = overpaying.</td></tr>
+<tr><td class="name">Replication Method</td><td class="cat">Structure risk</td><td class="formula">Physical (owns assets) vs. Synthetic (swaps)</td><td><span class="stmt s-is">physical</span></td><td class="why">Synthetic adds <b>counterparty risk</b> — the hidden, Archegos-flavoured danger. Prefer physical unless there's a strong reason.</td></tr>
+<tr><td class="name">Domicile &amp; Tax</td><td class="cat">Tax / access</td><td class="formula">UCITS (IE/LU) vs. US-domiciled; withholding</td><td><span class="stmt s-is">UCITS*</span></td><td class="why">For a France-based investor, domicile drives withholding tax, estate rules &amp; access. *UCITS usually the fit for EU residents.</td></tr>
+<tr><td class="name">Distributing vs. Accumulating</td><td class="cat">Tax / compounding</td><td class="formula">Pays out vs. reinvests dividends</td><td><span class="stmt s-is">depends</span></td><td class="why">Accumulating compounds tax-efficiently; distributing gives income. Match to your goal &amp; tax wrapper (PEA/CTO).</td></tr>
+<tr><td class="name">Index Methodology</td><td class="cat">What you own</td><td class="formula">Cap-weight vs. equal-weight vs. fundamental</td><td><span class="stmt s-is">know it</span></td><td class="why">The RULE that decides your holdings. Cap-weight = momentum tilt + concentration risk; fundamental = value tilt.</td></tr>
+<tr><td class="name">Concentration &amp; Overlap</td><td class="cat">Diversification</td><td class="formula">Top-10 weight %; overlap across your ETFs</td><td><span class="stmt s-is">low</span></td><td class="why">A "diversified" fund may be 30% in 7 mega-caps. Multiple ETFs may secretly own the same names — false diversification.</td></tr>
+</tbody>
+</table>
+
+<h3 class="cat" id="etf-l3">Layer 3 · Index-Level Expected Return — the master lens for a whole basket <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<p class="engnote" style="padding:0">The Total Return Decomposition (Bogle) was invented FOR indices — idiosyncratic noise averages out, so it's more reliable here than for a single stock. CAPE is its valuation input.</p>
+<table>
+<thead><tr><th class="col-name">Tool</th><th class="col-cat">Category</th><th class="col-formula">Formula</th><th class="col-stmt">Uses</th><th class="col-why">Why / what it reveals</th></tr></thead>
+<tbody>
+<tr><td class="name">Index Total Return Decomposition</td><td class="cat">Expected return</td><td class="formula">Dividend Yield + Earnings Growth ± Δ Multiple</td><td><span class="stmt s-mkt">MKT</span><span class="stmt s-is">IS</span></td><td class="why">The Bogle lens — splits an index's forward return into fundamental (yield + growth) vs. speculative (re-rating). Underwrite the fundamental; don't pay for the re-rating.</td></tr>
+<tr><td class="name">CAPE (Shiller P/E)</td><td class="cat">Index valuation</td><td class="formula">Price ÷ 10-yr average real earnings</td><td><span class="stmt s-mkt">MKT</span><span class="stmt s-is">IS</span></td><td class="why"><b>Justified-multiple logic for a whole index.</b> High CAPE → low forward returns (multiple must compress); low CAPE → high forward returns. Your entry-timing gauge.</td></tr>
+<tr><td class="name">Earnings Yield vs. Bond Yield</td><td class="cat">Opportunity cost</td><td class="formula">(1 ÷ index P/E) − 10yr bond yield</td><td><span class="stmt s-mkt">MKT</span><span class="stmt s-is">IS</span></td><td class="why">The equity risk premium on offer — is the index paying you enough over cash/bonds to justify the risk? Ties to your macro positioning.</td></tr>
+</tbody>
+</table>
+
+<div class="callout warnbox">
+  <b>What does NOT transfer.</b> With a broad ETF you can't demand a stock-picker's margin of safety on individual mispricing — you're buying the market's <b>average quality at the market's price</b>. So the value discipline SHIFTS: from "find the mispriced company" to <b>(1) minimize cost, (2) time entry via index valuation (CAPE), (3) refuse to buy when the return is mostly borrowed from multiple expansion.</b> For a cash-and-wait investor, CAPE + the return decomposition ARE your margin of safety — deploy tranches when the multiple compresses and forward-return math turns in your favour, not on a hunch.
+</div>
+
+<!-- ================= FOUNDATIONS / CONCEPTS ================= -->
+<h2 class="eng b" id="concepts" style="border-left-color:var(--acc);background:linear-gradient(90deg,#12222e,transparent)">FOUNDATIONS &amp; CONCEPTS <span style="font-weight:400;font-size:15px;color:var(--mut)">· everything else we built, in one map</span></h2>
+<p class="engnote">The market-structure and accounting concepts that sit underneath the ratios — who's who in the financial system, and what the balance-sheet building blocks actually mean.</p>
+
+<h3 class="cat" id="c-market">Market Structure — the map of the financial system <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<table>
+<thead><tr><th style="width:26%">Concept</th><th style="width:74%">Key distinction / what it is</th></tr></thead>
+<tbody>
+<tr><td class="name">Sell-side vs Buy-side</td><td class="why"><b>Sell-side</b> = investment banks that <i>create &amp; sell</i> securities and services (the shipyard). <b>Buy-side</b> = institutions that <i>own capital and deploy it</i> — the ones who write the cheques (pensions, funds, PE, family offices). You, as an investor, are buy-side.</td></tr>
+<tr><td class="name">Investment Banking: Industry vs Product Group</td><td class="why"><b>Industry Group</b> (coverage) = organised by <i>who the client is</i> (Healthcare, Energy…) — owns the relationship, originates deals. <b>Product Group</b> = organised by <i>what the deal is</i> (M&amp;A, DCM, ECM) — the technical specialists who execute. Coverage opens the door; product delivers the transaction.</td></tr>
+<tr><td class="name">Primary vs Secondary Market</td><td class="why"><b>Primary</b> = a brand-new security is <i>created</i> (IPO, new bond issue — the builder selling new). <b>Secondary</b> = existing securities <i>change hands</i> (the resale market). Defined by the ACTIVITY (creation vs resale), not the division. "Capital Markets" contains BOTH.</td></tr>
+<tr><td class="name">Syndication</td><td class="why">Splitting a deal too big for one bank across a <i>group</i> (syndicate) — spreads the risk and fees. The backbone of large loans &amp; project finance.</td></tr>
+<tr><td class="name">Securitization → ABS / MBS</td><td class="why">The factory that <i>bundles</i> illiquid loans into tradable bonds. <b>ABS</b> = backed by general loans (auto, cards); <b>MBS</b> = backed by mortgages. A primary-market (creation) activity that also trades secondary.</td></tr>
+<tr><td class="name">Buy-side: Traditional vs Non-Traditional</td><td class="why"><b>Traditional</b> = long-only, liquid, regulated (pensions, insurers, endowments, mutual funds). <b>Non-Traditional / alternatives</b> = go-anywhere, illiquid, lightly regulated (hedge funds, PE, VC, distressed). Family offices straddle both — permanent capital, total freedom.</td></tr>
+</tbody>
+</table>
+
+<h3 class="cat" id="c-players">Market Participants &amp; Roles <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<table>
+<thead><tr><th style="width:26%">Concept</th><th style="width:74%">Key distinction / what it is</th></tr></thead>
+<tbody>
+<tr><td class="name">Broker vs Trader vs Market Maker</td><td class="why"><b>Broker</b> = matchmaker/agent — connects buyer &amp; seller for a commission, owns nothing, bears no risk. <b>Market maker</b> = shopkeeper/principal — quotes both a buy &amp; sell price with its own capital, earns the bid-ask spread, stays directionally neutral (provides liquidity). <b>Trader</b> = bettor/principal — takes positions to profit from price DIRECTION.</td></tr>
+<tr><td class="name">Hedge Fund vs PE vs Distressed</td><td class="why"><b>Hedge fund</b> = agile trader of liquid securities, can go long OR short, any market (mercenary). <b>Private equity</b> = buys &amp; operates whole companies, control, 3–7 yr lockup (farmer). <b>Distressed</b> = buys the cheap DEBT of failing firms, profits on recovery/restructuring (scavenger with a lawyer). Feast times: HF any, PE cheap-money booms, distressed recessions.</td></tr>
+<tr><td class="name">OTC Market</td><td class="why">Decentralized — participants trade <i>directly</i>, not via an exchange; details private. No central order book → liquidity is scattered &amp; opaque → that's where market makers earn a premium.</td></tr>
+<tr><td class="name">Liquidity &amp; the Bid-Ask Spread</td><td class="why"><b>Liquidity</b> = how easily you buy/sell in size without moving price. The <b>spread</b> = the market maker's toll (buy at bid, sell at ask). Thin/opaque markets → wide spreads → the impatient investor's penalty.</td></tr>
+<tr><td class="name">Family Office</td><td class="why">Manages one family's fortune — no outside investors, so the MOST flexible vehicle (permanent capital, no redemptions). The structural edge YOU replicate as an individual: nobody can force you to sell. (Archegos = its danger without discipline.)</td></tr>
+<tr><td class="name">Data Terminals (Refinitiv / LSEG, Bloomberg)</td><td class="why">The professional's cockpit — consolidates prices, analytics, news. For opaque OTC bonds it acts as the "synthetic order book": screen the universe, see dealer quotes, run yield/spread math. (Refinitiv Eikon → now LSEG Workspace.)</td></tr>
+</tbody>
+</table>
+
+<h3 class="cat" id="c-instruments">Securities &amp; Instruments <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<table>
+<thead><tr><th style="width:26%">Concept</th><th style="width:74%">Key distinction / what it is</th></tr></thead>
+<tbody>
+<tr><td class="name">IG vs HY bonds</td><td class="why"><b>Investment Grade</b> (BBB−/Baa3+) = strong issuers, low default risk, lower yield. <b>High Yield / junk</b> (BB+/Ba1−) = weaker issuers, higher default risk, higher yield. HY is the feeder pond for distressed funds.</td></tr>
+<tr><td class="name">Bond price vs interest rates</td><td class="why"><b>Inverse — and it's math</b> (present value): rates up → bond price down. But it's the bond's OWN yield, not the policy rate; credit can override; floating-rate notes escape it.</td></tr>
+<tr><td class="name">Common vs Preferred shares</td><td class="why"><b>Common</b> = full growth upside, paid last, votes. <b>Preferred</b> = fixed dividend, senior to common, but capped upside (bond-like, often callable) — trades upside for safety &amp; income.</td></tr>
+<tr><td class="name">Warrants</td><td class="why">Company-issued right (not obligation) to buy NEW shares at a fixed strike before a long expiry — leveraged, asymmetric upside, dilutive. Buffett pairs preferreds (safety) + warrants (upside) to get both.</td></tr>
+<tr><td class="name">Bond vs Bond ETF</td><td class="why">A single <b>bond</b> matures → par is returned (a hold-to-maturity floor). A <b>bond ETF</b> is a perpetual, rolling basket → NO maturity, NO par guarantee → price floats forever with rates. (Defined-maturity ETFs restore the anchor.)</td></tr>
+<tr><td class="name">Mutual Fund vs Index Fund</td><td class="why">"Mutual fund" = the pooled <i>wrapper</i>. "Index fund" = a <i>strategy</i> (passively track an index), usually inside a mutual-fund/ETF wrapper. Real divide: <b>active</b> (pay to try to beat) vs <b>passive</b> (cheaply match) — after fees, passive beats most active long-term.</td></tr>
+<tr><td class="name">Cash &amp; Equivalents</td><td class="why">Liquid, stable, short-term (≤3mo): T-bills, money-market funds, CDs, commercial paper. Not "dead money" — it's <b>optionality</b>: a no-expiry call option on every asset (dry powder). One true enemy: inflation eroding real value.</td></tr>
+</tbody>
+</table>
+
+<h3 class="cat" id="c-accounting">Accounting Building Blocks <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<table>
+<thead><tr><th style="width:26%">Concept</th><th style="width:74%">Key distinction / what it is</th></tr></thead>
+<tbody>
+<tr><td class="name">The 3 statements</td><td class="why"><b>Income Statement</b> = profit flow over a year. <b>Balance Sheet</b> = snapshot of assets/debt/equity on one day. <b>Cash Flow</b> = real cash in/out (the truth serum). Profit is opinion; cash is fact.</td></tr>
+<tr><td class="name">The interest line = operating vs financing divide</td><td class="why">Above it (EBIT, NOPAT) = profit belonging to ALL capital providers, before the split. Below it (Net Income) = the shareholders' slice, after debtholders (interest) &amp; government (tax) are paid.</td></tr>
+<tr><td class="name">EBIT &amp; NOPAT</td><td class="why"><b>EBIT</b> = operating profit, the pool before it's split. <b>NOPAT</b> = EBIT × (1 − tax rate) = after-tax operating profit as if debt-free (financing-neutral). = Net Income + after-tax interest. The correct numerator for ROIC.</td></tr>
+<tr><td class="name">Interest tax shield (why NOPAT taxes EBIT)</td><td class="why">NOPAT taxes EBIT (not EBT) to simulate an unlevered firm — deliberately IGNORING the tax benefit of debt. That shield is instead counted in WACC's after-tax cost of debt. Counted once, not twice — prevents double-counting.</td></tr>
+<tr><td class="name">COGS vs SG&amp;A vs Other</td><td class="why"><b>COGS</b> = direct product costs (variable, scale with units). <b>SG&amp;A</b> = operating overhead (semi-fixed, cost of the machine). Gross Profit strips only COGS; Operating Profit strips COGS + SG&amp;A + D&amp;A.</td></tr>
+<tr><td class="name">PP&amp;E</td><td class="why">Property, Plant &amp; Equipment — long-term physical operating assets (stores, plants, machines), shown net of accumulated depreciation. The long-term half of operating capital.</td></tr>
+<tr><td class="name">Gross vs Net Debt</td><td class="why"><b>Gross</b> = all interest-bearing borrowings. <b>Net</b> = gross − cash (the true economic debt). Negative net debt = net-cash fortress. Only interest-bearing counts (payables are operating, not debt).</td></tr>
+<tr><td class="name">Common Equity vs Retained Earnings</td><td class="why"><b>Common Equity</b> = capital owners paid IN. <b>Retained Earnings</b> = cumulative profits kept &amp; reinvested. Together = shareholders' equity. Large retained earnings = a self-funding compounding machine.</td></tr>
+<tr><td class="name">Free Supplier Financing (payables) &amp; Accruals</td><td class="why"><b>Payables</b> = buying now, paying suppliers later — an interest-free loan (trade credit). <b>Accruals</b> = expenses incurred but not yet paid (wages, taxes, interest owed). Both are free operating financing → subtracted from operating capital.</td></tr>
+<tr><td class="name">Accruals (quality sense)</td><td class="why">Accruals = Net Income − Operating Cash Flow — the gap between paper profit &amp; real cash. HIGH accruals = LOW earnings quality (a red flag the profit isn't turning to cash).</td></tr>
+<tr><td class="name">Free Cash Flow</td><td class="why">Simple: CFO − CapEx. Built up (FCFF) = NOPAT + D&amp;A − CapEx − ΔWorking Capital (to all capital). FCFE = to equity only. Owner Earnings (Buffett) subtracts only MAINTENANCE capex. The DCF runs on this.</td></tr>
+<tr><td class="name">Working Capital &amp; Cash Conversion Cycle</td><td class="why">NWC = (inventory + receivables) − payables. CCC = DSO + DIO − DPO = days cash is trapped. Negative CCC (Walmart) = suppliers &amp; customers finance you = a hidden moat / float.</td></tr>
+<tr><td class="name">WACC</td><td class="why">(E/V × cost of equity) + (D/V × after-tax cost of debt). Cost of equity via CAPM = risk-free + β × equity risk premium. The hurdle rate ROIC must beat. An estimate, not a fact — hold it as a range.</td></tr>
+</tbody>
+</table>
+
+<h3 class="cat" id="c-capital">Capital Concepts — reconciled <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<table>
+<thead><tr><th style="width:26%">Concept</th><th style="width:74%">Key distinction / what it is</th></tr></thead>
+<tbody>
+<tr><td class="name">Net Assets vs Invested Capital</td><td class="why">SAME number, two sides of the balance sheet. <b>Net Assets</b> = asset side (PP&amp;E + Net Working Capital) — "where capital sits." <b>Invested Capital</b> = financing side (Net Debt + Equity) — "where capital came from." Equal by the balance-sheet identity.</td></tr>
+<tr><td class="name">Net Operating Assets vs Invested Capital</td><td class="why">Equal for a pure operating business. Diverge with non-operating assets: <b>Invested Capital = NOA + Non-Operating Assets</b>. NOA = operating engine only; IC also funds any investment portfolio (holdcos like Exor).</td></tr>
+<tr><td class="name">RONA vs ROIC</td><td class="why"><b>RONA</b> = operational lens (profit ÷ operating net assets — how well operators use their assets). <b>ROIC</b> = investor lens (NOPAT ÷ invested capital — return vs WACC). Same for pure operators; use RONA to isolate the operating engine, ROIC for the value-creation verdict.</td></tr>
+<tr><td class="name">Why subtract cash (net) &amp; current liabilities</td><td class="why">Strip <b>cash</b> because idle cash isn't deployed in operations. Strip <b>operating current liabilities</b> (payables/accruals) because they're free financing investors never provided. What's left = capital actually at work → matches the operating-profit numerator.</td></tr>
+<tr><td class="name">Sum-of-the-Parts (holdcos)</td><td class="why">For Exor/Berkshire/Investor AB: never a blended ROIC. Value the operating stub on its own NOA + the investment portfolio at market → compare to price (discount-to-NAV).</td></tr>
+</tbody>
+</table>
+
+<h3 class="cat" id="c-macro">Macro &amp; Behavioural Lenses <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<table>
+<thead><tr><th style="width:26%">Concept</th><th style="width:74%">Key distinction / what it is</th></tr></thead>
+<tbody>
+<tr><td class="name">Long-Term Economic Outlook (LTEO)</td><td class="why">Multi-year forecast of growth, inflation, rates. Sets fixed-income positioning: duration (short if rates rising, long if falling) &amp; credit stance (IG if recession looms, HY if growth strong) BEFORE screening bonds. The disciplined way to use macro without becoming a macro trader.</td></tr>
+<tr><td class="name">Stock-Bond Correlation (regime-dependent)</td><td class="why">NOT a law. <b>Negative</b> when growth shocks dominate (recession → bonds hedge stocks, the 60/40 golden age). <b>Positive</b> when inflation dominates (stagflation → both fall together, e.g. 2022). Your stagflation view = the regime where the classic bond hedge FAILS → real assets hedge instead.</td></tr>
+<tr><td class="name">CAPE (Shiller P/E)</td><td class="why">Price ÷ 10-yr average real earnings — the justified-multiple logic for a whole index. High CAPE → low forward returns; low CAPE → high. Your entry-timing gauge for deploying cash tranches.</td></tr>
+<tr><td class="name">Dividend Yield &amp; the Yield Trap</td><td class="why">DPS ÷ Price. Because price is the denominator, a HIGH yield can signal a COLLAPSING stock (dividend about to be cut), not a bargain. Always check payout coverage. Yield is one leg of total return — a growing dividend beats a fat static one.</td></tr>
+<tr><td class="name">Cash as Optionality (behavioural)</td><td class="why">Holding cash is a POSITION, not the absence of one — a no-expiry call on every asset. The discipline of waiting is an edge (permanent capital), but its carrying cost is inflation. Deploy on valuation math (CAPE), not a hunch — that's margin of safety, not market timing.</td></tr>
+</tbody>
+</table>
+
+<!-- ================= CALCULATION DEEP-DIVES ================= -->
+<h2 class="eng b" id="deepdives" style="border-left-color:var(--acc);background:linear-gradient(90deg,#12222e,transparent)">CALCULATION DEEP-DIVES <span style="font-weight:400;font-size:15px;color:var(--mut)">· the worked math behind the ratios</span></h2>
+<p class="engnote">The step-by-step derivations we worked through — not just the formula, but WHY it's built that way, with worked numbers (mostly from the Walmart model). Acronyms: NOPAT = Net Operating Profit After Tax · EBIT = Earnings Before Interest &amp; Taxes · EBT = Earnings Before Tax · FCF = Free Cash Flow · CFO = Cash Flow from Operations · CapEx = Capital Expenditure · NWC = Net Working Capital · WACC = Weighted Average Cost of Capital.</p>
+
+<div class="synth" id="dd-nopat">
+  <h4>1 · NOPAT — and why it taxes EBIT, not EBT <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top" style="float:right">↑ top</a></h4>
+  <div class="eqbox">NOPAT = EBIT × ( 1 − <span class="hl">effective tax rate</span> )&nbsp;&nbsp;&nbsp;where effective tax rate = Tax ÷ EBT</div>
+  <p style="color:var(--mut);font-size:13.5px;margin:6px 0"><b style="color:var(--ink)">Worked (Walmart yr 1):</b> EBIT 26,696; effective tax rate ≈ 32.8% → NOPAT = 26,696 × (1 − 0.328) = <b>17,940</b>. Compare Net Income 16,363 — NOPAT is higher by ~1,577 = the after-tax interest added back.</p>
+  <p style="color:var(--mut);font-size:13.5px;margin:6px 0"><b style="color:var(--ink)">Why tax EBIT, not EBT?</b> NOPAT simulates an <i>unlevered</i> (debt-free) firm: with no debt there's no interest, so EBT would equal EBIT and tax would fall on EBIT. This deliberately IGNORES the interest tax shield (the tax saving from deductible interest) — because that shield is a FINANCING effect, counted instead in WACC's after-tax cost of debt. Counted once, never twice. Equivalent identity: <b>NOPAT = Net Income + after-tax interest expense</b>. It's the correct numerator for ROIC because it matches ROIC's all-capital denominator (Net Debt + Equity).</p>
+</div>
+
+<div class="synth" id="dd-ic">
+  <h4>2 · Invested Capital = Net Assets — the two-sided proof <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top" style="float:right">↑ top</a></h4>
+  <div class="eqbox">Start: Total Assets = Total Liabilities + Equity<br>Cash + OtherCurrentAssets + PP&amp;E = Payables + Debt + Equity<br>— subtract Payables &amp; Cash from both sides —<br>(OtherCA + PP&amp;E − Payables) − Cash&nbsp; = &nbsp;(Debt − Cash) + Equity<br><span class="hl">NET ASSETS (asset side)</span>&nbsp; = &nbsp;<span class="hl">INVESTED CAPITAL (financing side)</span></div>
+  <p style="color:var(--mut);font-size:13.5px;margin:6px 0"><b style="color:var(--ink)">Worked (Walmart yr 1):</b> Invested Capital = Net Debt 54,594 + Equity 81,394 = <b>135,988</b>. Net Assets = PP&amp;E 140,428 + Net Working Capital (−4,440) = <b>135,988</b>. Equal by the balance-sheet identity — same capital, asset side vs financing side. Diverges only by the value of non-operating assets: <b>Invested Capital = Net Operating Assets + Non-Operating Assets</b> (matters for holdcos like Exor).</p>
+</div>
+
+<div class="synth" id="dd-fcf">
+  <h4>3 · Free Cash Flow — the four routes <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top" style="float:right">↑ top</a></h4>
+  <div class="eqbox">Simple:&nbsp; FCF = <span class="hl">CFO − CapEx</span><br>Build-up (to firm, FCFF):&nbsp; NOPAT + D&amp;A − CapEx − ΔNet Working Capital<br>To equity (FCFE):&nbsp; FCFF − after-tax interest + net borrowing&nbsp; (= CFO − CapEx − net debt repaid)<br>Owner Earnings (Buffett):&nbsp; Net Income + D&amp;A − <span class="hl">maintenance</span> CapEx ± ΔWorking Capital</div>
+  <p style="color:var(--mut);font-size:13.5px;margin:6px 0"><b style="color:var(--ink)">The key nuance — maintenance vs growth CapEx.</b> Total CapEx bundles two things: <b>maintenance/sustaining</b> capex (replacing worn-out assets to hold current capacity — a real, unavoidable cost, capitalized) and <b>growth</b> capex (expansion — discretionary). Owner Earnings subtracts only MAINTENANCE capex to reveal true distributable earning power. (Note: routine repairs &amp; maintenance are OpEx, expensed — a different thing from "maintenance capex," which is replacement CAPEX.) Rough proxy: maintenance capex ≈ depreciation. FCFF pairs with ROIC/EV; FCFE pairs with P/E. The DCF discounts future FCF — this is the number intrinsic value runs on.</p>
+</div>
+
+<div class="synth" id="dd-incroic">
+  <h4>4 · Incremental ROIC — return on NEW capital, with the lag <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top" style="float:right">↑ top</a></h4>
+  <div class="eqbox">Incremental ROIC = <span class="hl">Δ NOPAT ÷ Δ Invested Capital</span>&nbsp;&nbsp;(measure over a 3–5 yr span, not one year)<br>Compounding identity:&nbsp; Growth = <span class="hl">Reinvestment Rate × Incremental ROIC</span></div>
+  <p style="color:var(--mut);font-size:13.5px;margin:6px 0"><b style="color:var(--ink)">Two traps.</b> (1) <b>Noise</b> — single years explode (near-zero ΔIC denominator); use a multi-year endpoint-to-endpoint span. (2) <b>The lag</b> — newly-deployed capital doesn't earn its return until it's built &amp; ramped, so pair this period's ΔNOPAT with Invested Capital deployed 1–3 years EARLIER (match today's harvest to yesterday's planting). Lag length = build time + ramp: software/retail ~0–1 yr; industrials ~1–2 yr; utilities/energy/infrastructure ~3–5 yr. <b style="color:var(--ink)">The verdict:</b> compare incremental ROIC to base ROIC — if incremental ≪ base, the compounder is stalling (past glory, dim future); high &amp; durable incremental ROIC = a long reinvestment runway.</p>
+  <p style="color:var(--mut);font-size:13.5px;margin:6px 0"><b style="color:var(--ink)">The Reinvestment Rate (in Growth = Reinvestment Rate × Return).</b> Two forms, match the level: <b>Firm (with ROIC):</b> (Net CapEx + ΔNWC) ÷ NOPAT, where Net CapEx = CapEx − Depreciation — the share of operating profit plowed back into operating assets. <b>Equity (with ROE):</b> the retention ratio = 1 − Payout Ratio = retained earnings ÷ net income. Worked: NOPAT 100, CapEx 30, Dep 18 → Net CapEx 12; ΔNWC +8 → reinvestment 20 → rate 20%. If ROIC 15% → self-funded growth = 20% × 15% = 3%. Grow faster than this and the company must raise external capital (debt or dilution).</p>
+</div>
+
+<div class="synth" id="dd-wacc">
+  <h4>5 · WACC — the build-up <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top" style="float:right">↑ top</a></h4>
+  <div class="eqbox">WACC = (E/V × <span class="hl">Rₑ</span>) + (D/V × <span class="hl">R_d</span> × (1 − Tc))<br>Cost of equity (CAPM):&nbsp; Rₑ = Risk-free + β × (Equity Risk Premium)<br>Cost of debt:&nbsp; yield / effective rate, × (1 − tax) for the shield</div>
+  <p style="color:var(--mut);font-size:13.5px;margin:6px 0"><b style="color:var(--ink)">Worked:</b> 70% equity / 30% debt; risk-free 4%, β 1.1, ERP 5%, cost of debt 6%, tax 25%. Cost of equity = 4% + 1.1×5% = 9.5%. After-tax cost of debt = 6%×(1−0.25) = 4.5%. WACC = 0.70×9.5% + 0.30×4.5% = <b>8.0%</b>. The (1−tax) on debt is where the interest tax shield is counted (the reason NOPAT ignored it). <b style="color:var(--ink)">Discipline:</b> use MARKET-value weights; it's an estimate wearing a lab coat (ERP debated, β unstable) — hold it as a RANGE, not a decimal. Buffett rejects β ("volatility ≠ risk") and uses opportunity cost / the long-bond as his hurdle. Compare ROIC vs WACC: above = creates value, below = destroys it.</p>
+</div>
+
+<div class="synth" id="dd-leverage">
+  <h4>6 · The Leverage Cascade — DOL, DFL, DTL <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top" style="float:right">↑ top</a></h4>
+  <p style="color:var(--mut);font-size:13.5px;margin:0 0 6px"><b style="color:var(--ink)">Setup:</b> Revenue 100, variable costs 50, fixed operating costs 30, interest 10 → EBIT 20, pre-tax profit 10. Now revenue <b>+10%</b> → 110:</p>
+  <div class="eqbox">Variable → 55, fixed stays 30 → new EBIT = 25 &nbsp;(<span class="hl">+25%</span>)&nbsp; → new profit = 25 − 10 = 15 &nbsp;(<span class="hl">+50%</span>)<br>DOL = %ΔEBIT ÷ %ΔRev = 25/10 = <span class="hl">2.5</span>&nbsp;&nbsp;(fixed OPERATING costs amplify)<br>DFL = %ΔNI ÷ %ΔEBIT = 50/25 = <span class="hl">2.0</span>&nbsp;&nbsp;(fixed FINANCING/debt amplifies)<br>DTL = DOL × DFL = <span class="hl">5.0</span>&nbsp;→ every 1% of revenue swings NI by 5%</div>
+  <p style="color:var(--mut);font-size:13.5px;margin:6px 0"><b style="color:var(--ink)">The recession gauge — and it's symmetric.</b> Same firm: revenue −10% → NI −50%. High DOL (heavy fixed costs) + high DFL (heavy debt) = huge DTL = an earnings volatility machine. High-DTL firms are the recession PREY; low-DOL (variable cost) + low-debt firms are the survivors/predators. DOL is the operating cousin of your DSCR fragility; DFL is the financing cousin.</p>
+</div>
+
+<div class="synth" id="dd-days">
+  <h4>7 · Turnover ↔ Days — the 365 flip <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top" style="float:right">↑ top</a></h4>
+  <div class="eqbox">Days = 365 ÷ Turnover&nbsp;&nbsp;|&nbsp;&nbsp;Turnover = 365 ÷ Days</div>
+  <p style="color:var(--mut);font-size:13.5px;margin:6px 0">Turnover = how many times per year a pool is collected/replaced; Days = duration of one cycle. A/R turnover 12× → 365÷12 = 30 days customers take to pay. Same fact, two forms (frequency vs duration). Works for all: <b>DIO</b> (Days Inventory Outstanding = Inventory×365÷COGS, stock sitting), <b>DSO</b> (Days Sales Outstanding = Receivables×365÷Revenue, collection time), <b>DPO</b> (Days Payable Outstanding = Payables×365÷COGS, how slow you pay). Assemble: <b>Cash Conversion Cycle = DIO + DSO − DPO</b> = days cash is trapped; negative (Walmart) = suppliers/customers finance you = float/moat.</p>
+</div>
+
+<div class="synth" id="dd-nwc">
+  <h4>8 · Change in NWC, Accruals &amp; Cash vs FCF <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top" style="float:right">↑ top</a></h4>
+  <div class="eqbox">Change in NWC = NWC(this year) − NWC(last year)&nbsp;&nbsp;— the movement between two snapshots<br>Accruals = <span class="hl">Net Income − Operating Cash Flow</span>&nbsp;&nbsp;— the paper-vs-cash gap</div>
+  <p style="color:var(--mut);font-size:13.5px;margin:6px 0"><b style="color:var(--ink)">Why ΔNWC is in owner earnings/FCF:</b> net income is accrual-based; ΔNWC corrects it to cash. An INCREASE in NWC (more inventory/receivables) CONSUMES cash → subtract. A DECREASE releases cash → add. Growth ties up working capital, so fast growers subtract a large change (the cash cost of growth). <b style="color:var(--ink)">Accruals as a quality tell:</b> HIGH accruals (profit not turning to cash) = LOW earnings quality — a red flag. <b style="color:var(--ink)">Cash vs FCF:</b> Cash is a STOCK (money on hand, one day, balance sheet); FCF is a FLOW (cash generated over a period, CFO − CapEx). FCF feeds the cash balance; a big pile ≠ strong FCF. Value the FLOW (DCF); read the STOCK for balance-sheet strength / dry powder.</p>
+</div>
+
+<!-- ================= ACCOUNTING FUNDAMENTALS ================= -->
+<h2 class="eng q" id="accounting-fund" style="border-left-color:var(--acc);background:linear-gradient(90deg,#12222e,transparent)">ACCOUNTING FUNDAMENTALS <span style="font-weight:400;font-size:15px;color:var(--mut)">· the bookkeeping under the statements</span></h2>
+<p class="engnote">The mechanics beneath every ratio — how the books are kept, how the balance sheet is built, the debt vocabulary, and the adjusting entries where earnings quality is made (or faked).</p>
+
+<h3 class="cat" id="af-drcr">Double-Entry, Debits &amp; Credits <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<table>
+<thead><tr><th style="width:26%">Concept</th><th style="width:74%">What it is</th></tr></thead>
+<tbody>
+<tr><td class="name">Debit (DR) &amp; Credit (CR)</td><td class="why">DR = LEFT side, CR = RIGHT side of an account — <b>NOT good/bad or plus/minus</b>. Names come from Latin: DR = De<b>btor</b> (debere, "to owe"), CR = Cre<b>ditor</b> (credere) — first letter + last letter.</td></tr>
+<tr><td class="name">Double-Entry Bookkeeping</td><td class="why">Every transaction is recorded twice — one debit, one equal credit — so the books always balance and <b>Assets = Liabilities + Equity</b> holds. This identity is WHY every reconciliation in this doc works (Invested Capital = Net Assets, etc.).</td></tr>
+<tr><td class="name">The increase rules — "DEALER"</td><td class="why"><b>DEA</b> increase with a DEBIT: <b>D</b>ividends, <b>E</b>xpenses, <b>A</b>ssets (debit-normal). <b>LER</b> increase with a CREDIT: <b>L</b>iabilities, <b>E</b>quity, <b>R</b>evenue (credit-normal). Assets up = debit; liabilities/equity up = credit.</td></tr>
+<tr><td class="name">Why Equity is "CR &amp; DR"</td><td class="why">Equity holds BOTH builders (Revenue, Share Capital = credit, increase equity) and drainers (Expenses, Dividends = debit, decrease equity). Expenses/dividends are "equity accounts" in the LOGIC (they drain equity) but appear on the income statement, not the balance-sheet equity section.</td></tr>
+<tr><td class="name">Worked example</td><td class="why">€100 cash sale: Debit Cash 100 (asset up) / Credit Revenue 100 (equity up via revenue). Buy €500 inventory on credit: Debit Inventory 500 / Credit Accounts Payable 500. Both balance — the equation stays true.</td></tr>
+</tbody>
+</table>
+<div class="lens"><span class="lh">◆ Value-Investor Lens</span>You don't do bookkeeping — but knowing that <b>every statement figure is the sum of balanced double entries</b> is what lets you trust the statements' internal consistency, and — more valuable — <b>spot when something DOESN'T reconcile</b>. A mismatch between the balance-sheet identity and the reported subtotals is often the first thread you pull to uncover aggressive accounting. Double-entry is the accounting version of conservation of energy; when the energy doesn't balance, someone's hiding something.</div>
+
+<h3 class="cat" id="af-bs">Balance Sheet Mechanics <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<table>
+<thead><tr><th style="width:26%">Concept</th><th style="width:74%">What it is</th></tr></thead>
+<tbody>
+<tr><td class="name">Ordering</td><td class="why">Assets by <b>liquidity</b> (Cash → Receivables → Inventory → PP&amp;E — most-liquid first under US GAAP; IFRS/continental often reverse it). Liabilities by <b>maturity</b> (soonest-due first: payables → then long-term debt). Order by TIME in both columns.</td></tr>
+<tr><td class="name">US vs UK vs French formats</td><td class="why">Same identity, arranged 3 ways. <b>US:</b> most-liquid listing, stops at Total Assets = Total Liab + Equity. <b>UK ("Net Assets"):</b> rearranges to A − L = E — computes Net Current Assets (working capital) &amp; Net Assets (= Equity) on the page — best for analysis. <b>French (bilan):</b> least-liquid-first assets, financing ordered by permanence (Equity on top, then LT debt, then current).</td></tr>
+<tr><td class="name">Book Value</td><td class="why">= Total Assets − Total Liabilities = Shareholders' Equity — the accounting net worth (the anchor of P/B). HISTORICAL-cost based → can understate (internally-built brands, old land) or overstate (obsolete inventory). BVPS = Equity ÷ Shares.</td></tr>
+<tr><td class="name">Net Current Assets = Working Capital</td><td class="why">Same formula, two names: Current Assets − Current Liabilities. "Net Current Assets" (UK/accounting) = "Working Capital" (finance). Operating/net WC refines it by excluding cash &amp; short-term debt.</td></tr>
+<tr><td class="name">Operating vs Current Liabilities (≠ same)</td><td class="why">Different axes. <b>Current</b> = by MATURITY (&lt;1yr — includes short-term DEBT like the revolver). <b>Operating</b> = by NATURE (from operations, non-interest-bearing — payables, accruals — EXCLUDES debt, can be long-term). Overlap but diverge — which is exactly why Invested Capital strips operating liabilities but keeps financing debt in.</td></tr>
+<tr><td class="name">Two "Net Assets" (recap)</td><td class="why"><b>Accounting net assets</b> = Total Assets − ALL liabilities = Equity (UK sheet's figure). <b>Operating net assets</b> = PP&amp;E + Net Working Capital = Invested Capital (keeps debt in). Differ by the debt. Always ask "net of WHAT?"</td></tr>
+</tbody>
+</table>
+<div class="lens"><span class="lh">◆ Value-Investor Lens</span><b>Book value is the accountant's value, not the market's</b> — historical-cost based, so it hides the real worth of internally-built brands/IP (why asset-light compounders trade far above book, not "expensive") and can overstate stale assets. A stock below book (P/B &lt; 1) is a <i>bargain OR a value trap</i> — the market may be right that the assets are worth less. Book value is most trustworthy for financials &amp; asset-heavy firms (assets near market), least for asset-light ones. And the operating-vs-current-liabilities gap (short-term debt) is <b>exactly the piece that decides whether your ROIC denominator is right</b> — the single most common denominator error. Master "net of WHAT, sorted by which axis?" and no balance sheet in any country's format can fool you.</div>
+
+<h3 class="cat" id="af-debt">Debt &amp; Liabilities Taxonomy <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<table>
+<thead><tr><th style="width:26%">Term</th><th style="width:74%">What it is / distinction</th></tr></thead>
+<tbody>
+<tr><td class="name">The vocabulary hierarchy</td><td class="why"><b>Debt</b> = umbrella (any obligation to repay). <b>Promissory note</b> = the signed IOU instrument. <b>Notes payable</b> = the balance-sheet liability it creates. <b>Loan</b> = the borrowing transaction (usually documented by a note → shows as notes payable). <b>Bonds payable</b> = the capital-markets cousin (many tradable holders vs one lender).</td></tr>
+<tr><td class="name">Classes of notes payable</td><td class="why">By <b>maturity</b> (short-term/current vs long-term); by <b>interest</b> (interest-bearing vs discount/zero-coupon); by <b>security</b> (secured/collateral vs unsecured); by <b>repayment</b> (bullet/term vs amortizing/installment); by <b>source</b> (bank, trade, related-party). = the debt-structuring dials you already turn in project finance.</td></tr>
+<tr><td class="name">Notes Payable vs Accounts Payable</td><td class="why"><b>Notes Payable</b> = formal, written, usually interest-bearing debt → counts in NET DEBT / invested capital. <b>Accounts Payable</b> = informal, non-interest-bearing trade credit (free supplier financing) → NOT debt. The key line for your leverage analysis.</td></tr>
+<tr><td class="name">Bank debt: principal vs interest</td><td class="why"><b>Principal</b> (outstanding balance) = a LIABILITY on the balance sheet; repaying it just reduces Cash &amp; Notes Payable — NOT an expense. <b>Interest</b> = an INCOME-STATEMENT expense → reduces net income → flows into retained earnings (equity) at year-end — so it hits equity only INDIRECTLY. A loan payment splits: interest → P&amp;L; principal → reduces the liability. (= your DSCR debt-service waterfall.)</td></tr>
+</tbody>
+</table>
+<div class="lens"><span class="lh">◆ Value-Investor Lens</span>The <b>debt footnote is where the real leverage risk lives</b> — the maturity schedule, secured vs unsecured, fixed vs floating, covenants. That's the DTL / net-debt-to-EBITDA story that decides recession survival (predator vs prey). Distinguish <b>cash-settled liabilities (real burdens)</b> from the free-financing kind (accounts payable). And your project-finance background is a genuine edge here: most equity analysts learned these as abstract categories, but you've <i>negotiated</i> every dial — secured/unsecured, bullet/amortizing, tenor, covenants — in real term sheets. You read a debt footnote faster than someone who's never sat at a lending table.</div>
+
+<h3 class="cat" id="af-adjusting">Adjusting Entries &amp; Accruals <a class="toplink" href="file:///C:/Users/youss/Downloads/Value_Investor_Ratio_Master_Reference_13.html#top">↑ top</a></h3>
+<p class="engnote" style="padding:0">Period-end entries that enforce accrual accounting — recognize revenue when EARNED and expense when INCURRED, regardless of cash. Two families × two sides:</p>
+<table>
+<thead><tr><th style="width:22%">Type</th><th style="width:14%">Family</th><th style="width:64%">What it is / entry</th></tr></thead>
+<tbody>
+<tr><td class="name">Prepaid Expense</td><td class="cat">Deferral (cash first)</td><td class="why">Paid cash up front → an ASSET (future benefit); expensed over time as consumed. Pay €1,200 insurance → monthly: Debit Insurance Expense 100 / Credit Prepaid Insurance 100.</td></tr>
+<tr><td class="name">Unearned Revenue</td><td class="cat">Deferral (cash first)</td><td class="why">Received cash up front → a LIABILITY (you owe the service); recognized as revenue as delivered. Monthly: Debit Unearned Revenue 100 / Credit Service Revenue 100.</td></tr>
+<tr><td class="name">Accrued Expense</td><td class="cat">Accrual (cash later)</td><td class="why">Incurred but NOT yet paid, NO invoice yet → a LIABILITY; often an ESTIMATE (wages, interest, utilities). Dec 31: Debit Wages Expense 5,000 / Credit Wages Payable 5,000.</td></tr>
+<tr><td class="name">Accrued Revenue</td><td class="cat">Accrual (cash later)</td><td class="why">Earned but NOT yet billed → an ASSET (unbilled receivable); recognized early. Dec 31: Debit Accrued Receivable 3,000 / Credit Service Revenue 3,000.</td></tr>
+</tbody>
+</table>
+<table>
+<thead><tr><th style="width:26%">Distinction</th><th style="width:74%">What it is</th></tr></thead>
+<tbody>
+<tr><td class="name">Deferrals vs Accruals</td><td class="why"><b>Deferrals</b> = cash moved FIRST, recognition later (mechanical, low judgment). <b>Accruals</b> = recognition FIRST, cash later (estimates, HIGH judgment → manipulation surface).</td></tr>
+<tr><td class="name">Accrued Revenue vs Accounts Receivable</td><td class="why">Both assets (money in). <b>AR</b> = earned AND invoiced (documented claim). <b>Accrued revenue</b> = earned but NOT yet invoiced (estimated, converts to AR once billed). Invoice is the dividing line.</td></tr>
+<tr><td class="name">Accrued Expense vs Accounts Payable</td><td class="why">Both liabilities (money out). <b>AP</b> = incurred WITH invoice received (exact amount). <b>Accrued expense</b> = incurred but NO invoice yet (often an estimate, converts to AP once billed).</td></tr>
+<tr><td class="name">Why accruals = earnings quality</td><td class="why">Accruals involve ESTIMATES management controls → aggressive accrued revenue or under-accrued expenses flatter profit. Analytically <b>Accruals = Net Income − Operating Cash Flow</b>; high accruals = low earnings quality (Sloan anomaly — they reverse). The cash flow statement strips accruals out — why "cash is fact, earnings are opinion."</td></tr>
+<tr><td class="name">Unearned Revenue is FLOAT (worked)</td><td class="why">Airline sells a €1,000 ticket for a flight in 3 months: <b>Debit Cash 1,000 / Credit Unearned Revenue 1,000</b> (owes a flight, a liability — NOT accounts payable, which is cash YOU owe a supplier; NOT revenue, not earned till flown). When flown: Debit Unearned Revenue / Credit Revenue. The deciding question on the liability side is "delivered yet?", not "documented?"</td></tr>
+</tbody>
+</table>
+<div class="lens"><span class="lh">◆ Value-Investor Lens</span><b>Unearned revenue is one of the BEST liabilities a business can have — it's float.</b> The company is <i>paid in cash today for a service delivered later</i> — holding the customer's money interest-free in between (airlines, annual-billed SaaS, insurers, gyms, Costco memberships). A large &amp; growing unearned-revenue balance is a sign of <b>pricing power and a customer-funded business model</b> — the same negative-working-capital / float moat as Walmart's payables or Buffett's insurance float. It's a liability in name (you owe the service) but an asset in economics (you hold the cash first). Distinguish <b>cash-settled liabilities (real burdens)</b> from <b>service-settled ones like unearned revenue (often hidden strengths)</b> — the airline discharges its "debt" simply by flying a plane it was going to fly anyway.<br><br>And on <b>accruals as the lie-detector</b>: documented AR/AP are trustworthy; the ESTIMATED accrued items are the manipulation surface. Watch net income vs operating cash flow over several years — if profit rises while cash lags (accruals piling up), open the footnotes. AR/AP tell the working-capital/bargaining-power story; the accrued items tell the earnings-QUALITY story. Keep Munger's skepticism sharpest on the estimates.</div>
+
+<footer>
+  <b>Value Investor's Master Ratio Reference</b> — Quality · Value · Price, the two driver engines fused, the ETF three-layer extension, the Foundations concept map, the calculation deep-dives, and the accounting fundamentals.<br>
+  IS = Income Statement · BS = Balance Sheet · CF = Cash Flow Statement · MKT = Market data. &nbsp;| &nbsp;
+  Notation: g = growth rate · r = cost of equity · WACC = weighted average cost of capital · NOPAT = EBIT × (1 − tax rate) · Invested Capital = Net Debt + Equity · EV = Market Cap + Net Debt.<br>
+  Built as a personal reference for the "Be a Better Value Investor" framework. Ratios are analytical tools, not buy/sell signals — always read the 5–10-year TREND, compare within-industry, and pair every quality verdict with a price verdict.
+</footer>
+
+</div>
+
+
+</body></html>
