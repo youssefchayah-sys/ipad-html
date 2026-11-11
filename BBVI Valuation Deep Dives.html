@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0079)file:///C:/Users/youss/Downloads/BBVI%20Valuation%20Deep%20Dives_4.html#etfknow -->
+<!-- saved from url=(0079)file:///C:/Users/youss/Downloads/BBVI%20Valuation%20Deep%20Dives_6.html#etfknow -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,47 +16,54 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
   background:var(--bg); color:var(--ink); font-size:13px; -webkit-font-smoothing:antialiased;
 }
-.app{display:flex;min-height:100vh}
+.app{display:flex;flex-direction:column;min-height:100vh}
 
-/* ---------------- sidebar ---------------- */
-.side{
-  width:282px;flex:0 0 282px;border-right:1px solid var(--line);background:var(--panel);
-  height:100vh;position:sticky;top:0;display:flex;flex-direction:column;
-}
-.brand{padding:18px 18px 14px;border-bottom:1px solid var(--line)}
-.brand-t{font-size:15px;font-weight:600;letter-spacing:-.01em;cursor:pointer}
-.brand-s{font-size:10.5px;color:var(--ink3);margin-top:3px}
-.searchwrap{padding:12px 14px;border-bottom:1px solid var(--line)}
+/* ---------------- top navigation (horizontal) ---------------- */
+.side{background:var(--panel);border-bottom:1px solid var(--line)}
+.topbar{display:flex;align-items:center;gap:18px;padding:14px 30px 10px;flex-wrap:wrap}
+.brand{flex:0 0 auto}
+.brand-t{font-size:16px;font-weight:600;letter-spacing:-.01em;cursor:pointer}
+.brand-s{font-size:10.5px;color:var(--ink3);margin-top:2px}
+.searchwrap{flex:1 1 260px;max-width:420px;margin-left:auto}
 #q{
-  width:100%;font-family:inherit;font-size:12px;padding:8px 10px;border:1px solid var(--line2);
-  border-radius:8px;background:var(--bg);color:var(--ink);outline:none;
+  width:100%;font-family:inherit;font-size:12px;padding:8px 12px;border:1px solid var(--line2);
+  border-radius:999px;background:var(--bg);color:var(--ink);outline:none;
 }
 #q:focus{border-color:var(--accent);background:#fffdf8}
-.hint{font-size:10px;color:var(--ink3);margin-top:6px}
-.nav{overflow-y:auto;flex:1;padding:8px 10px 26px}
-.grp{font-size:9.5px;font-weight:600;color:var(--ink3);text-transform:uppercase;
-      letter-spacing:.08em;padding:12px 8px 5px}
+.hint{font-size:10px;color:var(--ink3);margin:4px 0 0 12px}
+.nav{padding:4px 30px 14px}
+.grow{display:flex;align-items:baseline;gap:10px;padding:5px 0;border-top:1px dashed var(--line)}
+.grow:first-child{border-top:0}
+.grp{flex:0 0 132px;font-size:9.5px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em}
+.pills{display:flex;flex-wrap:wrap;gap:5px 6px;min-width:0}
 .item{
-  display:block;width:100%;text-align:left;border:0;background:transparent;font-family:inherit;
-  padding:7px 9px;border-radius:8px;cursor:pointer;color:var(--ink);font-size:12.2px;line-height:1.35;
+  display:inline-flex;align-items:baseline;gap:6px;border:1px solid var(--line2);background:var(--bg);
+  font-family:Georgia,"Times New Roman",serif;padding:5px 12px;border-radius:999px;cursor:pointer;
+  color:var(--ink2);font-size:12px;line-height:1.3;white-space:nowrap;transition:background .12s,border-color .12s;
 }
-.item:hover{background:var(--bg)}
-.item.on{background:var(--accent-soft);color:#3d2c13;font-weight:500}
-.item .sn{font-size:10px;color:var(--ink3);margin-right:6px;font-variant-numeric:tabular-nums}
-.item.on .sn{color:#8a5e22}
-.snip{font-size:10.5px;color:var(--ink3);padding:1px 9px 5px 9px;line-height:1.45}
+.item:hover{border-color:var(--accent);color:var(--ink)}
+.item.on{background:#241e18;border-color:#241e18;color:#fffdf8}
+.item .sn{font-size:10px;color:var(--accent);font-variant-numeric:tabular-nums}
+.item.on .sn{color:#e2c290}
+.hits{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:6px 14px}
+.hit .item{white-space:normal}
+.snip{font-size:10.5px;color:var(--ink3);padding:3px 4px 2px 12px;line-height:1.45}
 .snip mark{background:#FDEFBF;color:inherit;padding:0 1px;border-radius:2px}
-.empty{padding:14px 10px;font-size:11.5px;color:var(--ink3)}
+.empty{padding:8px 0;font-size:11.5px;color:var(--ink3)}
 
 /* ---------------- main ---------------- */
 .main{flex:1;min-width:0;display:flex;flex-direction:column}
 .dochead{
-  padding:26px 30px 16px;border-bottom:1px solid var(--line);background:var(--panel);
+  padding:18px 30px 12px;border-bottom:1px solid var(--line);background:var(--panel);
   position:sticky;top:0;z-index:5;
 }
 .crumb{font-size:10px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.07em}
 .doctitle{font-size:20px;font-weight:600;letter-spacing:-.015em;margin:5px 0 0}
-.docdesc{font-size:11.5px;color:var(--ink2);margin-top:7px;max-width:76ch;line-height:1.55}
+.docdesc{font-size:11.5px;color:var(--ink2);margin-top:7px;max-width:96ch;line-height:1.55;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.docdesc.open{display:block;-webkit-line-clamp:unset}
+.moredesc{font-family:inherit;font-size:10.5px;color:var(--accent);background:none;border:0;padding:3px 0 0;cursor:pointer}
+.moredesc:hover{text-decoration:underline}
 .frame{background:var(--panel);flex:1}
 iframe{width:100%;border:0;display:block;min-height:70vh}
 .pager{display:flex;gap:10px;justify-content:space-between;padding:18px 30px 40px;background:var(--panel)}
@@ -98,9 +105,13 @@ iframe{width:100%;border:0;display:block;min-height:70vh}
 #toast.show{opacity:1;transform:translate(-50%,0)}
 
 @media (max-width:860px){
-  .app{flex-direction:column}
-  .side{width:100%;flex:none;height:auto;position:static;border-right:0;border-bottom:1px solid var(--line)}
-  .nav{max-height:38vh}
+  .topbar{padding:12px 16px 8px}
+  .searchwrap{max-width:none;margin-left:0}
+  .nav{padding:2px 16px 10px}
+  .grow{flex-direction:column;gap:4px}
+  .grp{flex:none}
+  .pills{flex-wrap:nowrap;overflow-x:auto;max-width:100%;padding-bottom:4px;scrollbar-width:thin}
+  .hits{grid-template-columns:1fr}
   .dochead{position:static;padding:20px 16px 14px}
   .home{padding:24px 16px 50px}
   .pager{padding:16px}
@@ -109,20 +120,22 @@ iframe{width:100%;border:0;display:block;min-height:70vh}
 </head>
 <body>
 <div class="app">
-  <aside class="side">
+  <header class="side">
+   <div class="topbar">
     <div class="brand">
       <div class="brand-t" id="brand">Valuation deep dives</div>
       <div class="brand-s">27 research documents · updated 10 November 2026</div>
     </div>
     <div class="searchwrap">
       <input id="q" type="search" placeholder="Search all 27 documents…" autocomplete="off">
-      <div class="hint">Searches every word inside every document.</div>
+      <div class="hint">Searches every word inside every document · press / to search</div>
     </div>
-    <nav class="nav" id="nav"><div class="grp">Company deep dives</div><button class="item" data-k="alphabet"><span class="sn">01</span>Alphabet &amp; Meta</button><button class="item" data-k="exor"><span class="sn">02</span>EXOR NV</button><button class="item" data-k="stellantis"><span class="sn">03</span>EXOR NV — Stellantis impact</button><button class="item" data-k="investorab"><span class="sn">04</span>Investor AB</button><div class="grp">Head-to-head</div><button class="item" data-k="exor-vs-iab"><span class="sn">05</span>EXOR vs Investor AB</button><button class="item" data-k="ffh-brk-mkl"><span class="sn">06</span>Fairfax vs Berkshire vs Markel</button><button class="item" data-k="five"><span class="sn">07</span>The five capital allocators</button><div class="grp">Framework &amp; method</div><button class="item" data-k="funnel"><span class="sn">08</span>Valuation funnel — screening sequence</button><button class="item" data-k="indexconstruction"><span class="sn">09</span>How an index is built &amp; the ETF universe</button><button class="item" data-k="nonstockfunnel"><span class="sn">10</span>Screening funnel — funds, bonds &amp; bills</button><button class="item" data-k="funnel26"><span class="sn">11</span>Funnel applied to 26 compounders</button><button class="item" data-k="nonstockapplied"><span class="sn">12</span>Funnel applied — 11 funds, bonds &amp; bills</button><button class="item" data-k="divvsai"><span class="sn">13</span>Funnel applied — dividend vs AI funds</button><button class="item on" data-k="etfknow"><span class="sn">14</span>Fund knowledge — anatomy to decumulation</button><button class="item" data-k="calcguide"><span class="sn">15</span>Complete metric calculation guide</button><div class="grp">Metrics explained</div><button class="item" data-k="cagr"><span class="sn">16</span>CAGR, P/E and PEG</button><button class="item" data-k="cagrdiff"><span class="sn">17</span>CAGR vs P/E — which matters more</button><button class="item" data-k="debt"><span class="sn">18</span>Enterprise value &amp; debt risk metrics</button><button class="item" data-k="riskadj"><span class="sn">19</span>Risk-adjusted metrics</button><div class="grp">Risk &amp; failure modes</div><button class="item" data-k="riskfactors"><span class="sn">20</span>The geographic diversification illusion</button><div class="grp">Tables &amp; screens</div><button class="item" data-k="compounders"><span class="sn">21</span>Master compounders table</button><button class="item" data-k="etf"><span class="sn">22</span>Master ETF table</button><button class="item" data-k="decay"><span class="sn">23</span>Decay risk by sector</button><button class="item" data-k="buybacks"><span class="sn">24</span>The five compounders — buybacks</button><div class="grp">Portfolio &amp; tools</div><button class="item" data-k="portfolio"><span class="sn">25</span>Complete portfolio architecture</button><button class="item" data-k="indexvalue"><span class="sn">26</span>Index intrinsic value — model &amp; calculator</button><button class="item" data-k="calculator"><span class="sn">27</span>Compounding calculator</button></nav>
-  </aside>
+   </div>
+    <nav class="nav" id="nav"><div class="grow"><div class="grp">Company deep dives</div><div class="pills"><button class="item" data-k="alphabet"><span class="sn">01</span>Alphabet &amp; Meta</button><button class="item" data-k="exor"><span class="sn">02</span>EXOR NV</button><button class="item" data-k="stellantis"><span class="sn">03</span>EXOR NV — Stellantis impact</button><button class="item" data-k="investorab"><span class="sn">04</span>Investor AB</button></div></div><div class="grow"><div class="grp">Head-to-head</div><div class="pills"><button class="item" data-k="exor-vs-iab"><span class="sn">05</span>EXOR vs Investor AB</button><button class="item" data-k="ffh-brk-mkl"><span class="sn">06</span>Fairfax vs Berkshire vs Markel</button><button class="item" data-k="five"><span class="sn">07</span>The five capital allocators</button></div></div><div class="grow"><div class="grp">Framework &amp; method</div><div class="pills"><button class="item" data-k="funnel"><span class="sn">08</span>Valuation funnel — screening sequence</button><button class="item" data-k="indexconstruction"><span class="sn">09</span>How an index is built &amp; the ETF universe</button><button class="item" data-k="nonstockfunnel"><span class="sn">10</span>Screening funnel — funds, bonds &amp; bills</button><button class="item" data-k="funnel26"><span class="sn">11</span>Funnel applied to 26 compounders</button><button class="item" data-k="nonstockapplied"><span class="sn">12</span>Funnel applied — 11 funds, bonds &amp; bills</button><button class="item" data-k="divvsai"><span class="sn">13</span>Funnel applied — dividend vs AI funds</button><button class="item on" data-k="etfknow"><span class="sn">14</span>Fund knowledge — anatomy to decumulation</button><button class="item" data-k="calcguide"><span class="sn">15</span>Complete metric calculation guide</button></div></div><div class="grow"><div class="grp">Metrics explained</div><div class="pills"><button class="item" data-k="cagr"><span class="sn">16</span>CAGR, P/E and PEG</button><button class="item" data-k="cagrdiff"><span class="sn">17</span>CAGR vs P/E — which matters more</button><button class="item" data-k="debt"><span class="sn">18</span>Enterprise value &amp; debt risk metrics</button><button class="item" data-k="riskadj"><span class="sn">19</span>Risk-adjusted metrics</button></div></div><div class="grow"><div class="grp">Risk &amp; failure modes</div><div class="pills"><button class="item" data-k="riskfactors"><span class="sn">20</span>The geographic diversification illusion</button></div></div><div class="grow"><div class="grp">Tables &amp; screens</div><div class="pills"><button class="item" data-k="compounders"><span class="sn">21</span>Master compounders table</button><button class="item" data-k="etf"><span class="sn">22</span>Master ETF table</button><button class="item" data-k="decay"><span class="sn">23</span>Decay risk by sector</button><button class="item" data-k="buybacks"><span class="sn">24</span>The five compounders — buybacks</button></div></div><div class="grow"><div class="grp">Portfolio &amp; tools</div><div class="pills"><button class="item" data-k="portfolio"><span class="sn">25</span>Complete portfolio architecture</button><button class="item" data-k="indexvalue"><span class="sn">26</span>Index intrinsic value — model &amp; calculator</button><button class="item" data-k="calculator"><span class="sn">27</span>Compounding calculator</button></div></div></nav>
+  </header>
 
   <main class="main">
-    <div id="view"><div class="dochead"><div class="crumb">Framework &amp; method</div><h1 class="doctitle">Fund knowledge — anatomy to decumulation</h1><div class="docdesc">A practitioner's synthesis of exchange-traded fund knowledge across twenty-eight tabs: the three-word anatomy and the creation-redemption loop that holds price to net asset value, the full cost stack beyond the expense ratio and why tracking difference is the only honest measure, physical versus synthetic replication and where the counterparty and the withholding-tax advantage sit, the UCITS 5/10/40 rule and its 20%/35% index derogation, domicile and the five-field name decoder with the Short and Short Duration trap, a six-step process for choosing a global core and the FTSE All-World versus MSCI ACWI versus ACWI IMI separation, the lump-sum versus tranches arithmetic including the break-even entry table showing a five-year wait needs a 21% correction merely to buy 10% above today, the arithmetic of loss, the low-volatility trade priced at 311 basis points a year and 43% of twenty-year terminal wealth for protection that spared only 14% of the one severe drawdown, cash as a slow certain loss of a fifth of purchasing power over eighteen years, the start-age contribution table, six withdrawal strategies worked on a 600,000 portfolio with the dividend strategy dismantled, fact-sheet forensics, measuring returns and currency, the case for the index, allocation history and rebalancing, saving, debt and the 4% rule, diversifiers, portfolio blueprints, risk-adjusted and stress-tested, the equity core, trading and execution, behaviour and habits, new wrappers and cash, the case under cross-examination, factors and tilts (forty-year factor record, small-cap value, quality, growth, dividends), a satellite toolkit (Japan 1989, countries, sectors, EM, megatrends, ESG, REITs, commodities, gold ETCs and miners, hedging, retirement), indices and index providers (MSCI versus FTSE, size tiers, GICS, the ex-USA case), an index ETF league table (29 indices and 337 UCITS ETFs from justETF to 31 October 2026, with the MSCI-versus-FTSE emerging gap, the equal-weight crossover, same-index cost spreads and the swap withholding-tax edge), a commodities, regions and countries atlas (93 commodity ETCs and ETFs from gold to European gas, the currency-hedge and futures-roll effects, regional building blocks and 24 single-country markets from Korea to Indonesia), a sector board (ten GICS sectors and 93 sector ETFs, energy +44% against communication services +1%, October's rotation into health care and staples, and the four sector-fund families), a theme, factor and strategy board (60 themes from value and momentum to uranium, hydrogen, defence, bitcoin, buffers and money-market funds, with 21 detailed fund lists and the leveraged-decay lesson), bonds (duration, money market versus bonds, credit, linkers, iBonds ladders), and a closing value investor's reading with the seven questions asked of the index itself</div></div><div class="frame"><iframe id="fr" title="Fund knowledge — anatomy to decumulation" style="height: 2303px;" src="./BBVI Valuation Deep Dives_files/saved_resource.html"></iframe></div><div class="pager"><button class="pg" data-k="divvsai">← Funnel applied — dividend vs AI funds</button><button class="pg" data-k="calcguide">Complete metric calculation guide →</button></div></div>
+    <div id="view"><div class="dochead"><div class="crumb">Framework &amp; method</div><h1 class="doctitle">Fund knowledge — anatomy to decumulation</h1><div class="docdesc" id="dd">A practitioner's synthesis of exchange-traded fund knowledge across twenty-eight tabs: the three-word anatomy and the creation-redemption loop that holds price to net asset value, the full cost stack beyond the expense ratio and why tracking difference is the only honest measure, physical versus synthetic replication and where the counterparty and the withholding-tax advantage sit, the UCITS 5/10/40 rule and its 20%/35% index derogation, domicile and the five-field name decoder with the Short and Short Duration trap, a six-step process for choosing a global core and the FTSE All-World versus MSCI ACWI versus ACWI IMI separation, the lump-sum versus tranches arithmetic including the break-even entry table showing a five-year wait needs a 21% correction merely to buy 10% above today, the arithmetic of loss, the low-volatility trade priced at 311 basis points a year and 43% of twenty-year terminal wealth for protection that spared only 14% of the one severe drawdown, cash as a slow certain loss of a fifth of purchasing power over eighteen years, the start-age contribution table, six withdrawal strategies worked on a 600,000 portfolio with the dividend strategy dismantled, fact-sheet forensics, measuring returns and currency, the case for the index, allocation history and rebalancing, saving, debt and the 4% rule, diversifiers, portfolio blueprints, risk-adjusted and stress-tested, the equity core, trading and execution, behaviour and habits, new wrappers and cash, the case under cross-examination, factors and tilts (forty-year factor record, small-cap value, quality, growth, dividends), a satellite toolkit (Japan 1989, countries, sectors, EM, megatrends, ESG, REITs, commodities, gold ETCs and miners, hedging, retirement), indices and index providers (MSCI versus FTSE, size tiers, GICS, the ex-USA case), an index ETF league table (29 indices and 337 UCITS ETFs from justETF to 31 October 2026, with the MSCI-versus-FTSE emerging gap, the equal-weight crossover, same-index cost spreads and the swap withholding-tax edge), a commodities, regions and countries atlas (93 commodity ETCs and ETFs from gold to European gas, the currency-hedge and futures-roll effects, regional building blocks and 24 single-country markets from Korea to Indonesia), a sector board (ten GICS sectors and 93 sector ETFs, energy +44% against communication services +1%, October's rotation into health care and staples, and the four sector-fund families), a theme, factor and strategy board (60 themes from value and momentum to uranium, hydrogen, defence, bitcoin, buffers and money-market funds, with 21 detailed fund lists and the leveraged-decay lesson), bonds (duration, money market versus bonds, credit, linkers, iBonds ladders), and a closing value investor's reading with the seven questions asked of the index itself</div><button class="moredesc" id="ddb">Show full summary</button></div><div class="frame"><iframe id="fr" title="Fund knowledge — anatomy to decumulation" style="height: 1219px;" src="./BBVI Valuation Deep Dives_files/saved_resource.html"></iframe></div><div class="pager"><button class="pg" data-k="divvsai">← Funnel applied — dividend vs AI funds</button><button class="pg" data-k="calcguide">Complete metric calculation guide →</button></div></div>
   </main>
 </div>
 <div id="toast"></div>
@@ -197,13 +210,17 @@ function renderDoc(k){
   el('view').innerHTML =
       '<div class="dochead"><div class="crumb">'+d.g+'</div>'
     + '<h1 class="doctitle">'+d.t+'</h1>'
-    + '<div class="docdesc">'+esc(d.d)+'</div></div>'
+    + '<div class="docdesc" id="dd">'+esc(d.d)+'</div>'
+    + '<button class="moredesc" id="ddb">Show full summary</button></div>'
     + '<div class="frame"><iframe id="fr" title="'+stripTags(d.t)+'"></iframe></div>'
     + '<div class="pager">'
     + (prev ? '<button class="pg" data-k="'+prev.k+'">← '+stripTags(prev.t)+'</button>' : '<span></span>')
     + (next ? '<button class="pg" data-k="'+next.k+'">'+stripTags(next.t)+' →</button>' : '<span></span>')
     + '</div>';
   el('view').querySelectorAll('.pg[data-k]').forEach(b=>b.onclick=()=>go(b.dataset.k));
+  const dd=el('dd'), ddb=el('ddb');
+  if(dd.scrollHeight<=dd.clientHeight+2) ddb.style.display='none';
+  ddb.onclick=()=>{ const o=dd.classList.toggle('open'); ddb.textContent=o?'Hide summary':'Show full summary'; };
   const fr = el('fr');
   fr.srcdoc = buildSrcdoc(k);
 }
@@ -217,12 +234,13 @@ function renderNav(){
   let h = '';
   if(!q){
     groups().forEach(g=>{
-      h += '<div class="grp">'+g.name+'</div>';
+      h += '<div class="grow"><div class="grp">'+g.name+'</div><div class="pills">';
       g.items.forEach(d=>{
         const i = META.indexOf(d)+1;
         h += '<button class="item'+(d.k===current?' on':'')+'" data-k="'+d.k+'">'
            + '<span class="sn">'+String(i).padStart(2,'0')+'</span>'+d.t+'</button>';
       });
+      h += '</div></div>';
     });
   } else {
     let hits = 0;
@@ -232,7 +250,7 @@ function renderNav(){
       if(at < 0) return;
       hits++;
       const i = META.indexOf(d)+1;
-      h += '<button class="item'+(d.k===current?' on':'')+'" data-k="'+d.k+'">'
+      h += '<div class="hit"><button class="item'+(d.k===current?' on':'')+'" data-k="'+d.k+'">'
          + '<span class="sn">'+String(i).padStart(2,'0')+'</span>'+d.t+'</button>';
       const src = stripTags(d.t)+' — '+d.d+' '+d.x;
       const p = src.toLowerCase().indexOf(q);
@@ -241,11 +259,14 @@ function renderNav(){
         let frag = (s>0?'…':'') + src.slice(s, p+q.length+70).trim() + '…';
         h += '<div class="snip">'+esc(frag).replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark>$1</mark>')+'</div>';
       }
+      h += '</div>';
     });
+    if(hits) h = '<div class="hits">'+h+'</div>';
     if(!hits) h = '<div class="empty">No document contains “'+esc(query)+'”.</div>';
   }
   el('nav').innerHTML = h;
   el('nav').querySelectorAll('.item').forEach(b=>b.onclick=()=>go(b.dataset.k));
+  const on = el('nav').querySelector('.item.on'); if(on && on.parentElement.scrollWidth>on.parentElement.clientWidth) on.parentElement.scrollLeft = on.offsetLeft - 16;
 }
 
 /* ---------------- routing ---------------- */
