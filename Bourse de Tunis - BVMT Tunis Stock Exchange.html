@@ -1,0 +1,765 @@
+<title>Carte de la Bourse de Tunis</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column with a sticky section index; warm cream paper, ochre for structure, olive for "good", brick for alerts */
+:root{
+  --bg:#f4ecdd; --panel:#fbf6ec; --panel2:#efe3cd; --line:#ddcdb1;
+  --fg:#2f2418; --muted:#6f5d46; --gold:#9a621c; --teal:#4c7536; --coral:#b2452c; --amber:#a8730f;
+  --f-display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --f-body:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#221b13; --panel:#2b2319; --panel2:#352b1f; --line:#4b3d2b;
+  --fg:#f2e8d6; --muted:#c1ae92; --gold:#dba75c; --teal:#97bf72; --coral:#e58b6e; --amber:#e2b65e; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#221b13; --panel:#2b2319; --panel2:#352b1f; --line:#4b3d2b;
+  --fg:#f2e8d6; --muted:#c1ae92; --gold:#dba75c; --teal:#97bf72; --coral:#e58b6e; --amber:#e2b65e; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1040px;margin:0 auto;padding-block:32px 64px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(30px,5vw,44px);font-weight:700}
+h2{font-size:clamp(22px,3.2vw,28px);font-weight:700;margin-bottom:6px}
+h3{font-size:18px;font-weight:600;margin:22px 0 8px}
+p{margin:0 0 12px;max-width:72ch}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.lede{color:var(--muted);font-size:16px;max-width:70ch;margin-top:10px}
+.meta{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin-top:14px}
+
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);
+  margin:24px 0 8px;padding-block:10px;overflow-x:auto;white-space:nowrap}
+nav.toc a{display:inline-block;color:var(--muted);text-decoration:none;font-size:13px;padding:4px 10px;border-radius:999px;margin-right:4px}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--fg);background:var(--panel2);outline:none}
+
+section{padding-top:36px;scroll-margin-top:60px}
+.sub{color:var(--muted);margin-bottom:16px}
+
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:22px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.kpi b{display:block;font-family:var(--f-display);font-size:26px;color:var(--fg);font-variant-numeric:tabular-nums}
+.kpi span{font-size:12.5px;color:var(--muted)}
+.kpi.alert b{color:var(--coral)}
+
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--panel);margin:8px 0 6px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--panel2)}
+tr:last-child td{border-bottom:none}
+td.n,th.n{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.total td{font-weight:700;background:var(--panel2)}
+.pos{color:var(--teal)} .neg{color:var(--coral)}
+
+.bar{display:flex;align-items:center;gap:10px;min-width:140px}
+.bar i{display:block;height:8px;border-radius:4px;background:var(--gold)}
+.bar.t i{background:var(--teal)} .bar.c i{background:var(--coral)}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 4px}
+.chip{font-family:var(--f-mono);font-size:12px;padding:3px 8px;border-radius:5px;border:1px solid var(--line);background:var(--panel)}
+.chip.g{border-color:var(--teal);color:var(--teal)}
+.chip.a{border-color:var(--amber);color:var(--amber)}
+.chip.r{border-color:var(--coral);color:var(--coral)}
+
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px 18px;min-width:0}
+.box h3{margin-top:0}
+.note{border-left:3px solid var(--gold);background:var(--panel);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0;max-width:80ch}
+.note.warn{border-left-color:var(--coral)}
+.note.ok{border-left-color:var(--teal)}
+ul,ol{margin:0 0 12px;padding-left:20px;max-width:76ch}
+li{margin:4px 0}
+.mono{font-family:var(--f-mono)}
+a{color:var(--gold)}
+a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto}}
+html{scroll-behavior:smooth}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Tunis Stock Exchange · CMF · Dossier de référence</div>
+  <h1>Carte de la Bourse de Tunis</h1>
+  <p class="lede">Tout ce qu'il faut savoir pour investir à la Bourse de Tunis (Tunis Stock Exchange) avec méthode : la bourse et son régulateur, la taille du marché, ses secteurs, ses règles de cotation, la liquidité, les obligations et les filtres à appliquer avant chaque ordre.</p>
+  <div class="meta">Données au 16/10/2026 (séance) · capitalisations à fin août 2026 · revue du CMF au 30/06/2026 · mis à jour le 22/11/2026</div>
+  <div class="kpis">
+    <div class="kpi"><b>≈ 48 Md</b><span>TND de capitalisation totale (20/08/2026)</span></div>
+    <div class="kpi"><b>75</b><span>actions cotées</span></div>
+    <div class="kpi"><b>63</b><span>valeurs dans le TUNINDEX</span></div>
+    <div class="kpi"><b>46</b><span>valeurs liquides (groupe 11, cotation en continu)</span></div>
+    <div class="kpi"><b>+38,6 %</b><span>TUNINDEX depuis le 31/12/2025</span></div>
+    <div class="kpi alert"><b>≈ −14 %</b><span>depuis le sommet de 21 553 pts (17/07/2026)</span></div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <a href="#tse">Tunis Stock Exchange</a><a href="#cmf">CMF</a><a href="#capis">Capitalisations</a><a href="#secteurs">Secteurs</a><a href="#tunindex">TUNINDEX</a><a href="#tunindex20">TUNINDEX20</a><a href="#regles">Règles de cotation</a><a href="#liquidite">Liquidité</a><a href="#fiche">Lire une fiche</a><a href="#obligations">Obligations</a><a href="#performance">10 ans</a><a href="#dividendes">Dividendes</a><a href="#admission">Admission</a><a href="#discipline">Discipline</a><a href="#sources">Sources</a>
+</nav>
+
+<!-- 0a -->
+<section id="tse">
+  <h2>Tunis Stock Exchange</h2>
+  <p class="sub">La Bourse des Valeurs Mobilières de Tunis (BVMT) communique désormais sous le nom anglais <strong>Tunis Stock Exchange</strong>. Son nouveau site, <span class="mono">tunis-stockexchange.com</span>, a été lancé le 14 avril 2026.</p>
+  <div class="grid2">
+    <div class="box">
+      <h3>Identité</h3>
+      <ul>
+        <li><strong>Statut</strong> : société anonyme créée en novembre 1995, détenue à parts égales par les intermédiaires en bourse. La bourse avait d'abord été créée en 1969 comme établissement public.</li>
+        <li><strong>Nom</strong> : aucune source ne fait état d'un changement de nom juridique. La presse et le CMF (Conseil du Marché Financier) écrivent encore « Bourse de Tunis » ou « BVMT ».</li>
+        <li><strong>Ancien site</strong> : les documents hébergés sur <span class="mono">bvmt.com.tn</span> (méthodologie des indices, groupes de cotation) restaient accessibles en octobre 2026.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Ce qu'on trouve sur le site</h3>
+      <ul>
+        <li><strong>Market Watch</strong> : actions, lignes secondaires (droits d'attribution), obligations, hors cote et indices.</li>
+        <li><strong>Fiche instrument</strong> : code ISIN, compartiment, groupe et mode de cotation, titres émis, seuils de variation, carnet d'ordres, historique.</li>
+        <li><strong>Fiche émetteur</strong> : gouvernance, principaux actionnaires, chiffres clés sur 3 ans, évolution du capital, publications.</li>
+        <li><strong>Infos Investisseurs</strong> : le guide de l'investisseur.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Lire le tableau Market Watch</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Colonne</th><th>Signification</th></tr></thead>
+    <tbody>
+      <tr><td>Qté A. / Achat</td><td>La meilleure offre d'achat en attente : quantité et prix</td></tr>
+      <tr><td>Vente / Qté V.</td><td>La meilleure offre de vente en attente : prix et quantité</td></tr>
+      <tr><td>Dernier / Cours réf.</td><td>Le dernier prix traité, et la clôture de la veille qui sert de référence. Un tiret signifie qu'aucun échange n'a eu lieu.</td></tr>
+      <tr><td>Capitaux / Quantité / Nb trans.</td><td>Le montant échangé, le nombre de titres et le nombre d'opérations. Les capitaux sont le meilleur indicateur de liquidité.</td></tr>
+      <tr><td>CTO / VTO</td><td>Le cours et le volume théoriques d'ouverture</td></tr>
+      <tr><td>Seuil haut / bas</td><td>Les limites de variation du jour</td></tr>
+      <tr><td>Heure</td><td>14:20 pour la cotation en continu, 12:20 pour le fixing</td></tr>
+      <tr><td>Capit. / Qté / Nb trans. Blocs</td><td>Les transactions de blocs, négociées hors du carnet d'ordres</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note warn">Sur la seule fiche d'AMV, le site affichait une capitalisation environ 70 fois trop faible et des bénéfices par action décalés d'une colonne. <strong>Recalculez toujours vous-même</strong> : capitalisation = cours × titres émis.</div>
+
+  <h3>Le guide de l'investisseur, en bref</h3>
+  <div class="grid2">
+    <div class="box">
+      <h3>Les titres</h3>
+      <ul>
+        <li><strong>Action ordinaire</strong> : droit au dividende, droit de vote, droit sur l'actif en cas de liquidation.</li>
+        <li><strong>ADP</strong> (action à dividende prioritaire) : dividende versé en priorité, sans droit de vote. Au plus un tiers du capital. Exemple : BTE (ADP).</li>
+        <li><strong>CI</strong> (certificat d'investissement) : les droits financiers d'une action, sans le droit de vote. Au plus un tiers du capital.</li>
+        <li><strong>Titres hybrides</strong> : titres participatifs (rémunération fixe plus une part liée au bénéfice ou au chiffre d'affaires) et obligations convertibles en actions.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Obligations et fonds</h3>
+      <ul>
+        <li>Taux <strong>fixe</strong> ou <strong>variable</strong>.</li>
+        <li>Remboursement <strong>par tranches annuelles</strong> (le « AP » des ENAT et du leasing), <strong>en une fois à l'échéance</strong> (in fine, comme les BTA), ou <strong>zéro coupon</strong> (capital et intérêts versés à l'échéance).</li>
+        <li><strong>OPCVM</strong> (organismes de placement collectif) : les SICAV ont une personnalité morale, les FCP (fonds communs de placement) n'en ont pas. Les deux sont contrôlés par le CMF.</li>
+      </ul>
+    </div>
+  </div>
+  <h3>Fiscalité selon le guide</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Revenu</th><th>Règle</th><th>Conséquence</th></tr></thead>
+    <tbody>
+      <tr><td>Plus-value sur actions cotées</td><td><strong>Exonérée</strong> si les titres sont conservés jusqu'au terme de l'année qui suit celle de l'achat</td><td>Une action achetée en mars 2026 peut être revendue sans impôt sur la plus-value à partir de janvier 2028</td></tr>
+      <tr><td>Dividendes</td><td>Imposables, « avec prise en compte des moins-values » (taux non précisé)</td><td>Faire préciser le mécanisme par l'intermédiaire</td></tr>
+      <tr><td>Intérêts des obligations et BTA</td><td>Revenus de capitaux mobiliers, imposés par retenue à la source</td><td>Cohérent avec l'hypothèse d'environ 20 % utilisée dans nos calculs, à confirmer</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note"><strong>Le CEA (compte épargne en actions)</strong> : un compte investi en actions cotées, en BTA ou en OPCVM éligibles. Les versements sont déductibles du revenu imposable, dans une limite fixée par la loi. L'avantage suppose un revenu imposable en Tunisie : avec des revenus imposés en France, il servira probablement à peu de chose. Le plafond et la durée de blocage sont à vérifier auprès de l'intermédiaire.</div>
+</section>
+
+<!-- 0b -->
+<section id="cmf">
+  <h2>Le CMF, régulateur du marché</h2>
+  <p class="sub">Le Conseil du Marché Financier approuve les prospectus (visa), contrôle les intermédiaires en bourse et les OPCVM, approuve le règlement de la bourse et peut saisir la justice.</p>
+
+  <h3>Revue du CMF n°1 (septembre 2026) : le premier semestre 2026</h3>
+  <p class="sub">Données arrêtées au 30 juin 2026, soit juste avant le sommet de juillet.</p>
+  <div class="kpis">
+    <div class="kpi"><b>+47,7 %</b><span>TUNINDEX sur le semestre (19 864 pts)</span></div>
+    <div class="kpi"><b>48 778</b><span>MDT de capitalisation (+63,4 %), 30,5 % du PIB</span></div>
+    <div class="kpi"><b>23,9 %</b><span>de la capitalisation réellement en circulation (flottant)</span></div>
+    <div class="kpi"><b>65,9 %</b><span>poids des sociétés financières dans le TUNINDEX</span></div>
+    <div class="kpi"><b>11,1 %</b><span>volatilité annualisée, sous le seuil d'alerte de 15 %</span></div>
+    <div class="kpi alert"><b>0</b><span>introduction en bourse, aucun dossier en cours</span></div>
+  </div>
+
+  <div class="tbl"><table>
+    <thead><tr><th>Thème</th><th>Ce que dit la revue</th><th>Ce qu'il faut en retenir</th></tr></thead>
+    <tbody>
+      <tr><td>Largeur de la hausse</td><td>63 valeurs sur 75 en hausse, les 12 secteurs en hausse (une première en 5 ans)</td><td>Quand tout monte sans secousse, le risque est souvent sous-estimé (Marks)</td></tr>
+      <tr><td>Moteur de la hausse</td><td>Les sociétés financières apportent 35,7 des 47,7 points. Le CMF écrit que la hausse des banques vient de « l'efficacité opérationnelle » plutôt que d'une « expansion de l'économie réelle ».</td><td>Le TUNINDEX reste un pari sur les taux de la BCT</td></tr>
+      <tr><td>Concentration</td><td>Banques : 46,1 % de la capitalisation. Agroalimentaire : 23,0 %. Top 10 : 65 %. Première valeur : 14,2 %.</td><td>Diversifier hors finance demande un effort délibéré</td></tr>
+      <tr><td>Volumes</td><td>2 029,8 MDT (+100,6 %), dont 28,1 % en blocs. Avril pèse 36 % du semestre.</td><td>Une partie de la liquidité est exceptionnelle</td></tr>
+      <tr><td>Opérations de blocs</td><td>BA Glass (Pays-Bas) rachète 41,28 % de <strong>Sotuver</strong> (211 MDT). Cessions de titres <strong>Poulina</strong> (219 MDT).</td><td>Sotuver a un nouvel actionnaire industriel : le prix payé est un repère d'évaluation</td></tr>
+      <tr><td>Étrangers</td><td>Encours de 8 975 MDT, soit 18,4 % de la capitalisation. Flux net de +218 MDT, dont 96 % en avril.</td><td>Hors Sotuver, les étrangers ne sont pas revenus</td></tr>
+      <tr><td>Détenteurs</td><td>Les personnes morales tunisiennes détiennent 70,7 % des encours, pour 5 % des investisseurs. Les CEA représentent 21,9 % des comptes, mais 3,4 % des encours.</td><td>Les institutionnels font les prix</td></tr>
+      <tr><td>Obligations d'entreprises</td><td>Émises à 9,94 % en moyenne, pour 5,9 ans. Marché secondaire : 11,3 MDT échangés en 6 mois.</td><td>Une obligation se conserve jusqu'à l'échéance</td></tr>
+      <tr><td>OPCVM</td><td>11 206 MDT d'actifs, collecte record. Obligataires : +3,1 % sur le semestre. Actions : +31,4 %.</td><td>Une SICAV obligataire rapporte environ 6 % par an, moins qu'une obligation détenue en direct</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Affaire TSI (Tuniso-Saoudienne d'Investissement)</h3>
+  <p class="sub">Un intermédiaire en bourse agréé, sous mandat judiciaire depuis 2025.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Date</th><th>Événement</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">09/01/2025</td><td>Le CMF ouvre une enquête approfondie</td><td>Business News</td></tr>
+      <tr><td class="mono">Avril 2025</td><td>Communiqué du CMF : fonds propres insuffisants au regard des ratios réglementaires, soupçons de défaillances de gouvernance. Le commissaire aux comptes alerte le régulateur.</td><td>Business News, CMF</td></tr>
+      <tr><td class="mono">30/04/2025</td><td>Le CMF annonce la transmission du dossier à la justice</td><td>Business News</td></tr>
+      <tr><td class="mono">15/05/2025</td><td>Le tribunal de première instance de Tunis nomme un administrateur judiciaire pour 3 mois</td><td>AllAfrica</td></tr>
+      <tr><td class="mono">16/06/2025</td><td>Mandat judiciaire : 3 mandataires sous le contrôle d'un juge</td><td>Business News</td></tr>
+      <tr><td class="mono">15/12/2025</td><td>Reprise progressive, autorisée par le tribunal le 5 décembre, sous restrictions</td><td>Business News</td></tr>
+      <tr><td class="mono">02/11/2026</td><td>Les actionnaires sont convoqués le 23/11/2026 pour recomposer la direction. Les poursuites contre les anciens dirigeants sont toujours en cours.</td><td>Business News</td></tr>
+      <tr><td class="mono">12/11/2026</td><td>Nouvelle plainte, visant aussi la BCT et le CMF. Plus de 2 500 familles et plus de 600 MDT seraient concernés.</td><td class="neg">Presse, non vérifié</td></tr>
+    </tbody>
+  </table></div>
+  <div class="grid2">
+    <div class="box">
+      <h3>Les restrictions de la reprise (décembre 2025)</h3>
+      <ul>
+        <li><strong>Anciens comptes</strong> : aucun retrait d'espèces.</li>
+        <li><strong>Interdits</strong> : rachats de parts d'OPCVM et transferts de titres vers un autre intermédiaire.</li>
+        <li><strong>Achats et ventes</strong> : autorisés, avec validation d'un négociateur.</li>
+        <li><strong>Nouveaux comptes</strong> : services complets.</li>
+      </ul>
+      <p class="sub" style="margin:0">Business News, le 2 novembre 2026 : la reprise de certaines opérations « ne signifie pas que chacun a retrouvé la libre disposition de ses avoirs ».</p>
+    </div>
+    <div class="box">
+      <h3>La leçon pour un investisseur</h3>
+      <p>Au risque de marché s'ajoute le <strong>risque de blocage chez l'intermédiaire</strong> : des avoirs qui existent, mais qu'on ne peut ni retirer ni transférer pendant des mois.</p>
+      <ul>
+        <li>Choisir un intermédiaire solide et vérifier sa situation auprès du CMF</li>
+        <li>Pour un montant important, répartir entre deux intermédiaires</li>
+        <li>Ne pas laisser d'espèces dormir sur le compte titres</li>
+        <li>Se renseigner sur le fonds de garantie de la clientèle et ses plafonds (à vérifier)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note warn">Les montants cités par la presse varient (environ 400 MDT selon un titre de Business News, plus de 600 MDT selon une autre source). Aucune décision de justice définitive n'établit à ce stade les responsabilités.</div>
+</section>
+
+<!-- 1 -->
+<section id="capis">
+  <h2>Les plus grosses capitalisations</h2>
+  <p class="sub">Fin août 2026, sur une capitalisation totale d'environ 48 Md TND.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Rang</th><th>Société</th><th>Secteur</th><th class="n">Capitalisation</th><th>Part du marché</th><th class="n">Depuis le 1er janvier</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>BIAT</td><td>Banque</td><td class="n">6,47 Md</td><td><div class="bar"><i style="width:94px"></i><span class="mono">13,5 %</span></div></td><td class="n pos">+42,8 %</td></tr>
+      <tr><td class="mono">2</td><td>Poulina Group Holding</td><td>Conglomérat</td><td class="n">4,93 Md</td><td><div class="bar"><i style="width:72px"></i><span class="mono">10,3 %</span></div></td><td class="n pos">+48,1 %</td></tr>
+      <tr><td class="mono">3</td><td>Attijari Bank</td><td>Banque</td><td class="n">4,30 Md</td><td><div class="bar"><i style="width:63px"></i><span class="mono">9,0 %</span></div></td><td class="n pos">+27,2 %</td></tr>
+      <tr><td class="mono">4</td><td>SFBT</td><td>Boissons</td><td class="n">3,96 Md</td><td><div class="bar"><i style="width:58px"></i><span class="mono">8,3 %</span></div></td><td class="n pos">+17,2 %</td></tr>
+      <tr><td class="mono">5</td><td>Amen Bank</td><td>Banque</td><td class="n">3,17 Md</td><td><div class="bar"><i style="width:46px"></i><span class="mono">6,6 %</span></div></td><td class="n pos">+81,6 %</td></tr>
+      <tr class="total"><td></td><td>Total des 5</td><td></td><td class="n">22,8 Md</td><td><span class="mono">47,6 %</span></td><td></td></tr>
+      <tr><td></td><td>Les 70 autres valeurs</td><td></td><td class="n">≈ 25,2 Md</td><td><span class="mono">≈ 52,4 %</span></td><td></td></tr>
+    </tbody>
+  </table></div>
+  <div class="note">Cinq sociétés font la moitié de la bourse, et trois banques en font à elles seules environ 30 %. Les rangs 6 à 20 ne sont pas encore renseignés : aucun classement vérifié n'a été trouvé. À compléter à partir du bulletin officiel de la Tunis Stock Exchange.</div>
+  <div class="note warn">Amen Bank a gagné +81,6 % en 8 mois. Avant de l'envisager, vérifier si cette hausse vient des bénéfices ou du seul enthousiasme du marché.</div>
+</section>
+
+<!-- 2 -->
+<section id="secteurs">
+  <h2>La carte sectorielle</h2>
+  <p class="sub">Performance des indices depuis le 31/12/2025, relevée le 16/10/2026.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Indice</th><th class="n">Depuis le 31/12</th><th class="n">Écart vs TUNINDEX</th><th>Ce qui l'explique</th></tr></thead>
+    <tbody>
+      <tr><td>Services financiers (leasing, SICAF)</td><td class="n pos">+55,7 %</td><td class="n pos">+17,1</td><td>Taux élevés, crédit automobile</td></tr>
+      <tr><td>Assurances</td><td class="n pos">+49,2 %</td><td class="n pos">+10,7</td><td>Revenus de placement portés par les taux</td></tr>
+      <tr><td>Banques</td><td class="n pos">+45,0 %</td><td class="n pos">+6,4</td><td>Marge d'intérêt, financement de l'État</td></tr>
+      <tr><td>Distribution / Services aux consommateurs</td><td class="n pos">+41,2 %</td><td class="n pos">+2,6</td><td>Concessionnaires automobiles (quotas)</td></tr>
+      <tr class="total"><td>TUNINDEX</td><td class="n">+38,6 %</td><td class="n">—</td><td>65,9 % de sociétés financières (revue du CMF, 30/06/2026)</td></tr>
+      <tr><td>TUNINDEX20</td><td class="n">+36,7 %</td><td class="n neg">−1,9</td><td>Les grandes valeurs ont un peu moins monté</td></tr>
+      <tr><td>Agroalimentaire et boissons</td><td class="n">+30,9 %</td><td class="n neg">−7,7</td><td>Secteur défensif, en retard dans un marché en forte hausse</td></tr>
+      <tr><td>Industries</td><td class="n">+22,7 %</td><td class="n neg">−15,9</td><td>Exportateurs en hausse, bâtiment à plat</td></tr>
+      <tr><td>Biens de consommation</td><td class="n">+22,4 %</td><td class="n neg">−16,2</td><td>Agroalimentaire plus produits ménagers</td></tr>
+      <tr><td>Matériaux de base</td><td class="n">+22,4 %</td><td class="n neg">−16,2</td><td>Cycliques (aluminium, fluor)</td></tr>
+      <tr><td>Bâtiment et matériaux de construction</td><td class="n">+3,9 %</td><td class="n neg">−34,7</td><td>Taux élevés, surcapacité, dette</td></tr>
+      <tr><td>Produits ménagers et soin personnel</td><td class="n neg">−5,3 %</td><td class="n neg">−43,9</td><td>SAH en baisse</td></tr>
+    </tbody>
+  </table></div>
+  <div class="grid2">
+    <div class="box"><h3>Facteur 1 : les taux</h3><p>La finance profite des taux élevés de la BCT (taux directeur à 7 %), et le bâtiment en souffre. <strong>Une baisse des taux inverserait probablement ce classement.</strong></p></div>
+    <div class="box"><h3>Facteur 2 : l'export</h3><p>Les sociétés qui vendent en euros et produisent en dinars (One Tech, Sotuver, Euro-Cycles) se protègent contre la baisse du dinar. Les importateurs, comme les concessionnaires, y sont exposés.</p></div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="tunindex">
+  <h2>La composition du TUNINDEX</h2>
+  <p class="sub">63 valeurs. Les codes en vert font aussi partie du TUNINDEX20.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Secteur</th><th class="n">Nb</th><th>Valeurs</th></tr></thead>
+    <tbody>
+      <tr><td>Banques</td><td class="n">12</td><td>Amen*, ATB*, Attijari*, BH Bank, BIAT*, BNA*, BT*, BTE (ADP), STB*, UBCI, UIB*, Wifack</td></tr>
+      <tr><td>Assurances</td><td class="n">7</td><td>AMV, Assur Maghrebia, Astrée, BH Assurance, BNA Assurances, STAR*, Tunis Re</td></tr>
+      <tr><td>Services financiers</td><td class="n">10</td><td>ATL*, Attijari Leasing, Best Lease, BH Leasing, CIL, Hannibal Lease, Tunisie Leasing &amp; Factoring, Placements de Tunisie, SPDIT, Tuninvest</td></tr>
+      <tr><td>Distribution</td><td class="n">9</td><td>Artes, Cellcom, City Cars*, Ennakl, Magasin Général, Monoprix, Smart Tunisie, Sotumag, STA</td></tr>
+      <tr><td>Bâtiment</td><td class="n">6</td><td>Carthage Cement*, Ciments de Bizerte, Essoukna, MPBS, Simpar, SITS</td></tr>
+      <tr><td>Produits ménagers</td><td class="n">5</td><td>SAH*, Euro-Cycles, Atelier du Meuble, Officeplast, New Body Line</td></tr>
+      <tr><td>Agroalimentaire</td><td class="n">4</td><td>SFBT*, Poulina*, Délice*, Land'Or</td></tr>
+      <tr><td>Industrie</td><td class="n">3</td><td>One Tech*, Sotuver*, Siame</td></tr>
+      <tr><td>Matériaux de base</td><td class="n">3</td><td>ICF, TPR*, Sotipapier</td></tr>
+      <tr><td>Sans indice sectoriel</td><td class="n">4</td><td>Sotetel, Telnet, Sotrapil, Unimed*</td></tr>
+    </tbody>
+  </table></div>
+  <p class="sub" style="margin-top:6px">* valeur du TUNINDEX20 (20 valeurs, dont 10 financières).</p>
+
+  <h3>Les 12 actions hors indice</h3>
+  <p>Toutes sont dans le <strong>compartiment S (sous surveillance)</strong> : retards dans la publication des comptes ou difficultés graves. Zone à éviter par défaut.</p>
+  <div class="chips">
+    <span class="chip r">AL · Air Liquide Tunisie</span><span class="chip r">ALKIM · Alkimia</span><span class="chip r">ASSAD · Assad</span><span class="chip r">SIPHA · Siphat</span><span class="chip r">STIP</span><span class="chip r">SOTEM · Sotemail</span><span class="chip r">SMD · Sanimed</span><span class="chip r">SOMOC · Somocer</span><span class="chip r">TAIR · Tunisair</span><span class="chip r">TGH · Tawasol</span><span class="chip r">AETEC · Aetech</span><span class="chip r">UADH</span>
+  </div>
+  <div class="note warn"><strong>Siame</strong> fait partie du TUNINDEX, mais elle est passée en compartiment S le 2 janvier 2026. Elle reste hors de la liste de surveillance tant que la raison de ce classement n'est pas connue.</div>
+  <p>Hors cote (non admises à la cote officielle) : SITEX et Société Tunisienne du Sucre. Peu d'information, aucun échange : à ignorer.</p>
+</section>
+
+<!-- 3b -->
+<section id="tunindex20">
+  <h2>Le TUNINDEX20</h2>
+  <p class="sub">Ce ne sont pas les 20 plus grosses capitalisations, mais les 20 plus grosses <strong>capitalisations flottantes</strong> parmi les valeurs <strong>liquides cotées en continu</strong>.</p>
+  <div class="grid2">
+    <div class="box">
+      <h3>Sélection</h3>
+      <ol>
+        <li><strong>Point de départ</strong> : les 25 plus grosses capitalisations flottantes, cotées en continu et présentes à la cote depuis plus d'un mois.</li>
+        <li><strong>15 entrées directes</strong> : les plus grosses capitalisations flottantes qui dépassent un taux de rotation minimum.</li>
+        <li><strong>5 places restantes</strong>, parmi les 10 suivantes, selon un classement combiné : taille, montant échangé par jour, taux de rotation, fréquence de cotation et écart entre offre d'achat et offre de vente.</li>
+      </ol>
+    </div>
+    <div class="box">
+      <h3>Fonctionnement</h3>
+      <ul>
+        <li><strong>Pondération</strong> selon la capitalisation flottante, plafonnée à 15 % par valeur.</li>
+        <li><strong>Révision annuelle</strong> en décembre, avec effet en janvier.</li>
+        <li><strong>Ajustements chaque trimestre</strong> : une valeur sort si elle dépasse la 25e place, passe au fixing, est placée sous surveillance ou suspendue 2 mois. Une valeur entre si elle atteint la 15e place ou mieux.</li>
+        <li><strong>Indice de rentabilité</strong> : les dividendes sont réinvestis. La version sans dividendes s'appelle TUNINDEXprice20.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Les 20 valeurs, séance du 16/10/2026</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Code</th><th>Société</th><th>Secteur</th><th>Comp.</th><th class="n">Cours (DT)</th><th class="n">Var. séance</th><th class="n">Capitaux échangés (DT)</th><th class="n">Capitalisation (fin août)</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">BIAT</td><td>BIAT</td><td>Banque</td><td>A</td><td class="n">163,000</td><td class="n neg">−1,19 %</td><td class="n">853 290</td><td class="n">6,47 Md</td></tr>
+      <tr><td class="mono">TJARI</td><td>Attijari Bank</td><td>Banque</td><td>A</td><td class="n">76,980</td><td class="n pos">+0,89 %</td><td class="n">116 646</td><td class="n">4,30 Md</td></tr>
+      <tr><td class="mono">AB</td><td>Amen Bank</td><td>Banque</td><td>A</td><td class="n">87,280</td><td class="n neg">−0,45 %</td><td class="n">386 610</td><td class="n">3,17 Md</td></tr>
+      <tr><td class="mono">BT</td><td>Banque de Tunisie</td><td>Banque</td><td>A</td><td class="n">8,730</td><td class="n neg">−0,80 %</td><td class="n">194 543</td><td class="n">—</td></tr>
+      <tr><td class="mono">BNA</td><td>BNA</td><td>Banque (publique)</td><td>A</td><td class="n">19,690</td><td class="n neg">−1,30 %</td><td class="n">83 420</td><td class="n">—</td></tr>
+      <tr><td class="mono">STB</td><td>STB</td><td>Banque (publique)</td><td>A</td><td class="n">4,850</td><td class="n neg">−2,02 %</td><td class="n">57 998</td><td class="n">—</td></tr>
+      <tr><td class="mono">ATB</td><td>ATB</td><td>Banque</td><td>A</td><td class="n">3,490</td><td class="n neg">−0,29 %</td><td class="n">40 255</td><td class="n">—</td></tr>
+      <tr><td class="mono">UIB</td><td>UIB</td><td>Banque</td><td>A</td><td class="n">35,350</td><td class="n neg">−0,09 %</td><td class="n neg">210</td><td class="n">—</td></tr>
+      <tr><td class="mono">STAR</td><td>STAR</td><td>Assurance</td><td>A</td><td class="n">90,000</td><td class="n">0,00 %</td><td class="n">84 781</td><td class="n">—</td></tr>
+      <tr><td class="mono">ATL</td><td>ATL</td><td>Leasing</td><td>B</td><td class="n">14,990</td><td class="n pos">+0,60 %</td><td class="n">99 834</td><td class="n">—</td></tr>
+      <tr><td class="mono">PGH</td><td>Poulina Group Holding</td><td>Conglomérat</td><td>A</td><td class="n">25,700</td><td class="n neg">−0,58 %</td><td class="n">77 189</td><td class="n">4,93 Md</td></tr>
+      <tr><td class="mono">SFBT</td><td>SFBT</td><td>Boissons</td><td>A</td><td class="n">13,500</td><td class="n neg">−0,37 %</td><td class="n">41 146</td><td class="n">3,96 Md</td></tr>
+      <tr><td class="mono">DH</td><td>Délice Holding</td><td>Agroalimentaire</td><td>A</td><td class="n">19,390</td><td class="n pos">+0,57 %</td><td class="n">6 028</td><td class="n">—</td></tr>
+      <tr><td class="mono">SAH</td><td>SAH (Lilas)</td><td>Hygiène</td><td>A</td><td class="n">12,750</td><td class="n">0,00 %</td><td class="n">197 160</td><td class="n">—</td></tr>
+      <tr><td class="mono">UMED</td><td>Unimed</td><td>Pharmacie</td><td>A</td><td class="n">8,740</td><td class="n neg">−0,11 %</td><td class="n">19 482</td><td class="n">—</td></tr>
+      <tr><td class="mono">CC</td><td>Carthage Cement</td><td>Ciment</td><td>A</td><td class="n">1,790</td><td class="n neg">−0,56 %</td><td class="n">48 005</td><td class="n">—</td></tr>
+      <tr><td class="mono">OTH</td><td>One Tech Holding</td><td>Industrie (export)</td><td>A</td><td class="n">10,200</td><td class="n neg">−0,20 %</td><td class="n">10 918</td><td class="n">—</td></tr>
+      <tr><td class="mono">SOTUV</td><td>Sotuver</td><td>Verre (export)</td><td>A</td><td class="n">23,490</td><td class="n neg">−0,04 %</td><td class="n">603 431</td><td class="n">—</td></tr>
+      <tr><td class="mono">TPR</td><td>TPR</td><td>Aluminium</td><td>A</td><td class="n">12,650</td><td class="n pos">+0,80 %</td><td class="n">95 298</td><td class="n">—</td></tr>
+      <tr><td class="mono">CITY</td><td>City Cars</td><td>Distribution auto</td><td>A</td><td class="n">18,400</td><td class="n neg">−1,24 %</td><td class="n">38 609</td><td class="n">—</td></tr>
+    </tbody>
+  </table></div>
+  <p class="sub" style="margin-top:6px">Répartition : 8 banques, 1 assurance, 1 leasing, 3 agroalimentaire, 2 santé et hygiène, 4 industrie, 1 distribution. Capitalisation disponible seulement pour les 5 premières (voir plus haut).</p>
+
+  <h3>Grandes, mais hors de l'indice</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Valeurs</th><th>Raison</th></tr></thead>
+    <tbody>
+      <tr><td>UBCI, Astrée, Wifack (compartiment A)</td><td>Cotées au fixing (groupe 12), donc pas éligibles</td></tr>
+      <tr><td>BH Bank, Tunisie Leasing &amp; Factoring, SPDIT (compartiment A, cotation en continu)</td><td>Leur flottant ou leur liquidité les place derrière les 20 retenues</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note"><strong>Pour mesurer votre performance :</strong> l'indice réinvestit les dividendes. Comparez votre portefeuille dividendes compris, sinon la référence part avec 4 à 6 points d'avance par an. Le TUNINDEX suit probablement la même règle, puisque les deux indices ont les mêmes règles de calcul (non vérifié précisément).</div>
+  <div class="note warn">UIB n'a échangé que 210 DT ce jour-là, alors qu'elle fait partie de l'indice. Son flottant est faible : dans la réalité, elle est bien moins facile à négocier que la BIAT.</div>
+</section>
+
+<!-- 4 -->
+<section id="regles">
+  <h2>Les règles de cotation</h2>
+  <div class="grid2">
+    <div class="box">
+      <h3>Compartiments (classement annuel)</h3>
+      <ul>
+        <li><strong>A</strong> : capitalisation d'au moins 200 M TND (moyenne du 1er septembre au 30 novembre)</li>
+        <li><strong>B</strong> : capitalisation inférieure à 200 M TND</li>
+        <li><strong>S</strong> : retards de publication de plus de 180 jours cumulés, ou événement grave. <span class="neg">Signal d'alerte.</span></li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Groupes et modes de cotation (2026)</h3>
+      <ul>
+        <li><strong>Groupe 11, continu</strong> : au moins 1 200 transactions par an, et au moins 300 par trimestre sur au moins deux trimestres. 46 valeurs.</li>
+        <li><strong>Groupe 12, fixing</strong> : les autres valeurs de A et B. 16 valeurs.</li>
+        <li><strong>Groupe 99, fixing</strong> : le compartiment S. 13 valeurs.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Seuils de variation quotidienne</h3>
+      <ul>
+        <li>Fixés par le règlement de la Bourse de Tunis, approuvé par le CMF, et calculés sur le <strong>cours de référence</strong> (clôture de la veille, ajustée après un dividende ou une distribution).</li>
+        <li>Valeurs en continu : <strong>environ ±6 %</strong> par séance. Valeurs au fixing : <strong>environ ±4,5 %</strong>. Niveaux déduits des données de séance.</li>
+        <li>TUNINDEX à −3 % : 1 heure d'interruption (cas du 28/07/2026). À −5 % : séance suspendue.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Capitalisation, flottant, titres émis</h3>
+      <ul>
+        <li><strong>Titres émis</strong> : <em>toutes</em> les actions de la société, y compris celles de l'actionnaire de contrôle.</li>
+        <li><strong>Capitalisation</strong> = cours × titres émis. Sert à <em>évaluer</em> la société.</li>
+        <li><strong>Flottant</strong> = part détenue par le public. Sert à mesurer la <em>liquidité</em>.</li>
+        <li>Les actions à dividende prioritaire (ADP, comme BTE) et l'autodétention se traitent à part.</li>
+      </ul>
+    </div>
+  </div>
+  <h3>Lignes secondaires</h3>
+  <p>Ce sont des <strong>droits d'attribution</strong> issus de distributions d'actions gratuites, et non des actions. Exemple : « AB Da 1/10 110613 » signifie 1 action gratuite pour 10 détenues, opération du 11/06/2013. À ne pas confondre avec l'action dans le simulateur. Pensez à <strong>ajuster les historiques</strong> (cours, BPA, dividende) après chaque distribution.</p>
+</section>
+
+<!-- 5 -->
+<section id="liquidite">
+  <h2>L'univers liquide</h2>
+  <p class="sub">Le groupe 11 est la liste officielle des valeurs cotées en continu. C'est votre terrain principal.</p>
+  <h3>Groupe 11, compartiment A (26)</h3>
+  <div class="chips">
+    <span class="chip g">SFBT</span><span class="chip g">SPDIT</span><span class="chip g">TJARI</span><span class="chip g">BIAT</span><span class="chip g">BH</span><span class="chip g">TLS</span><span class="chip g">BT</span><span class="chip g">STB</span><span class="chip g">BNA</span><span class="chip g">AB</span><span class="chip g">ATB</span><span class="chip g">UIB</span><span class="chip g">PGH</span><span class="chip g">STAR</span><span class="chip g">SOTUV</span><span class="chip g">TPR</span><span class="chip g">ARTES</span><span class="chip g">CC</span><span class="chip g">NAKL</span><span class="chip g">OTH</span><span class="chip g">CITY</span><span class="chip g">SAH</span><span class="chip g">DH</span><span class="chip g">BNASS</span><span class="chip g">UMED</span><span class="chip g">ASSMA</span>
+  </div>
+  <h3>Groupe 11, compartiment B (20)</h3>
+  <div class="chips">
+    <span class="chip g">ICF</span><span class="chip g">CIL</span><span class="chip g">ATL</span><span class="chip g">SOTET</span><span class="chip g">MGR</span><span class="chip g">TJL</span><span class="chip g">STPIL</span><span class="chip g">SOKNA</span><span class="chip g">TLNET</span><span class="chip g">LNDOR</span><span class="chip g">NBL</span><span class="chip g">ECYCL</span><span class="chip g">CELL</span><span class="chip g">MPBS</span><span class="chip g">STPAP</span><span class="chip g">PLAST</span><span class="chip g">SAM</span><span class="chip g">SMART</span><span class="chip g">STA</span><span class="chip g">AMV</span>
+  </div>
+  <h3>Groupe 12, fixing (16) : uniquement avec une thèse solide</h3>
+  <div class="chips">
+    <span class="chip a">UBCI</span><span class="chip a">AST</span><span class="chip a">WIFAK</span><span class="chip a">MNP</span><span class="chip a">BTE</span><span class="chip a">PLTU</span><span class="chip a">SIMPA</span><span class="chip a">TINV</span><span class="chip a">MAG</span><span class="chip a">BHASS</span><span class="chip a">BHL</span><span class="chip a">SITS</span><span class="chip a">HL</span><span class="chip a">SCB</span><span class="chip a">TRE</span><span class="chip a">BL</span>
+  </div>
+
+  <h3>Les plus échangées en montant, séance du 16/10/2026</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Valeur</th><th class="n">Capitaux (DT)</th><th class="n">Transactions</th><th class="n">Montant moyen</th><th>Lecture</th></tr></thead>
+    <tbody>
+      <tr><td>BIAT</td><td class="n">853 290</td><td class="n">92</td><td class="n">9 275</td><td>Leader en liquidité</td></tr>
+      <tr><td>Sotuver</td><td class="n">603 431</td><td class="n">14</td><td class="n">43 102</td><td>Gros blocs : investisseurs importants</td></tr>
+      <tr><td>Amen Bank</td><td class="n">386 610</td><td class="n">81</td><td class="n">4 773</td><td></td></tr>
+      <tr><td>Tunisie Leasing &amp; Factoring</td><td class="n">243 678</td><td class="n">62</td><td class="n">3 930</td><td></td></tr>
+      <tr><td>SAH</td><td class="n">197 160</td><td class="n">93</td><td class="n">2 120</td><td>Surtout des particuliers</td></tr>
+      <tr><td>BT</td><td class="n">194 543</td><td class="n">98</td><td class="n">1 985</td><td></td></tr>
+      <tr><td>Sotetel</td><td class="n">160 581</td><td class="n">49</td><td class="n">3 277</td><td></td></tr>
+      <tr><td>ICF</td><td class="n">152 487</td><td class="n">47</td><td class="n">3 244</td><td></td></tr>
+      <tr><td>Artes</td><td class="n">117 738</td><td class="n">26</td><td class="n">4 528</td><td></td></tr>
+      <tr><td>Attijari Bank</td><td class="n">116 646</td><td class="n">30</td><td class="n">3 888</td><td></td></tr>
+      <tr><td>SFBT (pour comparaison)</td><td class="n">41 146</td><td class="n">27</td><td class="n">1 524</td><td class="neg">4e capitalisation, flottant réduit</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note">Ce classement ne porte que sur une séance calme. En 2026, le marché échange environ 16 M DT par jour en moyenne, et les volumes ont doublé par rapport à 2025. Pour juger une valeur, utilisez la moyenne des capitaux échangés sur 3 mois. <strong>Règle :</strong> une position ne devrait pas dépasser environ 10 % des capitaux échangés en une journée sur ce titre.</div>
+
+  <h3>Le coût caché : l'écart entre offre d'achat et offre de vente</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Valeur</th><th class="n">Achat</th><th class="n">Vente</th><th class="n">Écart</th></tr></thead>
+    <tbody>
+      <tr><td>SAH</td><td class="n">12,610</td><td class="n">12,750</td><td class="n">1,1 %</td></tr>
+      <tr><td>BIAT</td><td class="n">160,010</td><td class="n">163,990</td><td class="n">2,5 %</td></tr>
+      <tr><td>AMV</td><td class="n">12,110</td><td class="n">12,500</td><td class="n">3,2 %</td></tr>
+      <tr><td>Air Liquide Tunisie</td><td class="n">228,030</td><td class="n">238,290</td><td class="n neg">4,5 %</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 6 -->
+<section id="fiche">
+  <h2>Lire une fiche : le cas AMV</h2>
+  <p class="sub">Assurances Maghrebia Vie. Cotée depuis le 30/12/2022, compartiment B, groupe 11.</p>
+  <div class="grid2">
+    <div class="box">
+      <h3>Actionnariat</h3>
+      <div class="tbl" style="margin:0"><table style="min-width:0">
+        <tbody>
+          <tr><td>Assurances Maghrebia (ASSMA, la mère)</td><td class="n">58,74 %</td></tr>
+          <tr><td>Florus Invest Holding</td><td class="n">9,36 %</td></tr>
+          <tr><td>Union Financière Holding</td><td class="n">8,35 %</td></tr>
+          <tr class="total"><td>Flottant</td><td class="n">23,55 %</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="box">
+      <h3>Croissance (M TND)</h3>
+      <div class="tbl" style="margin:0"><table style="min-width:0">
+        <thead><tr><th></th><th class="n">2023</th><th class="n">2024</th><th class="n">2025</th></tr></thead>
+        <tbody>
+          <tr><td>Primes émises</td><td class="n">111,6</td><td class="n">128,4</td><td class="n">143,0</td></tr>
+          <tr><td>Résultat net</td><td class="n">17,8</td><td class="n">20,2</td><td class="n">23,4</td></tr>
+          <tr><td>Fonds propres</td><td class="n">126,1</td><td class="n">138,2</td><td class="n">152,5</td></tr>
+          <tr><td>Dividende/action</td><td class="n">0,321</td><td class="n">0,363</td><td class="n">0,421</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+  <h3>Ratios de la fiche ou recalculés au cours actuel</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Ratio</th><th class="n">Fiche (cours fin 2025)</th><th class="n">Recalculé à 12,50 DT</th></tr></thead>
+    <tbody>
+      <tr><td>Capitalisation</td><td class="n neg">4 288 523 (erreur)</td><td class="n">312,5 M TND</td></tr>
+      <tr><td>PER</td><td class="n">7,1</td><td class="n">13,4</td></tr>
+      <tr><td>P/B</td><td class="n">1,09</td><td class="n">2,05</td></tr>
+      <tr><td>Rendement du dividende</td><td class="n">6,3 %</td><td class="n">3,4 %</td></tr>
+      <tr><td>Rendement bénéficiaire (1 / PER)</td><td class="n">14,1 %</td><td class="n neg">7,5 % (&lt; 9 % des BTA)</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note warn">Le site contient deux erreurs sur cette seule fiche : une capitalisation environ 70 fois trop faible, et des BPA 2023-2024 décalés d'une colonne. <strong>Recalculez toujours vous-même.</strong> ROE d'environ 16 %, P/B justifié d'environ 1,5, soit un prix d'entrée raisonnable vers 9 DT (avec un coût des fonds propres de 14 % et une croissance de 10 %).</div>
+</section>
+
+<!-- 7 -->
+<section id="obligations">
+  <h2>Les obligations</h2>
+  <div class="grid2">
+    <div class="box">
+      <h3>BTA ou ENAT</h3>
+      <ul>
+        <li><strong>BTA</strong> (Bons du Trésor Assimilables) : souscrits par les banques par adjudication, échangés surtout entre banques.</li>
+        <li><strong>ENAT</strong> (Emprunt National) : ouvert au public, plusieurs tranches par an, catégories A, B et C.</li>
+        <li>Les deux sont des emprunts de l'État tunisien : même risque de défaut.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Taux fixe ou T + x %</h3>
+      <ul>
+        <li><strong>Fixe</strong> : coupon constant. Gagnant si les taux baissent.</li>
+        <li><strong>T + x %</strong> : TMM plus une marge. Gagnant si les taux montent, et le prix reste proche de 100.</li>
+        <li>Choisir l'un ou l'autre revient à parier sur les décisions de la BCT, comme le font déjà les actions financières.</li>
+      </ul>
+    </div>
+  </div>
+  <h3>Le taux sans risque en dinars</h3>
+  <div class="tbl"><table>
+    <thead><tr><th></th><th class="n">Tunisie</th><th class="n">Zone euro (ordre de grandeur)</th></tr></thead>
+    <tbody>
+      <tr><td>Inflation (septembre 2026)</td><td class="n">5,6 %</td><td class="n">≈ 2 %</td></tr>
+      <tr><td>Taux directeur</td><td class="n">7 %</td><td class="n">≈ 2 %</td></tr>
+      <tr><td>Taux de l'État à moyen terme</td><td class="n">≈ 9 %</td><td class="n">≈ 3 %</td></tr>
+      <tr class="total"><td>Rendement réel</td><td class="n">≈ 3,5 %</td><td class="n">≈ 1 %</td></tr>
+    </tbody>
+  </table></div>
+  <ul>
+    <li><strong>Le taux dans le nom est le coupon</strong>, fixé à l'émission. Le rendement actuel dépend du prix.</li>
+    <li><strong>Plusieurs coupons pour une même échéance</strong> : chaque ligne a été émise à une date différente.</li>
+    <li><strong>Les prix affichés sont souvent figés</strong> (faute d'échanges) et ne sont pas des prix de marché. Pour les vrais rendements : résultats d'adjudication du Trésor et de la BCT.</li>
+    <li><strong>« Inaccessible »</strong> : probablement un gel avant une échéance ou le paiement d'un coupon (BTA Oct 2026, ENAT 2021).</li>
+  </ul>
+  <h3>Exemple d'échelonnement pour un horizon de 3 à 5 ans</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Part</th><th>Placement</th><th>Échéance</th><th>Rôle</th></tr></thead>
+    <tbody>
+      <tr><td class="n">10 %</td><td>SICAV obligataire</td><td>Revendable chaque jour</td><td>Réserve pour une occasion</td></tr>
+      <tr><td class="n">30 %</td><td>BTA ou ENAT</td><td>2029</td><td>1re fenêtre</td></tr>
+      <tr><td class="n">30 %</td><td>BTA</td><td>2030</td><td>2e fenêtre</td></tr>
+      <tr><td class="n">30 %</td><td>BTA 9,87 % Oct 2031 (B1031)</td><td>2031</td><td>3e fenêtre</td></tr>
+    </tbody>
+  </table></div>
+  <p class="sub">Hypothèse : environ 7,2 % net par an avec une retenue de 20 % (à confirmer selon la résidence fiscale), soit environ 1,5 % réel. Prévoir aussi le risque de change pour un investisseur en euros et un compte convertible.</p>
+</section>
+
+<!-- 8 -->
+<section id="admission">
+  <h2>Les conditions d'admission à la cote</h2>
+  <div class="grid2">
+    <div class="box">
+      <h3>Marché principal</h3>
+      <ul>
+        <li>Capital d'au moins 3 M TND</li>
+        <li>2 exercices certifiés et bénéficiaires (sauf introduction par augmentation de capital)</li>
+        <li>Au moins 10 % du capital dans le public, et au moins 200 actionnaires</li>
+        <li>« Public » : particuliers détenant au plus 0,5 %, institutionnels au plus 5 %</li>
+        <li>Rapport d'évaluation, prévisions sur 5 ans, audit interne</li>
+        <li>Prospectus soumis au visa du CMF</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Marché alternatif (PME)</h3>
+      <ul>
+        <li>2 exercices certifiés, aucune exigence de bénéfices</li>
+        <li>Placement auprès d'investisseurs avertis (au moins 1 M TND)</li>
+        <li>Listing sponsor obligatoire, au moins 2 ans</li>
+        <li>Prospectus allégé, visé par le CMF</li>
+      </ul>
+      <p class="sub" style="margin:8px 0 0">Modes d'introduction : OPF (prix fixe), OPO (fourchette de prix), OPM (prix minimal).</p>
+    </div>
+  </div>
+  <div class="note">À l'introduction, c'est le vendeur qui choisit le moment et le prix. L'exigence de 2 années de bénéfices pousse les sociétés à s'introduire après de bonnes années, et les prévisions sur 5 ans sont établies par la direction. Le visa du CMF certifie que l'information est complète, pas que l'investissement est bon.</div>
+</section>
+
+<!-- 8b -->
+<section id="performance">
+  <h2>Dix ans de TUNINDEX face aux obligations</h2>
+  <p class="sub">200 000 TND placés le 31/12/2016. TUNINDEX avec dividendes réinvestis, avant frais et impôts. Obligations : environ 8,5 % brut en moyenne, coupons réinvestis.</p>
+  <div class="kpis">
+    <div class="kpi"><b>≈ 679 000</b><span>TND dans le TUNINDEX (×3,4, ≈ 13,3 % par an)</span></div>
+    <div class="kpi"><b>≈ 445 000</b><span>TND en obligations (≈ 8,5 % par an)</span></div>
+    <div class="kpi"><b>≈ 562 000</b><span>TND en moitié actions, moitié obligations</span></div>
+    <div class="kpi alert"><b>5 ans</b><span>pendant lesquels les obligations ont fait mieux (2020-2024)</span></div>
+  </div>
+  <h3>Le match, année par année</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Fin d'année</th><th class="n">TUNINDEX</th><th class="n">Variation</th><th class="n">Actions (TND)</th><th class="n">Obligations (TND)</th><th>Devant</th></tr></thead>
+    <tbody>
+      <tr><td>2016</td><td class="n">5 489</td><td class="n">—</td><td class="n">200 000</td><td class="n">200 000</td><td>—</td></tr>
+      <tr><td>2017</td><td class="n">6 282</td><td class="n pos">+14,5 %</td><td class="n">228 900</td><td class="n">217 000</td><td class="pos">Actions</td></tr>
+      <tr><td>2018</td><td class="n">7 272</td><td class="n pos">+15,8 %</td><td class="n">265 000</td><td class="n">235 400</td><td class="pos">Actions</td></tr>
+      <tr><td>2019</td><td class="n">7 122</td><td class="n neg">−2,1 %</td><td class="n">259 500</td><td class="n">255 500</td><td class="pos">Actions, de peu</td></tr>
+      <tr><td>2020</td><td class="n">6 885</td><td class="n neg">−3,3 %</td><td class="n">250 900</td><td class="n">277 200</td><td style="color:var(--gold)">Obligations</td></tr>
+      <tr><td>2021</td><td class="n">≈ 7 046</td><td class="n pos">≈ +2,3 %</td><td class="n">≈ 256 700</td><td class="n">300 700</td><td style="color:var(--gold)">Obligations</td></tr>
+      <tr><td>2022</td><td class="n">≈ 8 110</td><td class="n pos">≈ +15,1 %</td><td class="n">≈ 295 500</td><td class="n">326 300</td><td style="color:var(--gold)">Obligations</td></tr>
+      <tr><td>2023</td><td class="n">≈ 8 751</td><td class="n pos">≈ +7,9 %</td><td class="n">≈ 318 900</td><td class="n">354 000</td><td style="color:var(--gold)">Obligations</td></tr>
+      <tr><td>2024</td><td class="n">≈ 9 954</td><td class="n pos">+13,75 %</td><td class="n">≈ 362 700</td><td class="n">384 100</td><td style="color:var(--gold)">Obligations</td></tr>
+      <tr><td>2025</td><td class="n">13 450</td><td class="n pos">+35,1 %</td><td class="n">490 100</td><td class="n">416 800</td><td class="pos">Actions</td></tr>
+      <tr class="total"><td>16/10/2026</td><td class="n">≈ 18 640</td><td class="n pos">+38,6 %</td><td class="n">≈ 679 300</td><td class="n">≈ 444 600</td><td class="pos">Actions (+235 000)</td></tr>
+      <tr><td><em>Sommet du 17/07/2026</em></td><td class="n">21 553</td><td class="n"></td><td class="n">≈ 785 300</td><td class="n"></td><td></td></tr>
+    </tbody>
+  </table></div>
+  <p class="sub" style="margin-top:6px">Fins d'année 2021 à 2024 recalculées à partir des performances annuelles. Taux obligataires historiques approximatifs (de ≈ 7,5 % en 2017 à ≈ 9,5-10 % en 2023-2024).</p>
+
+  <h3>Les variantes côté obligations</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Scénario</th><th class="n">Valeur aujourd'hui</th><th class="n">Par an</th></tr></thead>
+    <tbody>
+      <tr><td>Obligations ≈ 8,5 % brut, coupons réinvestis</td><td class="n">≈ 445 000</td><td class="n">8,5 %</td></tr>
+      <tr><td>BTA à 10 ans acheté en 2016 (≈ 7,5 %), conservé</td><td class="n">≈ 406 000</td><td class="n">7,5 %</td></tr>
+      <tr><td>Après la retenue de 20 % (≈ 6,8 % net)</td><td class="n">≈ 381 000</td><td class="n">6,8 %</td></tr>
+      <tr><td>Coupons dépensés au lieu d'être réinvestis (7,5 %)</td><td class="n">≈ 347 000</td><td class="n">—</td></tr>
+      <tr class="total"><td>TUNINDEX, dividendes réinvestis</td><td class="n">≈ 679 000</td><td class="n">13,3 %</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="grid2">
+    <div class="box">
+      <h3>Ce que montre la décennie</h3>
+      <ul>
+        <li><strong>De 2016 à 2024</strong>, l'indice a fait environ +7,7 % par an, à peine plus que l'inflation.</li>
+        <li><strong>Plus de la moitié du gain</strong> est venue en 22 mois : +87 % depuis fin 2024.</li>
+        <li>Les actions ont rapporté environ <strong>5 points de plus par an</strong> que les obligations, mais d'un coup, et à la fin.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Corriger les chiffres affichés</h3>
+      <ul>
+        <li><strong>Inflation</strong> (≈ 85 à 90 % cumulés, estimation à vérifier) : environ 6 % réels par an pour les actions, 1,5 à 2 % pour les obligations.</li>
+        <li><strong>En euros</strong> (le dinar a perdu ≈ 30 % face à l'euro) : environ 9 à 10 % par an pour les actions.</li>
+        <li><strong>Placement au sommet de juillet 2026</strong> : environ −14 % aujourd'hui.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">Le point de départ change la donne. En 2016, le marché était bon marché. Aujourd'hui, les obligations rapportent 9 à 9,5 % et les actions ont déjà vu leurs multiples monter. <strong>Le match des 10 prochaines années commence avec des cartes différentes.</strong></div>
+</section>
+
+<!-- 8c -->
+<section id="dividendes">
+  <h2>Les dividendes</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Mesure</th><th class="n">Rendement</th><th>Remarque</th></tr></thead>
+    <tbody>
+      <tr><td>Marché, fin février 2026</td><td class="n">≈ 4,3 %</td><td>PER 12,7, P/B 2,0 (source en partie générée par une IA, à prendre avec prudence)</td></tr>
+      <tr><td>Estimation aujourd'hui</td><td class="n">≈ 3,5 à 4 %</td><td>L'indice a pris ≈ 23 % depuis fin février</td></tr>
+      <tr><td>Sur longue période</td><td class="n">≈ 4 à 5 %</td><td>Ordre de grandeur, à vérifier</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Le capital nécessaire pour 20 000 TND nets par an</h3>
+  <p class="sub">Hypothèse : une retenue d'environ 10 % sur les dividendes, soit ≈ 22 200 TND bruts nécessaires (à confirmer selon votre résidence fiscale).</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Rendement</th><th class="n">Capital nécessaire</th><th>Profil</th></tr></thead>
+    <tbody>
+      <tr><td>3,5 % (le marché aujourd'hui)</td><td class="n">≈ 635 000 TND</td><td>Portefeuille proche de l'indice</td></tr>
+      <tr><td>4 %</td><td class="n">≈ 556 000 TND</td><td></td></tr>
+      <tr><td>5 %</td><td class="n">≈ 444 000 TND</td><td>Sélection de valeurs à fort dividende</td></tr>
+      <tr><td>6 %</td><td class="n">≈ 370 000 TND</td><td class="neg">Risque élevé de dividendes non tenables</td></tr>
+      <tr><td>Obligations à 9 % brut (7,2 % net)</td><td class="n">≈ 278 000 TND</td><td>Coupon garanti, mais fixe</td></tr>
+      <tr class="total"><td>Mélange : ≈ 140 000 en obligations + ≈ 250 000 en actions à ≈ 4,5 %</td><td class="n">≈ 390 000 TND</td><td>≈ 10 000 garantis + ≈ 10 000 qui peuvent augmenter</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Rendements affichés de quelques valeurs (Simply Wall St)</h3>
+  <div class="chips">
+    <span class="chip r">Sotipapier 13,1 %</span><span class="chip a">Artes 7,8 %</span><span class="chip a">Atelier du Meuble 6,9 %</span><span class="chip a">City Cars 6,7 %</span><span class="chip a">Unimed 6,5 %</span><span class="chip a">SPDIT 6,1 %</span><span class="chip">SFBT 5,9 %</span><span class="chip">BNA 5,8 %</span><span class="chip">CIL 5,7 %</span><span class="chip">ICF 5,6 %</span><span class="chip">Attijari 5,5 %</span><span class="chip">Sotrapil 5,4 %</span><span class="chip">Ennakl 5,0 %</span><span class="chip">STB 4,0 %</span><span class="chip">BT 4,0 %</span><span class="chip">TPR 4,0 %</span><span class="chip">Amen Bank 3,8 %</span><span class="chip">BIAT 3,6 %</span><span class="chip">Carthage Cement 3,6 %</span>
+  </div>
+  <p class="sub">Rendements calculés sur des cours qui ont pu changer depuis. Ce ne sont pas des recommandations.</p>
+
+  <div class="grid2">
+    <div class="box">
+      <h3>L'avantage des actions : un dividende qui augmente</h3>
+      <p>Un coupon de BTA reste fixe. Un dividende qui progresse de 7 % par an transforme 20 000 TND en <strong>≈ 39 000 TND au bout de 10 ans</strong>. Sur la même période, l'inflation réduit de moitié la valeur réelle d'un coupon fixe.</p>
+    </div>
+    <div class="box">
+      <h3>Le filtre contre les pièges</h3>
+      <ul>
+        <li>Dividende couvert au moins 1,5 fois par le bénéfice</li>
+        <li>Dette maîtrisée</li>
+        <li>Dividende maintenu pendant les mauvaises années (2020)</li>
+        <li>Ne pas cumuler banques, leasing et concessionnaires : c'est un pari unique sur les taux</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section id="discipline">
+  <h2>Règles de discipline pour le challenge</h2>
+  <ol>
+    <li><strong>Une thèse écrite avant chaque ordre</strong> : l'activité, le moat, la valeur estimée face au prix.</li>
+    <li><strong>Filtre d'univers</strong> : groupe 11 en priorité, groupe 12 seulement avec une thèse solide, compartiment S jamais.</li>
+    <li><strong>Seuil de rendement</strong> : rendement bénéficiaire (1 / PER) nettement supérieur à 9 %, soit un PER inférieur à 11 environ. Sinon, la croissance doit le justifier.</li>
+    <li><strong>Concentration</strong> : 8 à 12 lignes. Au moins 70 % dans le TUNINDEX20.</li>
+    <li><strong>Plafond finance</strong> : banques et assurances, 40 % au maximum (sinon c'est un pari unique sur les taux).</li>
+    <li><strong>Liquidité</strong> : une position ne dépasse pas environ 10 % des capitaux échangés en une journée.</li>
+    <li><strong>Le bon ratio pour chaque secteur</strong> : P/B face au ROE pour les banques et assurances, VE/EBITDA pour les industriels, actif net réévalué pour les holdings, bénéfices normalisés pour les cycliques.</li>
+    <li><strong>Recalculer toujours</strong> : capitalisation, BPA et ratios, en ajustant pour les actions gratuites.</li>
+    <li><strong>Mesure de la performance</strong> : contre le TUNINDEX, et chaque valeur contre son indice sectoriel.</li>
+    <li><strong>Un journal de décision</strong> : date, thèse, décision, puis ce qui s'est réellement passé.</li>
+  </ol>
+  <h3>Liste de surveillance</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Thème</th><th>Valeurs</th><th>Question à creuser</th></tr></thead>
+    <tbody>
+      <tr><td>Qualité délaissée</td><td>SAH</td><td>Pression sur les marges, dette d'expansion, ou simple désintérêt du marché ?</td></tr>
+      <tr><td>Exportateurs</td><td>One Tech, Sotuver</td><td>Demande automobile européenne, coût de l'énergie</td></tr>
+      <tr><td>Cercle de compétence (énergie)</td><td>Sotrapil</td><td>Infrastructure régulée, revenus prévisibles</td></tr>
+      <tr><td>Holdings décotées</td><td>Poulina, SPDIT, ASSMA (mère d'AMV)</td><td>Décote sur l'actif net réévalué, comme pour Exor ou Investor AB</td></tr>
+      <tr><td>En suspens</td><td class="neg">Siame</td><td>Pourquoi est-elle en compartiment S depuis janvier 2026 ?</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note ok">Le marché a déjà corrigé d'environ 14 % depuis son sommet de juillet. Dans le cadre de Marks, c'est le moment de préparer une liste de valeurs à acheter avec des prix d'entrée chiffrés, pas encore celui d'acheter.</div>
+</section>
+
+<footer id="sources">
+  <p><strong>Sources :</strong>
+  <a href="https://fr.allafrica.com/stories/202604140521.html" target="_blank" rel="noopener">AllAfrica, nouveau site de la Bourse de Tunis (14/04/2026)</a> ·
+  <a href="https://tunis-stockexchange.com/en/about" target="_blank" rel="noopener">Tunis Stock Exchange, About</a> ·
+  Revue du CMF n°1, septembre 2026 · Guide de l'investisseur, Tunis Stock Exchange ·
+  <a href="https://businessnews.com.tn/2025/12/12/apres-des-mois-de-suspension-reprise-de-lactivite-de-tsi-sous-strict-controle-judiciaire/1378331/" target="_blank" rel="noopener">Business News, reprise de TSI (12/12/2025)</a> ·
+  <a href="https://businessnews.com.tn/2026/11/02/tsi-un-an-et-demi-apres-le-scandale-les-actionnaires-appeles-a-recomposer-la-direction/1426648/" target="_blank" rel="noopener">Business News, TSI (02/11/2026)</a> ·
+  <a href="https://fr.allafrica.com/stories/202505230141.html" target="_blank" rel="noopener">AllAfrica, administrateur judiciaire de TSI (23/05/2025)</a> ·
+  <a href="https://terafinances.com/quelles-sont-les-cinq-plus-grandes-capitalisations-du-marche-a-fin-aout-2026-273" target="_blank" rel="noopener">Terafinances, top 5 des capitalisations (août 2026)</a> ·
+  <a href="https://www.tunisienumerique.com/bourse-de-tunis-la-capitalisation-approche-48-milliards-de-dinars-et-les-echanges-en-actions-ont-double-en-2026/" target="_blank" rel="noopener">Tunisie Numérique, capitalisation de 48 Md TND</a> ·
+  <a href="https://www.bvmt.com.tn/sites/default/files/avis-decisions/repartition-des-titres-de-capital-de-la-cote-de-la-bourse-en-compartiments-et-en-groupes-de-cotation_0.pdf" target="_blank" rel="noopener">Tunis Stock Exchange (ancien site BVMT), compartiments et groupes 2026</a> ·
+  <a href="https://www.bvmt.com.tn/sites/default/files/articles/guide-de-lintroduction-en-bourse_0.pdf" target="_blank" rel="noopener">Tunis Stock Exchange (ancien site BVMT), guide de l'introduction en bourse</a> ·
+  <a href="https://www.bvmt.com.tn/sites/default/files/articles/documentation.pdf" target="_blank" rel="noopener">Tunis Stock Exchange (ancien site BVMT), méthodologie des indices</a> ·
+  <a href="https://www.ubci.tn/wp-content/blogs.dir/2021/02/Re%CC%81trospective-boursie%CC%81re-anne%CC%81e-2020.pdf" target="_blank" rel="noopener">UBCI, TUNINDEX 2016-2020</a> ·
+  <a href="https://fr.allafrica.com/stories/202601020249.html" target="_blank" rel="noopener">AllAfrica, TUNINDEX 2025</a> ·
+  <a href="https://africanmanager.com/le-tunindex-cloture-lexercice-2024-sur-une-hausse-annuelle-de-1375/" target="_blank" rel="noopener">African Manager, TUNINDEX 2024</a> ·
+  <a href="https://www.webmanagercenter.com/2026/03/03/562615/128-en-deux-mois-la-bourse-de-tunis-est-elle-entree-dans-un-cycle-bullish-permanent/" target="_blank" rel="noopener">WebManagerCenter, ratios du marché février 2026</a> ·
+  <a href="https://simplywall.st/stocks/tn/dividend-yield-high" target="_blank" rel="noopener">Simply Wall St, dividendes</a> ·
+  <a href="https://fr.allafrica.com/stories/202610080466.html" target="_blank" rel="noopener">AllAfrica, BCT taux directeur 7 %</a> ·
+  <a href="https://www.lapresse.tn/2026/07/28/pourquoi-la-bourse-de-tunis-a-t-elle-suspendu-ses-echanges-aujourdhui/" target="_blank" rel="noopener">La Presse, suspension du 28/07/2026</a> ·
+  Captures de séance tunis-stockexchange.com (16/10/2026).</p>
+  <p>Document pédagogique, pas un conseil d'investissement. Les seuils de variation et le sens de certaines abréviations obligataires sont déduits des données et restent à confirmer.</p>
+</footer>
+</div>

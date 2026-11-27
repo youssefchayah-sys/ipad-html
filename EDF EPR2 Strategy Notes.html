@@ -1,0 +1,592 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>EDF EPR2 Strategy Notes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column (~820px) on warm white, beige section bands, sticky part nav */
+:root{
+  --paper:#FFFDF9;      /* warm white page */
+  --beige:#F3EBDD;      /* section bands, table heads */
+  --sand:#E6D8C2;       /* rules, borders */
+  --ink:#3B2E24;        /* body text, deep brown */
+  --muted:#7A6654;      /* captions */
+  --accent:#A65F2E;     /* burnt amber */
+  --gold:#C2954B;       /* highlights */
+  --s1:#B8741A; --s2:#1F7FB0;
+  --good:#4F7A4A; --bad:#A3442F;
+  --display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --body:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"DM Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.hero{background:var(--beige);border-bottom:1px solid var(--sand)}
+header.hero .wrap{padding-block:56px 40px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(32px,6vw,48px);line-height:1.1;margin:10px 0 14px;text-wrap:balance}
+.lede{max-width:62ch;color:var(--muted);font-size:17px;margin:0}
+.meta{margin-top:18px;font-size:13px;color:var(--muted)}
+nav.parts{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--sand)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+nav.parts .wrap{display:flex;gap:6px;flex-wrap:wrap;padding-block:10px}
+nav.parts a{font-size:13px;font-weight:500;color:var(--ink);text-decoration:none;padding:6px 12px;border-radius:999px;border:1px solid var(--sand);background:var(--paper)}
+nav.parts a:hover,nav.parts a:focus-visible{background:var(--beige);border-color:var(--gold);outline:none}
+section{padding-block:44px;border-bottom:1px solid var(--sand)}
+section.band{background:var(--beige)}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(26px,4.5vw,34px);line-height:1.2;margin:6px 0 10px;text-wrap:balance}
+h3{font-family:var(--display);font-weight:600;font-size:21px;margin:34px 0 10px;text-wrap:balance}
+p{margin:0 0 12px;max-width:68ch}
+ul{margin:0 0 12px;padding-left:20px;max-width:68ch}
+li{margin-bottom:6px}
+strong{font-weight:600}
+.tbl{overflow-x:auto;margin:14px 0 8px;border:1px solid var(--sand);border-radius:6px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--sand);vertical-align:top}
+th{background:var(--beige);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pos{color:var(--good);font-weight:500}.neg{color:var(--bad);font-weight:500}
+.steps{display:grid;gap:14px;margin:16px 0}
+.step{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;background:var(--paper);border:1px solid var(--sand);border-radius:6px;padding:16px}
+.step .when{font-family:var(--mono);font-size:12px;color:var(--accent);white-space:nowrap;padding-top:3px;min-width:84px}
+.step .role{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--beige);color:var(--accent);margin-left:6px;vertical-align:2px}
+.step h4{margin:0 0 4px;font-size:16px;font-weight:600}
+.step p{margin:0;font-size:14.5px}
+.step > div{min-width:0}
+.quote{border-left:3px solid var(--gold);background:var(--paper);padding:14px 18px;margin:18px 0;font-family:var(--display);font-style:italic;font-size:18px;line-height:1.5;border-radius:0 6px 6px 0}
+.quote .tag{display:block;font-family:var(--body);font-style:normal;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:6px}
+.formula{font-family:var(--mono);background:var(--paper);border:1px solid var(--sand);border-radius:6px;padding:16px 18px;margin:14px 0;font-size:14.5px;line-height:1.9;overflow-x:auto}
+.formula b{color:var(--accent);font-weight:500}
+.formula i{color:var(--muted);font-style:normal}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:14px 0}
+.card{background:var(--paper);border:1px solid var(--sand);border-radius:6px;padding:16px}
+.card h4{margin:0 0 6px;font-size:15px;font-weight:600;color:var(--accent)}
+.card p{margin:0;font-size:14.5px}
+.bars{margin:18px 0 6px;display:grid;gap:10px}
+.bar{display:grid;grid-template-columns:28px 1fr 56px;gap:10px;align-items:center;font-size:13px}
+.bar .lbl{font-weight:600;color:var(--muted)}
+.bar .track{position:relative;height:22px;background:var(--beige);border-radius:3px;overflow:hidden}
+.bar .seg{position:absolute;top:0;bottom:0}
+.bar .base{background:var(--sand)}
+.bar .cfd{background:var(--gold)}
+.bar .plus{background:var(--good)}
+.bar .val{font-family:var(--mono);text-align:right;font-variant-numeric:tabular-nums}
+.bar .strike{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+.note{font-size:13px;color:var(--muted)}
+.src{font-size:13.5px}
+.src a{color:var(--accent)}
+footer{padding-block:28px;font-size:12.5px;color:var(--muted)}
+.chart{overflow-x:auto;margin:10px 0 6px;background:var(--paper);border:1px solid var(--sand);border-radius:6px;padding:8px}
+.chart svg{display:block;width:100%;min-width:520px;height:auto}
+.chart .grid{stroke:var(--sand);stroke-width:1}
+.chart .axis0{stroke:var(--muted);stroke-width:1}
+.chart .ref{stroke:var(--bad);stroke-width:1.5;stroke-dasharray:4 4}
+.chart .hover{stroke:var(--muted);stroke-width:1}
+.chart .tick{font:11px var(--body);fill:var(--muted)}
+.tip{position:fixed;z-index:20;pointer-events:none;background:var(--paper);border:1px solid var(--sand);border-radius:6px;padding:8px 10px;font-size:12.5px;box-shadow:0 4px 14px rgba(59,46,36,.12);font-variant-numeric:tabular-nums}
+.tip b{display:block;margin-bottom:2px}
+.tip i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px}
+#model{background:var(--paper)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+.tile{background:var(--paper);border:1px solid var(--sand);border-radius:6px;padding:14px 16px;min-width:0}
+.tile .k{font-family:var(--display);font-size:28px;font-weight:600;color:var(--accent);line-height:1.15;font-variant-numeric:tabular-nums}
+.tile .l{font-size:13px;color:var(--ink);margin-top:4px;font-weight:500}
+.tile .s{font-size:12px;color:var(--muted);margin-top:2px}
+.stack{display:flex;height:46px;border-radius:6px;overflow:hidden;border:1px solid var(--sand);margin:14px 0 6px;font-size:13px;font-weight:600}
+.stack div{display:flex;align-items:center;justify-content:center;text-align:center;padding:0 8px;min-width:0}
+.stack .loan{flex:60;background:var(--gold);color:var(--ink)}
+.stack .eq{flex:40;background:var(--sand);color:var(--ink)}
+.chip{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.chip.done{background:#E3EDDD;color:var(--good)}
+.chip.open{background:#F6E3C9;color:var(--accent)}
+.chip.risk{background:#F3DCD4;color:var(--bad)}
+a{color:var(--accent)}
+@media (max-width:520px){.step{grid-template-columns:1fr;gap:6px}}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Energy industry mapping · Interview prep</div>
+    <h1>EDF EPR2 Strategy Notes</h1>
+    <p class="lede">How EDF and Framatome are securing the EPR2 supply chain, what the two-way CfD locks in versus what is still contested with Brussels, how the programme is costed and financed, and what the financial model shows.</p>
+    <div class="meta">Updated 10 November 2026 · Main legal source: State aid SA.119469 (EUR-Lex)</div>
+  </div>
+</header>
+
+<nav class="parts" aria-label="Sections">
+  <div class="wrap">
+    <a href="#supply">1 · Supply chain</a>
+    <a href="#castings">Castings</a>
+    <a href="#cfd">2 · How the CfD works</a>
+    <a href="#basis">The basis</a>
+    <a href="#pools">Six value pools</a>
+    <a href="#finance">3 · Costs &amp; financing</a>
+    <a href="#model">4 · Financial model</a>
+    <a href="#lines">Interview lines</a>
+  </div>
+</nav>
+
+<main>
+<section id="supply">
+  <div class="wrap">
+    <div class="eyebrow">Part 1</div>
+    <h2>How EDF/Framatome is securing its supply chain</h2>
+    <p>EDF won't let any link in the nuclear chain fall under foreign ownership or go out of business. It uses three different deal structures to do this: direct purchase, buy-back, and backed rescue followed by a minority stake.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Link in the chain</th><th>Deal</th><th>Year</th><th>How the deal works</th></tr></thead>
+        <tbody>
+          <tr><td>Turbines</td><td>Arabelle (from GE Vernova)</td><td class="num">2024</td><td>Buy-back</td></tr>
+          <tr><td>Pumps &amp; motors</td><td>Jeumont</td><td class="num">2024</td><td>Direct acquisition</td></tr>
+          <tr><td>Valves</td><td>Vanatome → Velan / Segault → Sebim</td><td class="num">2024–26</td><td>Direct acquisitions, one after another</td></tr>
+          <tr><td>Forgings</td><td>Creusot Forge</td><td class="num">owned</td><td>Already owned by Framatome</td></tr>
+          <tr><td>Castings</td><td>Manoir → Hachette &amp; Driout → stake in Manoir France</td><td class="num">2024–26</td><td>Rescue by Paralloy, then a Framatome minority stake</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="castings" class="band">
+  <div class="wrap">
+    <div class="eyebrow">Castings</div>
+    <h2>From lender to partner to shareholder</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="when">20 Jun 2024</div>
+        <div>
+          <h4>Manoir Industries, Pîtres <span class="role">Lender</span></h4>
+          <p>The Paris commercial court approved Paralloy's takeover (about €86M revenue, about 470–500 staff). The funding: €6M from Paralloy, a matching State loan, €3.5M of quasi-equity from the Normandy Region, and a <strong>€3M loan from EDF</strong>. EDF was a creditor, not an owner.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="when">24 Feb 2026</div>
+        <div>
+          <h4>Hachette &amp; Driout, Saint-Dizier <span class="role">Partner</span></h4>
+          <p>The Lyon court selected Paralloy's offer, made <em>in partnership with Framatome</em>. The foundry was renamed Firth Vickers France and placed under Manoir France, with about 170 jobs kept. Paralloy and Framatome promised the court €7M of investment and work to fill the order book. Framatome was a named partner but took no shares.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="when">17 Jul 2026</div>
+        <div>
+          <h4>Manoir France <span class="role">Shareholder</span></h4>
+          <p>Framatome bought a <strong>minority shareholding in Manoir France</strong>, which owns both Pîtres and Saint-Dizier. The percentage, price and any board seats were not disclosed. The stated reason: securing supply chains "particularly for the EPR2 program and for the defense industry" (Bernard Ponchon).</p>
+        </div>
+      </div>
+    </div>
+    <p><strong>Ownership today:</strong> Paralloy Group (majority) → Manoir France (Framatome holds a minority stake) → Firth Vickers France, the former Hachette &amp; Driout.</p>
+    <div class="quote"><span class="tag">Interview line</span>"Framatome has held a minority stake in Manoir France since July 2026, which gives it indirect equity in the former Hachette &amp; Driout. Paralloy remains the operator and majority owner."</div>
+  </div>
+</section>
+
+<section id="cfd">
+  <div class="wrap">
+    <div class="eyebrow">Part 2</div>
+    <h2>The EPR2 two-way CfD</h2>
+    <p>Under a two-way CfD, EDF's project company gets a fixed amount per MWh of reference volume. The open question is who captures the value outside that fixed band, and that is the subject of the dispute with Brussels.</p>
+    <h3>How it works</h3>
+    <ul>
+      <li>The project company sells its electricity at market price. It then settles with the State on the difference between the <strong>strike</strong> and a <strong>reference price</strong>: the annual average French day-ahead price (recital 152).</li>
+      <li>When the reference price is below the strike, the State pays the difference. When it is above, the company pays it back. On the reference volume (<span class="num">66.7 TWh/yr</span>), revenue ≈ strike.</li>
+      <li><strong>The key detail:</strong> the settlement uses the reference price, not the price EDF actually sells at. Anything EDF earns above the reference price falls outside the CfD and stays with the seller.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="basis" class="band">
+  <div class="wrap">
+    <div class="eyebrow">The basis · écart de base</div>
+    <h2>The State tops up an index, not EDF's sale price</h2>
+    <p>The gap between EDF's actual sale price and the public reference price stays with EDF, whether it's a gain or a loss. Traders call this gap the basis.</p>
+    <div class="formula">
+      Revenue = actual sale price + (strike − reference price)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= <b>strike</b> <i>// guaranteed by the State</i><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ <b>(actual sale price − reference price)</b> <i>// the basis, which the seller keeps</i>
+    </div>
+
+    <h3>Worked example</h3>
+    <p class="note">Strike €100/MWh, reference price €80/MWh, so the State pays €20/MWh in every case.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>How EDF sells</th><th>Sale price</th><th>+ CfD</th><th>= Revenue</th><th>Basis kept</th></tr></thead>
+        <tbody>
+          <tr><td><strong>A.</strong> Day-ahead market, same as the reference</td><td class="num">80</td><td class="num">+20</td><td class="num">100</td><td class="num">0</td></tr>
+          <tr><td><strong>B.</strong> 15-year industrial contract at a premium for stable low-carbon supply</td><td class="num">95</td><td class="num">+20</td><td class="num">115</td><td class="num pos">+15</td></tr>
+          <tr><td><strong>C.</strong> Poor hedge: sold forward too early, below the reference</td><td class="num">70</td><td class="num">+20</td><td class="num">90</td><td class="num neg">−10</td></tr>
+          <tr><td><strong>D.</strong> Discount to win a large industrial client</td><td class="num">75</td><td class="num">+20</td><td class="num">95</td><td class="num neg">−5 (EDF pays)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bars" aria-label="Revenue per MWh by case, scale €0 to €120">
+      <div class="bar"><span class="lbl">A</span><div class="track"><div class="seg base" style="left:0;width:66.67%"></div><div class="seg cfd" style="left:66.67%;width:16.67%"></div><div class="strike" style="left:83.33%"></div></div><span class="val">€100</span></div>
+      <div class="bar"><span class="lbl">B</span><div class="track"><div class="seg base" style="left:0;width:79.17%"></div><div class="seg cfd" style="left:79.17%;width:16.67%"></div><div class="strike" style="left:83.33%"></div></div><span class="val">€115</span></div>
+      <div class="bar"><span class="lbl">C</span><div class="track"><div class="seg base" style="left:0;width:58.33%"></div><div class="seg cfd" style="left:58.33%;width:16.67%"></div><div class="strike" style="left:83.33%"></div></div><span class="val">€90</span></div>
+      <div class="bar"><span class="lbl">D</span><div class="track"><div class="seg base" style="left:0;width:62.5%"></div><div class="seg cfd" style="left:62.5%;width:16.67%"></div><div class="strike" style="left:83.33%"></div></div><span class="val">€95</span></div>
+    </div>
+    <div class="legend"><span style="--c:var(--sand)">Sale price</span><span style="--c:var(--gold)">CfD top-up (€20)</span><span style="--c:var(--ink)">Strike €100</span></div>
+    <p class="note" style="margin-top:8px">EDF's choices change EDF's revenue, not the State's bill.</p>
+
+    <h3>Why the CfD is designed this way</h3>
+    <div class="grid2">
+      <div class="card"><h4>Commercial discipline</h4><p>If the State topped up the actual sale price, EDF wouldn't care how well it sold, because the State would cover any loss.</p></div>
+      <div class="card"><h4>Predictable cost for the State</h4><p>The State's payment depends only on a public index that no one controls.</p></div>
+      <div class="card"><h4>Reference volume, not metered output</h4><p>This avoids distorting production decisions (recital 136). Producing more than the reference volume is upside for EDF; producing less is EDF's risk.</p></div>
+    </div>
+
+    <h3>What partly limits the basis</h3>
+    <ul>
+      <li>The strike already deducts a projected <strong>shape value of €1–3/MWh</strong>. Nuclear output is flat, so it is valued at roughly the annual average.</li>
+      <li><strong>Forward-sale adjustment:</strong> <span class="num">AM = (forward price − reference price) × θ × k</span> (recital 153). It shifts part of the reference toward the forward price, so part of any forward-sale gain or loss is shared (θ between 0 and 1).</li>
+      <li><strong>60/40 clawback</strong>, which applies only if project returns exceed 7–9%, checked every 5 years.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="pools">
+  <div class="wrap">
+    <div class="eyebrow">Outside the locked band</div>
+    <h2>The six pools of value outside the CfD</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>#</th><th>Value pool</th><th>How it arises</th><th>Who captures it today</th><th>What Brussels wants</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td><strong>Contract premium</strong><br><span class="note">prime de contractualisation</span></td><td>10–20-year contracts with industrial customers, priced above average spot</td><td>EDF, because settlement uses the reference price, not the contract price</td><td>Open to all buyers, through the exchange or non-discriminatory auctions</td></tr>
+          <tr><td class="num">2</td><td><strong>Retail margin &amp; customer base</strong><br><span class="note">marge de fourniture</span></td><td>Whoever holds the cheapest power can make the most competitive offers</td><td>EDF (over 75% of French generation)</td><td>Competitors get access to the power (an ARENH-like approach)</td></tr>
+          <tr><td class="num">3</td><td><strong>Shape &amp; forward-sale value</strong><br><span class="note">valeur de profil</span></td><td>Selling better than the annual average</td><td>Partly EDF; €1–3/MWh already deducted in the strike, and the forward-sale adjustment returns part of the gain</td><td>Already partly covered by the CfD design</td></tr>
+          <tr><td class="num">4</td><td><strong>Volume above the reference</strong></td><td>The CfD pays on a reference volume (88% availability); anything above it is sold at market</td><td>EDF, as a reward for operational performance</td><td>Not contested</td></tr>
+          <tr><td class="num">5</td><td><strong>Post-CfD tail</strong></td><td>Years 41–60 of operation are fully merchant</td><td>EDF</td><td>Not contested</td></tr>
+          <tr><td class="num">6</td><td><strong>Excess returns</strong></td><td>Project IRR above 7–9%, checked every 5 years</td><td>60% State / 40% EDF</td><td>Already in the scheme</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">When the market price is above the strike, the State receives the CfD payments. The Commission notes that France hasn't explained how that money will be returned to consumers (recitals 210–213).</p>
+
+    <h3>Who captures what</h3>
+    <div class="grid2">
+      <div class="card"><h4>CfD band · project company</h4><p>Strike × reference volume, fixed. It repays the investment and the loan.</p></div>
+      <div class="card"><h4>Pools 1 &amp; 2 · EDF today</h4><p>The real prize. Paris wants to protect them; Brussels wants to open them up.</p></div>
+      <div class="card"><h4>Extra volume &amp; tail · EDF</h4><p>Output above the reference volume and years 41–60. Neither is contested.</p></div>
+      <div class="card"><h4>Above 7–9% IRR · split</h4><p>60% to the State, 40% to EDF.</p></div>
+      <div class="card"><h4>Market above strike · State</h4><p>The State receives the CfD payments, with no defined route back to consumers yet.</p></div>
+    </div>
+
+    <h3>Why this matters</h3>
+    <ul>
+      <li>The CfD protects the investment. <strong>Pools 1 and 2 decide who controls the market.</strong> Brussels' demand is about competition, not project financing.</li>
+      <li><strong>Case B</strong> (contract premium) is EDF's upside. <strong>Case D</strong> (discounting) is Brussels' worry. A State-backed asset with guaranteed revenue can afford 15-year low-carbon offers no competitor can match, and use them to lock up the largest customers (<em>verrouillage du marché</em>).</li>
+      <li><strong>Brussels' remedy:</strong> sell through the exchange. The sale price then roughly equals the reference, the basis is roughly zero, and every supplier buys EPR2 power on the same terms.</li>
+      <li>For EDF, pools 1 and 2 are where the upside sits. With an IRR of about 6% at a €100 strike (<em>own model</em>), they are what makes the economics work. Losing them doesn't put the debt at risk, but it removes EDF's margin above its target return.</li>
+      <li><strong>France's best argument:</strong> excess returns are already 60% clawed back. <strong>Counter-argument:</strong> the clawback only applies above the threshold, and a contract premium can create a structural market advantage well before that point.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="finance" class="band">
+  <div class="wrap">
+    <div class="eyebrow">Part 3 · Costs &amp; financing</div>
+    <h2>How EPR2 is costed and financed, and the road to FID</h2>
+    <p>The financing has three layers. A State-guaranteed loan from the Caisse des Dépôts (CDC) covers 60% of construction and is interest-free to the project until each reactor runs. A two-way CfD fixes revenue for 40 years. EDF's equity carries the rest of the construction risk, and overruns are shared with the State above €15bn. As of early November 2026 the final investment decision (FID) has not been taken. It is still targeted for end-2026, and it depends on Brussels.</p>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">€72.8bn</div><div class="l">Overnight cost, 6 reactors</div><div class="s">2020 euros, excluding financing (recital 63)</div></div>
+      <div class="tile"><div class="k">≈ €100bn</div><div class="l">Nominal construction cost</div><div class="s">After inflation, in current euros</div></div>
+      <div class="tile"><div class="k">≈ €154bn</div><div class="l">Construction + loan interest</div><div class="s">≈ 100 + 53.6 (PLF 2027 central case)</div></div>
+      <div class="tile"><div class="k">60% · €60bn</div><div class="l">CDC loan share · cap</div><div class="s">Six tranches, one per reactor</div></div>
+      <div class="tile"><div class="k">€85–115</div><div class="l">Strike range, per MWh</div><div class="s">2024 euros (recital 149); political cap €100</div></div>
+      <div class="tile"><div class="k">6.5–8.5%</div><div class="l">Target return for EDF</div><div class="s">Post-tax, nominal (recital 87)</div></div>
+    </div>
+
+    <h3>Cost: from €72.8bn to about €154bn</h3>
+    <p>The same programme is quoted at four very different figures because each one adds a layer. Know which layer an interviewer is quoting.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Layer</th><th>€bn</th><th>What it is</th><th>Public reference</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1. Overnight cost</strong></td><td class="num">72.8</td><td>Constant 2020 euros, as if built overnight. EDF's Dec 2025 estimate</td><td>SA.119469 recital 63</td></tr>
+          <tr><td>2. + Inflation to current euros</td><td class="num">+26.8</td><td>Realised CPI 2020–26, then 2% a year over the build</td><td>Model</td></tr>
+          <tr><td><strong>= Nominal construction cost</strong></td><td class="num">≈ 99.6</td><td>What will actually be spent in current euros</td><td>The widely quoted "≈ €100bn"</td></tr>
+          <tr><td>3. + Interest on the CDC loan</td><td class="num">+49.9</td><td>Livret A + 1% over the loan's life. The State pays it during construction (≈ €10.5bn) and the project pays 3% in operation (≈ €39.4bn)</td><td>PLF 2027: €53.6bn central case</td></tr>
+          <tr><td><strong>= Construction + interest, nominal</strong></td><td class="num">≈ 149.6</td><td>Cash cost including debt</td><td>The widely quoted "≈ €154bn"</td></tr>
+          <tr><td>4. + EDF equity carry at 7.5%</td><td class="num">+45.3</td><td>The return EDF forgoes on its capital until the last reactor runs. An opportunity cost, not cash</td><td>Model</td></tr>
+          <tr><td><strong>= Full economic cost at last reactor start</strong></td><td class="num">≈ 194.9</td><td>All capital costed</td><td>Model</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Cost history (overnight): €51.7bn (2021) → €67.4bn (2024) → €72.8bn (Dec 2025). By pair (Table 1, midpoints): Penly ≈ €27.5bn, Gravelines ≈ €22.6bn, Bugey ≈ €22.6bn. The independent DINN audit was due in Q1 2026, and no result has been published.</p>
+
+    <h3>Capital stack</h3>
+    <div class="stack" role="img" aria-label="Capital stack: 60% CDC loan, 40% EDF">
+      <div class="loan">CDC loan · 60% · ≈ €59.8bn</div>
+      <div class="eq">EDF equity / shareholder loan · 40% · ≈ €39.9bn</div>
+    </div>
+    <p class="note">Nominal amounts from the model. At ≈ €59.8bn the loan sits just under its €60bn cap. EDF funds its 40% as equity or a shareholder loan to the project company (recital 38).</p>
+
+    <h3>CDC loan terms</h3>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Term</th><th>Detail</th><th>What it means for the project</th></tr></thead>
+        <tbody>
+          <tr><td>Lender</td><td>Caisse des Dépôts Savings Fund (Fonds d'épargne), State-guaranteed</td><td>Sovereign-cost debt instead of commercial project finance</td></tr>
+          <tr><td>Size</td><td>60% of construction cost, capped at €60bn principal, six tranches</td><td>Up from the "at least 50%" EDF announced in Dec 2025 (PLF 2027 arts. 48/69, recital 125)</td></tr>
+          <tr><td>Underlying rate</td><td class="num">Livret A + 100 bp</td><td>CDC is paid this every year. The State pays or receives the gap against the fixed rate the project pays</td></tr>
+          <tr><td>Rate paid by the project</td><td class="num">0% construction / 3% operation</td><td>No interest builds up during the 12-year build. In operation, the State subsidises only if Livret A is above 2%</td></tr>
+          <tr><td>Grace period</td><td>4 years interest-only after each tranche's reactor starts</td><td>Repayment starts only once the CfD is producing cash (recital 131a)</td></tr>
+          <tr><td>Amortisation</td><td>Straight-line over 35 years (≈ 39-year total maturity)</td><td>Repaid inside the 40-year CfD (recitals 131b–132)</td></tr>
+          <tr><td>State cost in 2027</td><td class="num">€137.82m</td><td>PLF 2027 programme 387, the first year of interest subsidy</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Overrun sharing (recital 73)</h3>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Overrun above the reference cost</th><th>EDF</th><th>State</th></tr></thead>
+        <tbody>
+          <tr><td>First €15bn (current euros)</td><td class="num">100%</td><td class="num">0%</td></tr>
+          <tr><td>€15bn to €30bn</td><td class="num">10%</td><td class="num">90%</td></tr>
+          <tr><td>Above €30bn</td><td colspan="2">Not settled in the decision (modelled as 100% EDF)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Delay penalty (recital 138): if a delay exceeds 5 years for a reason that is not legitimate, the 40-year CfD term is cut by the excess.</p>
+
+    <h3>Who carries which risk</h3>
+    <div class="grid2">
+      <div class="card"><h4>Construction · EDF first, then shared</h4><p>EDF takes the first €15bn of overrun. The State takes 90% of the next €15bn.</p></div>
+      <div class="card"><h4>Financing during construction · State</h4><p>The State pays the interest during the build (≈ €10.5bn). This is the main reason the strike can stay near €100.</p></div>
+      <div class="card"><h4>Interest rates in operation · State</h4><p>The project pays a fixed 3%. The State absorbs or gains the difference as Livret A moves.</p></div>
+      <div class="card"><h4>Market price · CfD</h4><p>Two-way settlement on the reference price for 40 years. The basis and value pools 1–5 stay with EDF (see Part 2).</p></div>
+      <div class="card"><h4>Upside · capped</h4><p>Above a 7–9% nominal post-tax IRR, gains are shared 60% State / 40% EDF, checked every 5 years (recitals 90–91).</p></div>
+    </div>
+
+    <h3>The Brussels procedure (SA.119469)</h3>
+    <div class="steps">
+      <div class="step"><div class="when">19 Nov 2025</div><div><h4>Notified to the Commission</h4><p>France formally notified the aid package.</p></div></div>
+      <div class="step"><div class="when">31 Mar 2026</div><div><h4>In-depth investigation opened</h4><p>IP/26/744, Official Journal C/2026/2619 of 7 May 2026. The Commission accepts the market failure and the need for aid. Its doubts are about proportionality and EDF's market power.</p></div></div>
+      <div class="step"><div class="when">Jul 2026</div><div><h4>Split over how the power is sold</h4><p>France proposes 70% merchant sales and 30% long-term contracts. Brussels wants more liquidity and safeguards on EDF's commercial conduct. Paris says there is no disagreement on the financing itself.</p></div></div>
+      <div class="step"><div class="when">Oct 2026</div><div><h4>Conditions emerge</h4><p>According to specialised press: third-party access to EPR2 output and stronger interconnection. The volume, price and sales channel are still open.</p></div></div>
+      <div class="step"><div class="when">Mar–Sep 2027</div><div><h4>Likely decision window</h4><p>This is Media24's estimate, based on a typical 12–18-month investigation. The Commission has not set a deadline.</p></div></div>
+    </div>
+
+    <h3>FID checklist</h3>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>What has to happen</th><th>Status (Nov 2026)</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Cost estimate approved by EDF's Board</td><td><span class="chip done">Done</span></td><td>€72.8bn (2020 euros), Dec 2025. A €2.7bn budget was approved for 2026</td></tr>
+          <tr><td>PPE3 (energy plan) in force</td><td><span class="chip done">Done</span></td><td>Promulgated Feb 2026</td></tr>
+          <tr><td>Independent cost audit (DINN)</td><td><span class="chip open">Not published</span></td><td>Due in Q1 2026</td></tr>
+          <tr><td>Loan framework (PLF 2027 arts. 48/69)</td><td><span class="chip open">In Parliament</span></td><td>Sets out the 60% loan, the €60bn cap and the State interest subsidy</td></tr>
+          <tr><td>ASNR opinion on Penly and the creation-authorisation decree</td><td><span class="chip open">Pending</span></td><td>The generic design opinion was expected in autumn 2026</td></tr>
+          <tr><td>Commission approval of the aid</td><td><span class="chip risk">Critical path</span></td><td>An end-2026 FID needs an agreement with Brussels first</td></tr>
+          <tr><td>FID by EDF's Board</td><td><span class="chip risk">At risk of slipping to 2027</span></td><td>Targeted for end-2026 (recital 56), before the spring 2027 presidential election</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Schedule (recitals 33, 56, 58)</h3>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Reactor</th><th>Net capacity</th><th>Construction start (model)</th><th>Commercial operation</th></tr></thead>
+        <tbody>
+          <tr><td>Penly 1</td><td class="num">1,685 MW</td><td class="num">2027 (first concrete by end-2028)</td><td class="num">2038</td></tr>
+          <tr><td>Penly 2</td><td class="num">1,685 MW</td><td class="num">2027</td><td class="num">2039</td></tr>
+          <tr><td>Gravelines 1</td><td class="num">1,685 MW</td><td class="num">2029</td><td class="num">2039</td></tr>
+          <tr><td>Gravelines 2</td><td class="num">1,685 MW</td><td class="num">2029</td><td class="num">2040</td></tr>
+          <tr><td>Bugey 1</td><td class="num">1,625 MW</td><td class="num">2032</td><td class="num">2043</td></tr>
+          <tr><td>Bugey 2</td><td class="num">1,625 MW</td><td class="num">2032</td><td class="num">2044</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Reference volume ≈ 66.7 TWh/yr for the full fleet: 88% availability × ~89% utilisation (recitals 150–151). 60-year technical life.</p>
+
+    <h3>Sources disagree on</h3>
+    <ul>
+      <li><strong>Return metric:</strong> 6.5–8.5% is EDF's target return (recital 87). 7–9% is the clawback threshold (recitals 90–91). Your model gives 5.96% at €100. Keep these three numbers separate when you talk about them.</li>
+      <li><strong>Strike:</strong> the decision gives an estimated range of €85–115 (2024 euros). €100 is the political cap from the Nuclear Policy Council. Les Echos reported €97 in July 2026.</li>
+      <li><strong>Project company:</strong> whether EDF runs the reactors directly or through a dedicated company is still under Commission review.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="model">
+  <div class="wrap">
+    <div class="eyebrow">Part 4 · Financial model</div>
+    <h2>EPR2 simplified project finance model (v2)</h2>
+    <p>This is your own model, aligned on the Commission's opening decision (SA.119469, OJ C/2026/2619) and on the 2027 Finance Bill (PLF 2027 arts. 48 and 69). It builds the four-layer cost stack and tests sensitivity to Livret A, delay and overruns. It has four tabs: Inputs (every lever sourced), Summary, Calcs (annual engine 2026–2105) and Scenarios. All figures below are the base case: €100 strike, Livret A 2%, no delay, no overrun.</p>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">5.96%</div><div class="l">EDF equity IRR</div><div class="s">Nominal post-tax; below the 7.5% Ke and the 6.5–8.5% target</div></div>
+      <div class="tile"><div class="k">−€6.4bn</div><div class="l">Equity NPV at 7.5% Ke</div><div class="s">2026 base</div></div>
+      <div class="tile"><div class="k">€93.5</div><div class="l">LCOE, per MWh</div><div class="s">2024 euros, at a 4.8% programme WACC, pre-tax</div></div>
+      <div class="tile"><div class="k">1.66×</div><div class="l">Minimum DSCR</div><div class="s">Average 3.69×</div></div>
+      <div class="tile"><div class="k">€10.5bn</div><div class="l">Cost to the State</div><div class="s">Nominal; €6.2bn PV at the 4.9% 10-year OAT</div></div>
+      <div class="tile"><div class="k">93%</div><div class="l">Calibration vs PLF</div><div class="s">€49.9bn interest vs €53.6bn central case</div></div>
+    </div>
+
+    <h3>What the model says</h3>
+    <ul>
+      <li><strong>The debt is very safe and the equity is thin.</strong> A minimum DSCR of 1.66× means the CfD comfortably services the CDC loan. EDF's 5.96% IRR is below its 7.5% cost of equity, so at €100 the project destroys about €6.4bn of value for EDF.</li>
+      <li><strong>The 60/40 clawback is not triggered.</strong> The IRR is well under the 7–9% threshold, so the State's upside share is theoretical in the base case.</li>
+      <li><strong>This is why pools 1 and 2 in Part 2 matter.</strong> The contract premium and retail margin are what can close the 1.5-point gap between 6% and EDF's target. That is exactly the value Brussels wants to open up.</li>
+      <li><strong>LCOE (€93.5) is below the strike (€100)</strong>, but at a blended 4.8% WACC that reflects cheap State debt. The project works for society, and is marginal for EDF's shareholders.</li>
+      <li><strong>The State's real exposure is Livret A.</strong> At 3% Livret A the cost to the State rises from about €10.5bn to about €27bn nominal. At 1.5% it falls to about €2bn, because the State then earns a margin in operation.</li>
+    </ul>
+
+    <h3>Annual funding during construction</h3>
+    <p class="note">€bn nominal per year, CDC loan drawdowns and EDF contributions. 2026 includes about €7.6bn of pre-FID costs, refinanced by the loan at FID.</p>
+    <div class="chart" id="ch-fund"></div>
+    <div class="legend"><span style="--c:var(--s1)">CDC loan (60%)</span><span style="--c:var(--s2)">EDF (40%)</span></div>
+
+    <h3>CDC loan outstanding</h3>
+    <p class="note">€bn nominal, closing balance. It peaks at about €59.1bn around 2042 and is fully repaid by about 2082.</p>
+    <div class="chart" id="ch-bal"></div>
+
+    <h3>EDF equity cash flow</h3>
+    <p class="note">€bn nominal per year. EDF puts in about €40bn up to 2039, turns cash-positive in 2040, recovers its money in nominal terms around 2055, and runs merchant after each reactor's 40-year CfD ends.</p>
+    <div class="chart" id="ch-eq"></div>
+
+    <h3>Debt service cover (DSCR)</h3>
+    <p class="note">Cash available for debt service ÷ debt service, years with debt service only. The dashed line is 1.0×.</p>
+    <div class="chart" id="ch-dscr"></div>
+
+    <h3>Scenarios</h3>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Metric</th><th>Base<br>LA 2%</th><th>LA 1.5%</th><th>LA 3%</th><th>LA 3% + 7-yr delay</th><th>1-yr delay</th><th>2-yr delay</th><th>Overrun €20bn</th><th>Stress*</th></tr></thead>
+        <tbody>
+          <tr><td>Nominal construction cost (€bn)</td><td class="num">99.6</td><td class="num">99.6</td><td class="num">99.6</td><td class="num">113.3</td><td class="num">103.0</td><td class="num">106.5</td><td class="num">119.6</td><td class="num">121.5</td></tr>
+          <tr><td>Interest on CDC loan (€bn)</td><td class="num">49.9</td><td class="num">41.6</td><td class="num">66.6</td><td class="num">76.8</td><td class="num">51.7</td><td class="num">53.6</td><td class="num">49.9</td><td class="num">71.4</td></tr>
+          <tr><td>PLF 2027 reference interest (€bn)</td><td class="num">53.6</td><td class="num">44.2</td><td class="num">70.7</td><td class="num">89.0</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          <tr><td>Construction + interest (€bn)</td><td class="num">149.6</td><td class="num">141.2</td><td class="num">166.2</td><td class="num">190.1</td><td class="num">154.7</td><td class="num">160.1</td><td class="num">169.6</td><td class="num">193.0</td></tr>
+          <tr><td>Full economic cost (€bn)</td><td class="num">194.9</td><td class="num">186.6</td><td class="num">211.5</td><td class="num">248.3</td><td class="num">202.3</td><td class="num">210.0</td><td class="num">230.5</td><td class="num">271.4</td></tr>
+          <tr><td>EDF equity IRR</td><td class="num">5.96%</td><td class="num">5.96%</td><td class="num">5.96%</td><td class="num">5.82%</td><td class="num">5.86%</td><td class="num">5.76%</td><td class="num neg">4.85%</td><td class="num neg">4.75%</td></tr>
+          <tr><td>EDF NPV at Ke (€bn)</td><td class="num">−6.4</td><td class="num">−6.4</td><td class="num">−6.4</td><td class="num">−5.3</td><td class="num">−6.6</td><td class="num">−6.8</td><td class="num neg">−13.7</td><td class="num neg">−14.2</td></tr>
+          <tr><td>Minimum DSCR</td><td class="num">1.66</td><td class="num">1.66</td><td class="num">1.66</td><td class="num">1.67</td><td class="num">1.64</td><td class="num">1.62</td><td class="num">1.70</td><td class="num">1.65</td></tr>
+          <tr><td>LCOE (€2024/MWh)</td><td class="num">93.5</td><td class="num">89.5</td><td class="num">102.2</td><td class="num">104.4</td><td class="num">94.4</td><td class="num">95.3</td><td class="num">103.2</td><td class="num neg">119.9</td></tr>
+          <tr><td>Cost to the State, nominal (€bn)</td><td class="num">10.5</td><td class="num">2.2</td><td class="num">27.1</td><td class="num">31.9</td><td class="num">10.9</td><td class="num">11.4</td><td class="num">15.0</td><td class="num">29.3</td></tr>
+          <tr><td>Cost to the State, PV at OAT (€bn)</td><td class="num">6.2</td><td class="num">3.3</td><td class="num">12.1</td><td class="num">10.7</td><td class="num">6.2</td><td class="num">6.3</td><td class="num">9.1</td><td class="num">12.0</td></tr>
+          <tr><td>Model ÷ PLF interest</td><td class="num">93%</td><td class="num">94%</td><td class="num">94%</td><td class="num">86%</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">*Stress: 2-year delay + Livret A 3% + €15bn overrun + Ke 8.5%. The delay cases add 1.5% a year of real overrun (illustrative). The PLF check columns use no delay overrun, to match PLF 2027 art. 69. Reading across: rates move the State's cost, not EDF's IRR (the project's rate is fixed). Overruns hit EDF directly (−1.1 IRR points for €20bn). Delay alone costs little, because the CfD only starts at commissioning.</p>
+
+    <h3>Key inputs</h3>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Input</th><th>Value</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>Overnight cost (of which pre-FID)</td><td class="num">€72.8bn 2020 (€6.5bn)</td><td>Recital 63; pre-FID calibrated to the PLF's €137.82m</td></tr>
+          <tr><td>Price index 2020→2026; forward inflation</td><td class="num">1.17×; 2%/yr</td><td>CPI realised + estimate; ECB-consistent assumption</td></tr>
+          <tr><td>Capex split Penly / Gravelines / Bugey</td><td class="num">37.8% / 31.1% / 31.1%</td><td>Table 1 midpoints</td></tr>
+          <tr><td>Load factor; technical life</td><td class="num">76.2%; 60 yrs</td><td>Recitals 150–151; 33</td></tr>
+          <tr><td>O&amp;M / fuel incl. back-end / other</td><td class="num">€21 / €15 / €2 per MWh (2020 €)</td><td>Derived from recitals 66–71</td></tr>
+          <tr><td>Strike; CfD term; post-CfD market price</td><td class="num">€100 (2024 €); 40 yrs; €70</td><td>Recitals 149, 137; tail price is an assumption</td></tr>
+          <tr><td>Clawback IRR threshold</td><td class="num">8%</td><td>Recitals 90–91: 7–9%, midpoint</td></tr>
+          <tr><td>Livret A (long-term) + CDC margin</td><td class="num">2% + 1%</td><td>PLF 2027 central case (current Livret A 1.7%)</td></tr>
+          <tr><td>EDF cost of equity (Ke); tax rate</td><td class="num">7.5%; 25%</td><td>Recital 87 midpoint; Table 2</td></tr>
+          <tr><td>Depreciation; State discount rate</td><td class="num">40 yrs straight-line; 4.9%</td><td>Assumption; 10-yr OAT late Oct 2026</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Simplifications to declare</h3>
+    <ul>
+      <li>No tax-loss carry-forward and no EDF corporate debt.</li>
+      <li>The 60/40 clawback is flagged, not modelled as cash.</li>
+      <li>The CfD is modelled as strike × reference volume, with no shape value and no forward-sale adjustment, so none of the Part 2 basis is included.</li>
+      <li>The State's share of any overrun is paid as a grant. The loan's partial coverage of overruns and the materiality threshold are not modelled.</li>
+      <li>Ranges given in brackets in the decision are confidential, so their midpoints are used. EDF's internal data would take precedence.</li>
+    </ul>
+
+    <div class="quote"><span class="tag">Interview line · the model</span>"On public data, EPR2 works for the system: LCOE is about €93 against a €100 strike, and minimum DSCR is 1.66×. It is marginal for EDF's equity, at about 6% IRR against a 7.5% cost of equity. The CDC loan solves the cost of debt, and Livret A drives the State's exposure. What is left for EDF is the value outside the CfD, which is why the negotiation with Brussels over market access decides the equity case."</div>
+    <div class="quote"><span class="tag">Interview line · financing</span>"EPR2 is a regulated-asset hybrid. A State-guaranteed loan covers 60% of the cost at 0% during construction, which removes interest during construction, the biggest cost driver in nuclear. A two-way CfD protects revenue for 40 years. EDF takes the first €15bn of overrun and shares the next €15bn 10/90 with the State. The financing isn't what's contested. Brussels is negotiating over who gets to sell the power, and that is what decides when FID happens."</div>
+  </div>
+</section>
+
+<script>
+const D={"y":[2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,2043,2044,2045,2046,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100,2101,2102,2103,2104,2105],"loan":[4.56,0.31,0.91,1.79,2.9,3.83,4.79,5.72,6.25,6.33,5.94,5.1,3.84,2.64,1.98,1.55,0.99,0.35,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"eq":[3.04,0.2,0.61,1.2,1.93,2.55,3.2,3.81,4.16,4.22,3.96,3.4,2.56,1.76,1.32,1.03,0.66,0.23,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"bal":[4.56,4.87,5.78,7.58,10.48,14.31,19.1,24.82,31.06,37.39,43.34,48.44,52.28,54.92,56.89,58.44,59.12,58.58,57.44,56.29,55.14,53.71,52.01,50.3,48.59,46.88,45.17,43.47,41.76,40.05,38.34,36.63,34.93,33.22,31.51,29.8,28.09,26.39,24.68,22.97,21.26,19.55,17.85,16.14,14.43,12.72,11.01,9.31,7.6,5.89,4.18,2.79,1.96,1.4,0.84,0.28,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"eqcf":[-3.04,-0.2,-0.61,-1.2,-1.93,-2.55,-3.2,-3.81,-4.16,-4.22,-3.96,-3.4,-2.07,-0.24,0.77,1.11,1.22,1.68,2.29,2.4,2.51,2.34,2.18,2.3,2.43,2.57,2.7,2.83,2.97,3.11,3.25,3.39,3.54,3.69,3.84,3.99,4.14,4.3,4.46,4.62,4.78,4.95,5.12,5.29,5.46,5.64,5.82,6.0,6.19,6.37,6.56,7.07,7.0,5.74,5.02,5.14,5.54,5.07,4.28,4.36,4.45,4.54,4.63,4.72,4.82,4.92,5.01,5.11,5.22,5.32,5.43,5.54,4.69,2.85,1.91,1.95,1.99,1.01,-0.0,-0.0],"dscr":[0,0,0,0,0,0,0,0,0,0,0,0,2.5,2.6,2.7,2.8,2.2,1.8,1.8,1.8,1.9,1.8,1.7,1.7,1.8,1.8,1.9,1.9,2.0,2.1,2.1,2.2,2.3,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3.0,3.1,3.2,3.4,3.5,3.6,3.8,3.9,4.1,4.3,4.5,5.6,8.7,10.3,9.3,9.8,20.2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"rev":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.46,4.46,6.07,6.19,6.32,8.0,9.74,9.94,10.13,10.34,10.54,10.75,10.97,11.19,11.41,11.64,11.87,12.11,12.35,12.6,12.85,13.11,13.37,13.64,13.91,14.19,14.47,14.76,15.06,15.36,15.67,15.98,16.3,16.63,16.96,17.3,17.64,18.0,18.36,18.72,18.13,16.52,15.85,16.17,16.49,15.79,15.06,15.36,15.66,15.98,16.3,16.62,16.95,17.29,17.64,17.99,18.35,18.72,19.09,19.48,16.51,10.01,6.72,6.86,7.0,3.57,0.0,0.0],"cfads":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.81,2.45,3.29,3.35,3.4,4.28,5.19,5.27,5.34,5.42,5.5,5.57,5.65,5.73,5.81,5.9,5.98,6.07,6.16,6.25,6.35,6.44,6.54,6.64,6.74,6.85,6.96,7.07,7.18,7.29,7.41,7.53,7.65,7.78,7.91,8.04,8.17,8.31,8.45,8.59,7.9,6.36,5.62,5.73,5.83,5.07,4.28,4.36,4.45,4.54,4.63,4.72,4.82,4.92,5.01,5.11,5.22,5.32,5.43,5.54,4.69,2.85,1.91,1.95,1.99,1.01,0.0,0.0],"ds":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.32,0.93,1.2,1.2,1.52,2.37,2.9,2.87,2.84,3.08,3.32,3.27,3.22,3.17,3.11,3.06,3.01,2.96,2.91,2.86,2.81,2.76,2.7,2.65,2.6,2.55,2.5,2.45,2.4,2.35,2.29,2.24,2.19,2.14,2.09,2.04,1.99,1.94,1.88,1.52,0.91,0.62,0.6,0.59,0.29,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"bon":[0.0,0.14,0.16,0.2,0.27,0.37,0.5,0.66,0.84,1.03,1.21,1.38,1.19,0.68,0.47,0.53,0.56,0.29,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"int_spv":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.32,0.93,1.2,1.2,1.2,1.49,1.76,1.72,1.69,1.65,1.61,1.56,1.51,1.46,1.41,1.36,1.3,1.25,1.2,1.15,1.1,1.05,1.0,0.95,0.89,0.84,0.79,0.74,0.69,0.64,0.59,0.54,0.48,0.43,0.38,0.33,0.28,0.23,0.18,0.13,0.08,0.06,0.04,0.03,0.01,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]};
+(function(){
+  const tip=document.createElement('div');tip.className='tip';tip.hidden=true;document.body.appendChild(tip);
+  const NS='http://www.w3.org/2000/svg';
+  function el(n,a){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e}
+  function nice(m){const p=Math.pow(10,Math.floor(Math.log10(m)));const f=m/p;return (f<=1?1:f<=2?2:f<=5?5:10)*p}
+  function chart(id,{from,to,series,type,ref,fmt,stacked}){
+    const host=document.getElementById(id);const i0=D.y.indexOf(from),i1=D.y.indexOf(to);
+    const yrs=D.y.slice(i0,i1+1);const S=series.map(s=>({...s,v:D[s.key].slice(i0,i1+1)}));
+    const W=820,H=240,m={l:44,r:12,t:12,b:26};const iw=W-m.l-m.r,ih=H-m.t-m.b;
+    let max=0,min=0;yrs.forEach((_,i)=>{let pos=0,neg=0;S.forEach(s=>{const v=s.v[i];if(stacked){v>0?pos+=v:neg+=v}else{pos=Math.max(pos,v);neg=Math.min(neg,v)}});max=Math.max(max,pos);min=Math.min(min,neg)});
+    if(ref)max=Math.max(max,ref);
+    const step=nice((max-min)/4);const ymax=Math.ceil(max/step)*step,ymin=Math.floor(min/step)*step;
+    const y=v=>m.t+ih*(ymax-v)/(ymax-ymin);const bw=iw/yrs.length;const x=i=>m.l+bw*i+bw/2;
+    const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':host.dataset.label||id});
+    for(let t=ymin;t<=ymax+1e-9;t+=step){svg.append(el('line',{x1:m.l,x2:W-m.r,y1:y(t),y2:y(t),class:t===0?'axis0':'grid'}));const tx=el('text',{x:m.l-6,y:y(t)+4,'text-anchor':'end',class:'tick'});tx.textContent=fmt(t);svg.append(tx)}
+    const every=yrs.length>40?10:yrs.length>20?5:2;
+    yrs.forEach((yr,i)=>{if(yr%every===0){const tx=el('text',{x:x(i),y:H-6,'text-anchor':'middle',class:'tick'});tx.textContent=yr;svg.append(tx)}});
+    if(ref){svg.append(el('line',{x1:m.l,x2:W-m.r,y1:y(ref),y2:y(ref),class:'ref'}))}
+    if(type==='bar'){
+      yrs.forEach((yr,i)=>{let pos=0,neg=0;S.forEach(s=>{const v=s.v[i];if(!v)return;let a,b;if(v>0){a=pos;b=pos+v;pos=b}else{a=neg;b=neg+v;neg=b}
+        const top=y(Math.max(a,b)),h=Math.max(1,Math.abs(y(a)-y(b))-(S.length>1?1:0));
+        svg.append(el('rect',{x:x(i)-bw*0.36,width:bw*0.72,y:top+(S.length>1&&v>0&&a>0?1:0),height:h,rx:Math.min(2,bw*0.2),fill:`var(${s.c})`}))})});
+    } else {
+      const s=S[0];let d='';s.v.forEach((v,i)=>{if(s.skip0&&!v){return}d+=(d?'L':'M')+x(i).toFixed(1)+','+y(v).toFixed(1)});
+      if(type==='area'){const pts=s.v.map((v,i)=>[x(i),y(v)]);svg.append(el('path',{d:'M'+pts[0][0]+','+y(0)+pts.map(p=>'L'+p[0].toFixed(1)+','+p[1].toFixed(1)).join('')+'L'+pts[pts.length-1][0]+','+y(0)+'Z',fill:`var(${s.c})`,opacity:.18}))}
+      svg.append(el('path',{d,fill:'none',stroke:`var(${s.c})`,'stroke-width':2,'stroke-linejoin':'round'}));
+    }
+    const hl=el('line',{y1:m.t,y2:m.t+ih,class:'hover',opacity:0});svg.append(hl);
+    const hit=el('rect',{x:m.l,y:m.t,width:iw,height:ih,fill:'transparent'});svg.append(hit);
+    function move(ev){const r=svg.getBoundingClientRect();const px=(ev.clientX-r.left)*W/r.width;const i=Math.max(0,Math.min(yrs.length-1,Math.floor((px-m.l)/bw)));
+      if(S.every(s=>!s.v[i])&&type!=='bar'){tip.hidden=true;hl.setAttribute('opacity',0);return}
+      hl.setAttribute('x1',x(i));hl.setAttribute('x2',x(i));hl.setAttribute('opacity',1);
+      tip.innerHTML='<b>'+yrs[i]+'</b>'+S.map(s=>`<div><i style="background:var(${s.c})"></i>${s.name}: ${fmt(s.v[i],true)}</div>`).join('');
+      tip.hidden=false;const tx=ev.clientX+14,ty=ev.clientY-10;tip.style.left=Math.min(tx,window.innerWidth-tip.offsetWidth-8)+'px';tip.style.top=ty+'px'}
+    hit.addEventListener('pointermove',move);hit.addEventListener('pointerleave',()=>{tip.hidden=true;hl.setAttribute('opacity',0)});
+    host.append(svg);
+  }
+  const bn=(v,full)=>full?('€'+v.toFixed(1)+'bn'):(v.toFixed(0));
+  chart('ch-fund',{from:2026,to:2044,type:'bar',stacked:true,fmt:bn,series:[{key:'loan',name:'CDC loan',c:'--s1'},{key:'eq',name:'EDF',c:'--s2'}]});
+  chart('ch-bal',{from:2026,to:2083,type:'area',fmt:bn,series:[{key:'bal',name:'Loan outstanding',c:'--s1'}]});
+  chart('ch-eq',{from:2026,to:2105,type:'bar',fmt:bn,series:[{key:'eqcf',name:'EDF equity cash flow',c:'--s2'}]});
+  chart('ch-dscr',{from:2038,to:2075,type:'line',ref:1,fmt:(v,f)=>f?v.toFixed(2)+'×':v.toFixed(0)+'×',series:[{key:'dscr',name:'DSCR',c:'--s1',skip0:true}]});
+})();
+</script>
+
+<section id="lines">
+  <div class="wrap">
+    <div class="eyebrow">Ready to use · see also the financing and model lines in Parts 3–4</div>
+    <h2>Interview lines</h2>
+    <div class="quote"><span class="tag">The CfD and the value outside it</span>"A two-way CfD fixes revenue per MWh against a reference price, but it doesn't decide who sells the power. The value outside it, mainly the premium on long-term contracts and the retail franchise, is what the EPR2 dispute is really about."</div>
+    <div class="quote"><span class="tag">The basis</span>"In a two-way CfD, the State tops up a reference price, not the producer's actual sale price. The producer keeps the basis between the two. That keeps it commercially disciplined, but it also means the CfD doesn't decide who captures the value of selling the power. That's why market access, not the strike price, is the core of the EPR2 negotiation."</div>
+    <div class="quote"><span class="tag">Castings</span>"Framatome has held a minority stake in Manoir France since July 2026, which gives it indirect equity in the former Hachette &amp; Driout. Paralloy remains the operator and majority owner."</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap src">
+    <div class="eyebrow">Sources</div>
+    <ul>
+      <li>State aid SA.119469, EUR-Lex: recitals 90–91, 136–153, 210–213</li>
+      <li><a href="https://www.paralloygroup.com/blog/paralloy-group-partners-with-framatome-to-strengthen-nuclear-and-defence-steel-casting-supply-chains">Paralloy Group: partnership with Framatome (July 2026)</a></li>
+      <li><a href="https://www.framatome.com/medias/framatome-strengthens-its-partnership-with-paralloy-group/">Framatome press release</a></li>
+      <li><a href="https://jhm.fr/firth-vickers-france-ex-hachette-et-driout-et-framatome-cest-signe/">JHM: Firth Vickers France et Framatome, c'est signé</a></li>
+      <li><a href="https://www.usinenouvelle.com/article/le-metallurgiste-normand-manoir-industries-sauve-par-le-britannique-paralloy.N2215199">L'Usine Nouvelle: Manoir Industries rescue (2024)</a></li>
+      <li><a href="https://www.radiodutriangle.fr/news/fonderies-hachette-driout-l-offre-paralloy-retenue-un-tournant-strategique-pour-saint-dizier-157">Radio du Triangle: Hachette &amp; Driout takeover (Feb 2026)</a></li>
+      <li><a href="https://www.edf.fr/sites/groupe/files/epresspack/12290/PR-EDF_EPR2-Programme-12.2025-ajuste.pdf">EDF press release: EPR2 programme cost estimate (Dec 2025)</a></li>
+      <li><a href="https://www.sfeninenglish.org/epr2-financing-state-support/">Sfen: why and how the State is involved in financing EPR2</a></li>
+      <li><a href="https://www.sfeninenglish.org/epr2-cfd-100-mwh-explained/">Sfen: what a CfD below €100/MWh really means</a></li>
+      <li><a href="https://media24.fr/2026/10/27/leurope-veut-encore-sattaquer-a-edf-un-an-a-peine-apres-la-fin-de-larenh-en-imposant-ses-conditions-pour-le-financement-des-reacteurs-nucleaires-epr2/">Media24: the EU's conditions on EPR2 financing (Oct 2026)</a></li>
+      <li><a href="https://opera-energie.com/media/epr2-divergences-entre-france-et-ue/">Opéra Énergie: differences between France and the EU (Jul 2026)</a></li>
+      <li><a href="https://pilotable.fr/epr2-decision-finale-edf-2026/">Pilotable: EPR2 FID approaching (May 2026)</a></li>
+    </ul>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">Energy Industry Mapping · personal interview notes · Part 4 figures come from EPR2_Simplified_PF_Model_v2.xlsx (base case)</div></footer>
+
+</body></html>
